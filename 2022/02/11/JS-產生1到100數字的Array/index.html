@@ -20,27 +20,27 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"rubylo718.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="2021年底，我報名了ALPHA Camp的網頁開發課程（簡稱AC），並在2022&#x2F;1&#x2F;3開始了學期2–1的四週課程，讓我的2022年第1個月就非常的充實！">
+    <meta name="description" content="Array.push() &amp; Array.from() 2–1期末peer review作業讓電腦猜1到100的整數，為了讓電腦不猜重複的數字，所以先把1到100放到陣列裡，電腦從這個陣列裡隨機取出一個數字，取過的從陣列裡splice掉。 這篇只談「產生數字的陣列」這件事。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ALPHA Camp 學期2-1 Learning Through Reflection">
-<meta property="og:url" content="https://rubylo718.github.io/2022/01/28/AC-2-1%E5%BF%83%E5%BE%97/index.html">
+<meta property="og:title" content="JS-產生1到100數字的Array">
+<meta property="og:url" content="https://rubylo718.github.io/2022/02/11/JS-%E7%94%A2%E7%94%9F1%E5%88%B0100%E6%95%B8%E5%AD%97%E7%9A%84Array/index.html">
 <meta property="og:site_name" content="Ruby Lo">
-<meta property="og:description" content="2021年底，我報名了ALPHA Camp的網頁開發課程（簡稱AC），並在2022&#x2F;1&#x2F;3開始了學期2–1的四週課程，讓我的2022年第1個月就非常的充實！">
+<meta property="og:description" content="Array.push() &amp; Array.from() 2–1期末peer review作業讓電腦猜1到100的整數，為了讓電腦不猜重複的數字，所以先把1到100放到陣列裡，電腦從這個陣列裡隨機取出一個數字，取過的從陣列裡splice掉。 這篇只談「產生數字的陣列」這件事。">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-01-27T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-01-27T16:00:00.000Z">
+<meta property="article:published_time" content="2022-02-10T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-02-10T16:00:00.000Z">
 <meta property="article:author" content="Ruby Lo">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://rubylo718.github.io/2022/01/28/AC-2-1%E5%BF%83%E5%BE%97/">
+<link rel="canonical" href="https://rubylo718.github.io/2022/02/11/JS-%E7%94%A2%E7%94%9F1%E5%88%B0100%E6%95%B8%E5%AD%97%E7%9A%84Array/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://rubylo718.github.io/2022/01/28/AC-2-1%E5%BF%83%E5%BE%97/","path":"2022/01/28/AC-2-1心得/","title":"ALPHA Camp 學期2-1 Learning Through Reflection"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://rubylo718.github.io/2022/02/11/JS-%E7%94%A2%E7%94%9F1%E5%88%B0100%E6%95%B8%E5%AD%97%E7%9A%84Array/","path":"2022/02/11/JS-產生1到100數字的Array/","title":"JS-產生1到100數字的Array"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>ALPHA Camp 學期2-1 Learning Through Reflection | Ruby Lo</title>
+<title>JS-產生1到100數字的Array | Ruby Lo</title>
   
 
 
@@ -190,7 +190,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://rubylo718.github.io/2022/01/28/AC-2-1%E5%BF%83%E5%BE%97/">
+    <link itemprop="mainEntityOfPage" href="https://rubylo718.github.io/2022/02/11/JS-%E7%94%A2%E7%94%9F1%E5%88%B0100%E6%95%B8%E5%AD%97%E7%9A%84Array/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -203,12 +203,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="ALPHA Camp 學期2-1 Learning Through Reflection | Ruby Lo">
+      <meta itemprop="name" content="JS-產生1到100數字的Array | Ruby Lo">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          ALPHA Camp 學期2-1 Learning Through Reflection
+          JS-產生1到100數字的Array
         </h1>
 
         <div class="post-meta-container">
@@ -219,7 +219,7 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2022-01-28 00:00:00" itemprop="dateCreated datePublished" datetime="2022-01-28T00:00:00+08:00">2022-01-28</time>
+      <time title="Created: 2022-02-11 00:00:00" itemprop="dateCreated datePublished" datetime="2022-02-11T00:00:00+08:00">2022-02-11</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -227,11 +227,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/ALPHA-Camp/" itemprop="url" rel="index"><span itemprop="name">ALPHA Camp</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/ALPHA-Camp/%E5%BF%83%E5%BE%97/" itemprop="url" rel="index"><span itemprop="name">心得</span></a>
+          <a href="/categories/Javascript/" itemprop="url" rel="index"><span itemprop="name">Javascript</span></a>
         </span>
     </span>
 
@@ -245,13 +241,23 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>2021年底，我報名了ALPHA Camp的網頁開發課程（簡稱AC），並在2022&#x2F;1&#x2F;3開始了學期2–1的四週課程，讓我的2022年第1個月就非常的充實！</p>
+        <p>Array.push() &amp; Array.from()</p>
+<p>2–1期末peer review作業讓電腦猜1到100的整數，為了讓電腦不猜重複的數字，所以先把1到100放到陣列裡，電腦從這個陣列裡隨機取出一個數字，取過的從陣列裡splice掉。</p>
+<p>這篇只談「產生數字的陣列」這件事。</p>
 <span id="more"></span>
-<hr>
-<p>在這四週過程中，我也比以前自學的時候（被逼）養成比較自律的學習習慣，因為有deadline就有壓力，有壓力就要一定得面對困難，面對之後才知道自己卡在哪，才能讓外界力量（教材、助教回饋、觀摩作業的過程等等）幫助到自己，推動正向的循環。避免老毛病，就是被困難卡住，就把注意力轉移到雞毛蒜皮的事情藉此拖延（以前seminar報告前必打掃房間）。課程第一週作業交出，收到真人助教回饋的那一刻，心中真的非常開心，感覺是在黑暗的洞穴中待了好幾個月，終於找到自己以外並且語言相通的生命體（這樣形容助教們會開心嗎？），但我想自學的應該會懂。</p>
-<p>課程中最喜歡的部分是兩次的線上workshop！透過與助教和同學們的即時互動，不論當時是否已跟上進度，可以從助教實作與講解的過程中學到很多細節，也能對當週要學習的內容有著通盤的了解（尤其是原本不熟悉的主題）。我後來才發現很多助教也是AC校友，有正職工作，兼職改作業，是AC校友代表他們應該也有部分是非本科來學習並且轉職的，覺得這樣把有相同目標的人們聚集在一起互相提攜，很棒！往後的學期也會排除萬難參加workshop，多問問題多互動。</p>
-<p>接下來的規劃是，維持白天工作，努力完成2–2與2–3課程。由於2–1的中間兩週真的覺得有點累，平日能推的進度有限，週末也在燒腦，導致Monday blue變嚴重，所以過年期間要先預讀到爆！</p>
-<p>最後希望這個blog不是只是交AC的作業用，往後學到新東西的心得也可以來寫個隨記。</p>
+
+<p>單純如我，就用for loop把數字一個個push進去空array裡。（以下用1到5）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> guessArray = []  </span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt;= <span class="number">5</span>; i++) &#123;</span><br><span class="line">  guessArray.<span class="title function_">push</span>(i)</span><br><span class="line">  &#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(guessArray) <span class="comment">// [ 1, 2, 3, 4, 5 ]</span></span><br></pre></td></tr></table></figure>
+<p>助教提供另一個方法來做：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> emptyArray = <span class="title class_">Array</span>(<span class="number">5</span>) <span class="comment">// [ &lt;5 empty items&gt; ]</span></span><br><span class="line"><span class="keyword">const</span> filledArray = <span class="title class_">Array</span>.<span class="title function_">from</span>(emptyArray, <span class="function">(<span class="params">el, idx</span>) =&gt;</span> &#123;</span><br><span class="line">  el = idx + <span class="number">1</span></span><br><span class="line">  <span class="keyword">return</span> el</span><br><span class="line">&#125;)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(filledArray) <span class="comment">// [ 1, 2, 3, 4, 5 ]</span></span><br></pre></td></tr></table></figure>
+
+<p>如果第一行這樣改<br>(不行) emptyArray &#x3D; []<br>(可以) emptyArray &#x3D; [0, 0 ,0 ,0 ,0]</p>
+<p>在MDN裡面是這樣說的，而助教示範的是第二行寫法（有用到index）。</p>
+<blockquote>
+<figure class="highlight plaintext"><figcaption><span>An array-like or iterable object to convert to an array.</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">``` javascript</span><br><span class="line">// Arrow function</span><br><span class="line">Array.from(arrayLike, (element) =&gt; &#123; /* ... */ &#125; )</span><br><span class="line">Array.from(arrayLike, (element, index) =&gt; &#123; /* ... */ &#125; )</span><br><span class="line"></span><br><span class="line">// Mapping function</span><br><span class="line">Array.from(arrayLike, mapFn)</span><br><span class="line">Array.from(arrayLike, mapFn, thisArg)</span><br><span class="line"></span><br><span class="line">// Inline mapping function</span><br><span class="line">Array.from(arrayLike, function mapFn(element) &#123; /* ... */ &#125;)</span><br><span class="line">Array.from(arrayLike, function mapFn(element, index) &#123; /* ... */ &#125;)</span><br><span class="line">Array.from(arrayLike, function mapFn(element) &#123; /* ... */ &#125;, thisArg)</span><br><span class="line">Array.from(arrayLike, function mapFn(element, index) &#123; /* ... */ &#125;, thisArg)</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>Array.from()的第一個參數是要拿來loop的，所以想要return出來的陣列有幾個值，第一個參數裡就要有幾個坑就是了（吧）</p>
+<p>還不知道哪邊會用到，到時再慢慢參透。</p>
 
     </div>
 
@@ -265,10 +271,13 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
+                <a href="/2022/01/28/AC-2-1%E5%BF%83%E5%BE%97/" rel="prev" title="ALPHA Camp 學期2-1 Learning Through Reflection">
+                  <i class="fa fa-chevron-left"></i> ALPHA Camp 學期2-1 Learning Through Reflection
+                </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/02/11/JS-%E7%94%A2%E7%94%9F1%E5%88%B0100%E6%95%B8%E5%AD%97%E7%9A%84Array/" rel="next" title="JS-產生1到100數字的Array">
-                  JS-產生1到100數字的Array <i class="fa fa-chevron-right"></i>
+                <a href="/2022/02/11/JS-key-value/" rel="next" title="JS 處理key-value結構資料">
+                  JS 處理key-value結構資料 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
