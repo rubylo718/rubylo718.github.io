@@ -20,27 +20,27 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"rubylo718.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="2021年底，我報名了ALPHA Camp的網頁開發課程（簡稱AC），並在2022&#x2F;1&#x2F;3開始了學期2–1的四週課程，讓我的2022年第1個月就非常的充實！">
+    <meta name="description" content="這是AC結業後第一個MVP自主專案。專案介紹分為上下兩篇文章，本文為下篇，著重在心得與反思。技術與專案建置過程請見上篇文章。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ALPHA Camp 學期2-1 Learning Through Reflection">
-<meta property="og:url" content="https://rubylo718.github.io/2022/01/28/AC-2-1%E5%BF%83%E5%BE%97/index.html">
+<meta property="og:title" content="專案簡介 - 匯率爬蟲小工具（下）">
+<meta property="og:url" content="https://rubylo718.github.io/2022/11/06/JScrawler-2/index.html">
 <meta property="og:site_name" content="Ruby Lo">
-<meta property="og:description" content="2021年底，我報名了ALPHA Camp的網頁開發課程（簡稱AC），並在2022&#x2F;1&#x2F;3開始了學期2–1的四週課程，讓我的2022年第1個月就非常的充實！">
+<meta property="og:description" content="這是AC結業後第一個MVP自主專案。專案介紹分為上下兩篇文章，本文為下篇，著重在心得與反思。技術與專案建置過程請見上篇文章。">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-01-27T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-01-27T16:00:00.000Z">
+<meta property="article:published_time" content="2022-11-06T14:54:00.000Z">
+<meta property="article:modified_time" content="2022-11-06T14:54:00.000Z">
 <meta property="article:author" content="Ruby Lo">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://rubylo718.github.io/2022/01/28/AC-2-1%E5%BF%83%E5%BE%97/">
+<link rel="canonical" href="https://rubylo718.github.io/2022/11/06/JScrawler-2/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://rubylo718.github.io/2022/01/28/AC-2-1%E5%BF%83%E5%BE%97/","path":"2022/01/28/AC-2-1心得/","title":"ALPHA Camp 學期2-1 Learning Through Reflection"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://rubylo718.github.io/2022/11/06/JScrawler-2/","path":"2022/11/06/JScrawler-2/","title":"專案簡介 - 匯率爬蟲小工具（下）"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>ALPHA Camp 學期2-1 Learning Through Reflection | Ruby Lo</title>
+<title>專案簡介 - 匯率爬蟲小工具（下） | Ruby Lo</title>
   
 
 
@@ -104,7 +104,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -117,6 +117,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B0%B8%E9%81%A0%E7%9A%84%E8%AA%B2%E9%A1%8C%EF%BC%9A%E5%AF%AB%E5%87%BA%E6%B8%85%E6%99%B0%E6%98%93%E8%AE%80%E7%9A%84code"><span class="nav-number">1.</span> <span class="nav-text">永遠的課題：寫出清晰易讀的code</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E4%B8%80%E5%80%8Bfunction%E5%8F%AA%E5%81%9A%E4%B8%80%E4%BB%B6%E4%BA%8B%E6%83%85"><span class="nav-number">1.1.</span> <span class="nav-text">1. 一個function只做一件事情</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-function-%E5%88%86%E9%A1%9E"><span class="nav-number">1.2.</span> <span class="nav-text">2. function 分類</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E6%80%9D%E7%B6%AD%E8%88%87%E8%B3%87%E6%96%99%E7%9A%84%E6%B5%81%E5%8B%95"><span class="nav-number">1.3.</span> <span class="nav-text">3. 思維與資料的流動</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B4%80%E9%8C%84%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7"><span class="nav-number">2.</span> <span class="nav-text">紀錄的重要性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%8C%E6%9C%9B%E9%80%8F%E9%81%8E%E7%B4%AF%E7%A9%8D%E7%B6%93%E9%A9%97%E5%9F%B9%E9%A4%8A%E7%9A%84%E8%83%BD%E5%8A%9B"><span class="nav-number">3.</span> <span class="nav-text">希望透過累積經驗培養的能力</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%BF%AB%E9%80%9F%E5%AE%8C%E6%88%90%E5%B0%88%E6%A1%88%E5%88%9D%E5%A7%8B%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A"><span class="nav-number">3.1.</span> <span class="nav-text">1. 快速完成專案初始環境設定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E4%BD%95%E6%99%82%E8%A9%B2%E9%87%8D%E6%A7%8B%EF%BC%9F"><span class="nav-number">3.2.</span> <span class="nav-text">2. 何時該重構？</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -190,7 +191,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://rubylo718.github.io/2022/01/28/AC-2-1%E5%BF%83%E5%BE%97/">
+    <link itemprop="mainEntityOfPage" href="https://rubylo718.github.io/2022/11/06/JScrawler-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -203,12 +204,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="ALPHA Camp 學期2-1 Learning Through Reflection | Ruby Lo">
+      <meta itemprop="name" content="專案簡介 - 匯率爬蟲小工具（下） | Ruby Lo">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          ALPHA Camp 學期2-1 Learning Through Reflection
+          專案簡介 - 匯率爬蟲小工具（下）
         </h1>
 
         <div class="post-meta-container">
@@ -219,7 +220,7 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2022-01-28 00:00:00" itemprop="dateCreated datePublished" datetime="2022-01-28T00:00:00+08:00">2022-01-28</time>
+      <time title="Created: 2022-11-06 22:54:00" itemprop="dateCreated datePublished" datetime="2022-11-06T22:54:00+08:00">2022-11-06</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -227,11 +228,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/ALPHA-Camp/" itemprop="url" rel="index"><span itemprop="name">ALPHA Camp</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/ALPHA-Camp/%E5%BF%83%E5%BE%97/" itemprop="url" rel="index"><span itemprop="name">心得</span></a>
+          <a href="/categories/Project/" itemprop="url" rel="index"><span itemprop="name">Project</span></a>
         </span>
     </span>
 
@@ -245,13 +242,16 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>2021年底，我報名了ALPHA Camp的網頁開發課程（簡稱AC），並在2022&#x2F;1&#x2F;3開始了學期2–1的四週課程，讓我的2022年第1個月就非常的充實！</p>
+        <p>這是AC結業後第一個MVP自主專案。專案介紹分為上下兩篇文章，本文為下篇，著重在心得與反思。技術與專案建置過程請見<a href="">上篇文章</a>。</p>
 <span id="more"></span>
-<hr>
-<p>在這四週過程中，我也比以前自學的時候（被逼）養成比較自律的學習習慣，因為有deadline就有壓力，有壓力就要一定得面對困難，面對之後才知道自己卡在哪，才能讓外界力量（教材、助教回饋、觀摩作業的過程等等）幫助到自己，推動正向的循環。避免老毛病，就是被困難卡住，就把注意力轉移到雞毛蒜皮的事情藉此拖延（以前seminar報告前必打掃房間）。課程第一週作業交出，收到真人助教回饋的那一刻，心中真的非常開心，感覺是在黑暗的洞穴中待了好幾個月，終於找到自己以外並且語言相通的生命體（這樣形容助教們會開心嗎？），但我想自學的應該會懂。</p>
-<p>課程中最喜歡的部分是兩次的線上workshop！透過與助教和同學們的即時互動，不論當時是否已跟上進度，可以從助教實作與講解的過程中學到很多細節，也能對當週要學習的內容有著通盤的了解（尤其是原本不熟悉的主題）。我後來才發現很多助教也是AC校友，有正職工作，兼職改作業，是AC校友代表他們應該也有部分是非本科來學習並且轉職的，覺得這樣把有相同目標的人們聚集在一起互相提攜，很棒！往後的學期也會排除萬難參加workshop，多問問題多互動。</p>
-<p>接下來的規劃是，維持白天工作，努力完成2–2與2–3課程。由於2–1的中間兩週真的覺得有點累，平日能推的進度有限，週末也在燒腦，導致Monday blue變嚴重，所以過年期間要先預讀到爆！</p>
-<p>最後希望這個blog不是只是交AC的作業用，往後學到新東西的心得也可以來寫個隨記。</p>
+<h3 id="永遠的課題：寫出清晰易讀的code"><a href="#永遠的課題：寫出清晰易讀的code" class="headerlink" title="永遠的課題：寫出清晰易讀的code"></a>永遠的課題：寫出清晰易讀的code</h3><p>自主專案經驗的珍貴，就在於「一切都自己來」。小至變數、函式的命名，大至功能規格、專案架構，全部都沒得fork，自己想！以下是在這個專案過程中注重的地方：</p>
+<h4 id="1-一個function只做一件事情"><a href="#1-一個function只做一件事情" class="headerlink" title="1. 一個function只做一件事情"></a>1. 一個function只做一件事情</h4><p>基本中的基本，目的是降低耦合性。雖然說是基本，但在寫的過程中也是要特別留心，不要寫得太順一口氣寫完，會像文章忘記分段一樣，會讓其他人（或是下星期的自己）搞不清楚段落重點。也會增加未來查找修改、以及串接其他功能時的困擾。</p>
+<h4 id="2-function-分類"><a href="#2-function-分類" class="headerlink" title="2. function 分類"></a>2. function 分類</h4><p>我的想法是，這個專案運行邏輯有三大步驟：爬蟲取得需要資訊 -&gt; 將資訊更新於特定Google Sheet中 -&gt; 發送Line Notify。所以我的專案controller檔案有三個，分別對應這三大步驟所需要的功能。</p>
+<p>由於更新Google Sheet時需要取得認證，另外也需要各種操作google sheet的function（例如新增tab、插入新列等等），這些我認為是「引用外部api」，故歸類至helper。讓這些function方便重複使用，另外也同上段所述：將function分類，分開主程式邏輯與操作google sheet的函式，方便閱讀理解。</p>
+<h4 id="3-思維與資料的流動"><a href="#3-思維與資料的流動" class="headerlink" title="3. 思維與資料的流動"></a>3. 思維與資料的流動</h4><p>定義function處理的內容之後，其實自己心裡就要清楚這個function的input是什麼，最後output(return)出什麼東西，不僅會在變數命名、邏輯撰寫上維持清晰的思維脈絡，也助於不同function間的邏輯串接，讓程式跑出想要的結果。</p>
+<h3 id="紀錄的重要性"><a href="#紀錄的重要性" class="headerlink" title="紀錄的重要性"></a>紀錄的重要性</h3><p>不像AC學習的時候，一個project會在一兩週內完成，做這個專案的時候有很多事情在同時進行，今天寫到一半，下次回來可能是兩三天、也可能是超過一星期之後了，直到功能接近完成時我才開始考慮撰寫專案介紹的部落格（也與hexo框架相見恨晚），寫的時候要拚命回想過程實在有點累人啊！之後做個人專案的時候，考慮在專案底下加個開發日誌來記錄過程。</p>
+<h3 id="希望透過累積經驗培養的能力"><a href="#希望透過累積經驗培養的能力" class="headerlink" title="希望透過累積經驗培養的能力"></a>希望透過累積經驗培養的能力</h3><h4 id="1-快速完成專案初始環境設定"><a href="#1-快速完成專案初始環境設定" class="headerlink" title="1. 快速完成專案初始環境設定"></a>1. 快速完成專案初始環境設定</h4><p>這種瑣碎的事情，透過多做幾個專案的經驗，未來應該要可以很快速的完成。之前在AC學習期間有對全端網頁架構做一個自己的專案設定cheat sheet，不知未來是否能做個template或是小工具一鍵跑完（？）</p>
+<h4 id="2-何時該重構？"><a href="#2-何時該重構？" class="headerlink" title="2. 何時該重構？"></a>2. 何時該重構？</h4><p>本次專案雖然是有參考書籍，但是在檔案架構上，我是用我所習慣，一開始都會把功能寫在主程式中，再隨著專案功能一一建置出來再調整。專案過程中中間有經過兩次較大規模的重構。思考是否在專案規格、規劃時期，就該規劃好各個controller分類以及所需要的function呢？或是為了讓程式碼清晰，或也不一定第一次就寫出合理的資料流動方式，程式碼重構總是無可避免，只要是往好的方面重構就是好的呢？這些問題大概要在往後多寫多閱讀、多體會了。</p>
 
     </div>
 
@@ -265,11 +265,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
+                <a href="/2022/11/06/JScrawler-1/" rel="prev" title="專案簡介 - 匯率爬蟲小工具（上）">
+                  <i class="fa fa-chevron-left"></i> 專案簡介 - 匯率爬蟲小工具（上）
+                </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/02/11/JS-%E7%94%A2%E7%94%9F1%E5%88%B0100%E6%95%B8%E5%AD%97%E7%9A%84Array/" rel="next" title="JS-產生1到100數字的Array">
-                  JS-產生1到100數字的Array <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>

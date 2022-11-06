@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"rubylo718.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="這是AC結業後第一個MVP自主專案。專案介紹分為上下兩篇文章。本篇文章敘述技術與專案建置過程，下篇文章會著重在心得與反思。 專案發想初始目標為做出一個「自己也會使用」的工具。 在ALPHA Camp網頁開發的學習之旅後，選擇「網頁爬蟲」這個主題，給自己一個機會，憑著在AC學習期間培養的「感覺」、網頁&#x2F;API基礎認知、找尋資訊及閱讀技術文件的能力、以及除錯的能力，選擇沒使用過的工具，做出網">
+<meta property="og:type" content="article">
+<meta property="og:title" content="專案簡介 - 匯率爬蟲小工具（上）">
+<meta property="og:url" content="https://rubylo718.github.io/2022/11/06/JScrawler-1/index.html">
+<meta property="og:site_name" content="Ruby Lo">
+<meta property="og:description" content="這是AC結業後第一個MVP自主專案。專案介紹分為上下兩篇文章。本篇文章敘述技術與專案建置過程，下篇文章會著重在心得與反思。 專案發想初始目標為做出一個「自己也會使用」的工具。 在ALPHA Camp網頁開發的學習之旅後，選擇「網頁爬蟲」這個主題，給自己一個機會，憑著在AC學習期間培養的「感覺」、網頁&#x2F;API基礎認知、找尋資訊及閱讀技術文件的能力、以及除錯的能力，選擇沒使用過的工具，做出網">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.imgur.com/2SNhFei.png">
+<meta property="og:image" content="https://i.imgur.com/cLYzQCx.png">
+<meta property="og:image" content="https://i.imgur.com/OAJSPMs.png">
+<meta property="og:image" content="https://i.imgur.com/0LzUxmf.png">
+<meta property="og:image" content="https://i.imgur.com/IwRlgW0.png">
+<meta property="og:image" content="https://i.imgur.com/Ef37clk.png">
+<meta property="og:image" content="https://i.imgur.com/hfDlnFw.png">
+<meta property="og:image" content="https://i.imgur.com/h9qxqFh.png">
+<meta property="article:published_time" content="2022-11-06T14:53:55.000Z">
+<meta property="article:modified_time" content="2022-11-06T14:53:55.000Z">
+<meta property="article:author" content="Ruby Lo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/2SNhFei.png">
+
+
+<link rel="canonical" href="https://rubylo718.github.io/2022/11/06/JScrawler-1/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://rubylo718.github.io/2022/11/06/JScrawler-1/","path":"2022/11/06/JScrawler-1/","title":"專案簡介 - 匯率爬蟲小工具（上）"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>專案簡介 - 匯率爬蟲小工具（上） | Ruby Lo</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Ruby Lo</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">吃飯運動睡覺打扣</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%88%E6%A1%88%E7%99%BC%E6%83%B3"><span class="nav-number">1.</span> <span class="nav-text">專案發想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%8A%80%E8%A1%93"><span class="nav-number">2.</span> <span class="nav-text">使用技術</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E6%96%87%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">參考文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%88%E6%A1%88%E5%BB%BA%E7%BD%AE%E9%81%8E%E7%A8%8B"><span class="nav-number">4.</span> <span class="nav-text">專案建置過程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%96%E5%BE%97%E5%8C%AF%E7%8E%87%E8%B3%87%E8%A8%8A"><span class="nav-number">4.1.</span> <span class="nav-text">取得匯率資訊</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AC%A1%E9%87%8D%E6%A7%8B"><span class="nav-number">4.2.</span> <span class="nav-text">第一次重構</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Google-Sheets-Credential"><span class="nav-number">4.3.</span> <span class="nav-text">Google Sheets Credential</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%88%87Google-Sheets-API%E6%96%87%E4%BB%B6%E7%9A%84%E5%B0%8D%E8%A9%B1"><span class="nav-number">4.4.</span> <span class="nav-text">與Google Sheets API文件的對話</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%8D%E6%AC%A1%E9%87%8D%E6%A7%8B"><span class="nav-number">4.5.</span> <span class="nav-text">再次重構</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%92%E7%A8%8B%E3%80%81%E9%80%9A%E7%9F%A5%E3%80%81%E5%B0%88%E6%A1%88%E6%94%B6%E5%B0%BE"><span class="nav-number">4.6.</span> <span class="nav-text">排程、通知、專案收尾</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Ruby Lo</p>
+  <div class="site-description" itemprop="description">努力學習程式開發，期望練成能在不同公司/產業/國家間移動的謀生技能，而且能透過技能與經驗的累積，提升自己在職場上的價值，幫助我進入更好更自由的工作環境。</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/rubylo718" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;rubylo718" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:rubylo718@gmail.com" title="E-Mail → mailto:rubylo718@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/wan-tzu-lo" title="LinkedIn → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;wan-tzu-lo" rel="noopener" target="_blank"><i class="fa-brands fa-linkedin-in fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="Back to top">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://rubylo718.github.io/2022/11/06/JScrawler-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ruby Lo">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ruby Lo">
+      <meta itemprop="description" content="努力學習程式開發，期望練成能在不同公司/產業/國家間移動的謀生技能，而且能透過技能與經驗的累積，提升自己在職場上的價值，幫助我進入更好更自由的工作環境。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="專案簡介 - 匯率爬蟲小工具（上） | Ruby Lo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          專案簡介 - 匯率爬蟲小工具（上）
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-11-06 22:53:55" itemprop="dateCreated datePublished" datetime="2022-11-06T22:53:55+08:00">2022-11-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Project/" itemprop="url" rel="index"><span itemprop="name">Project</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>這是AC結業後第一個MVP自主專案。專案介紹分為上下兩篇文章。本篇文章敘述技術與專案建置過程，下篇文章會著重在心得與反思。</p>
+<h3 id="專案發想"><a href="#專案發想" class="headerlink" title="專案發想"></a>專案發想</h3><p>初始目標為做出一個「自己也會使用」的工具。</p>
+<p>在ALPHA Camp網頁開發的學習之旅後，選擇「網頁爬蟲」這個主題，給自己一個機會，憑著在AC學習期間培養的「感覺」、網頁&#x2F;API基礎認知、找尋資訊及閱讀技術文件的能力、以及除錯的能力，選擇沒使用過的工具，做出網頁開發外的延伸應用，拓展認知視野。</p>
+<span id="more"></span>
+
+<p><a target="_blank" rel="noopener" href="https://github.com/rubylo718/currency-crawler">GitHub連結</a></p>
+<h3 id="使用技術"><a href="#使用技術" class="headerlink" title="使用技術"></a>使用技術</h3><p>利用爬蟲工具selenium-webdriver，取得銀行網頁上所需要的匯率資訊，透過Google Sheet API，將資訊自動存入Google Sheet中，加上自動化排程、背景執行、以及Line Notify通知資訊與結果。</p>
+<p>主要語言為Javascript。</p>
+<h3 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h3><p>這個爬蟲專案的建置概念、選用工具，參考<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/users/20103256/ironman/2940">第12屆iThome鐵人賽-行銷廣告、電商小編的武器，FB &amp; IG爬蟲專案從零開始</a>系列文章，以及該系列文章之<a target="_blank" rel="noopener" href="https://www.tenlong.com.tw/products/9789864348008">出版書籍</a>。</p>
+<p>在selenium-webdriver設定、google sheet API文件查詢、以及cron排程的部分，透過文章適度引導我探索各個所需要的工具。但畢竟是兩年多以前的文章，在google Auth與sheet API寫法都有更新，有時也是「盡信書不如無書」。</p>
+<h3 id="專案建置過程"><a href="#專案建置過程" class="headerlink" title="專案建置過程"></a>專案建置過程</h3><h4 id="取得匯率資訊"><a href="#取得匯率資訊" class="headerlink" title="取得匯率資訊"></a>取得匯率資訊</h4><p>在專案環境設定建置完成之後，第一步是用Selenium-webdriver取得想要的資訊，在console中印出。由於我選擇的資料來源為銀行匯率網站，非常單純，不需登入或查詢之類的動作，所見即所得。這邊要下載與自己瀏覽器同版本的driver執行，以及網頁中所需資料對應的元件的XPath（開發者工具中查看原始碼可得）</p>
+<p><img src="https://i.imgur.com/2SNhFei.png" alt="剛好遇到升息，美金好貴啊"></p>
+<center>首次成功印出爬到的資訊！（剛好遇到升息，美金比歐元貴了）</center>
+<br>
+
+<h4 id="第一次重構"><a href="#第一次重構" class="headerlink" title="第一次重構"></a>第一次重構</h4><p>一開始很自然的把function寫在主程式app.js中，所以寫完第一個function我馬上想到之前在AC學的「關注點分離 (separation of concerns, SOC) 」，將取得匯率資訊function放在controller中。另外也將三種幣別的名稱與XPath放在json檔中，方便往後擴充。</p>
+<h4 id="Google-Sheets-Credential"><a href="#Google-Sheets-Credential" class="headerlink" title="Google Sheets Credential"></a>Google Sheets Credential</h4><p>首先依照<a target="_blank" rel="noopener" href="https://developers.google.com/sheets/api/quickstart/nodejs">Google Sheets API Quick Start</a>內容，一步步設定來操作即可。由於在AC作業中，有實作google OAuth作為第三方認證登入功能的經驗，所以憑證設定與client ID取得步驟都相同且順利完成，官方文件提供的code可以讓你立即驗證操作是否正常。真不愧是google（讚嘆）！</p>
+<h4 id="與Google-Sheets-API文件的對話"><a href="#與Google-Sheets-API文件的對話" class="headerlink" title="與Google Sheets API文件的對話"></a>與Google Sheets API文件的對話</h4><p>Google Sheets API文件，對於各項操作功能不僅有各種語言的範例，還有Try this method，可以來確認這個method是否符合需求、以及method所需參數設定是否正確，其中spreadsheetID就是自己的google sheet ID，可以馬上知道這個method執行結果，真的非常好用！如果在網站上try是正常的，但專案程式跑了出錯，就可以先排除是方法內的參數設定錯誤（除非自己寫錯）。再次讚嘆google！</p>
+<p><img src="https://i.imgur.com/cLYzQCx.png" alt="成功自動將資訊填入google sheet中"></p>
+<center>成功自動將資訊填入google sheet中</center>
+<br>
+
+<p>Google Sheets API功能相當的多，文件很多，要仔細閱讀方法的描述，確認找到自己所需的功能。一開始有種迷失感，但後來熟悉之後，順利地找到並實現我想要達成的功能（標題列凍結窗格、將最新爬蟲資訊插入標題的下一列，讓資訊由上至下更新等等）。</p>
+<p><img src="https://i.imgur.com/OAJSPMs.png" alt="Image"></p>
+<center>Try this method幫助測試method</center>
+<br>
+
+<h4 id="再次重構"><a href="#再次重構" class="headerlink" title="再次重構"></a>再次重構</h4><p>在寫各種Google Sheet methods的時候，發現自己依照「專案運作步驟」，在同一個controller中寫了好幾個function，沒有分類，而且有function要呼叫同檔案中另一個function的情況。經過思考，依照之前在AC學習的概念來重構程式碼，將「外部引用工具」歸類為helper，例如：google登入認證、以及google sheet的各種method（新增一列、新增tab、設定欄位格式等等）；而關於「專案需求邏輯」則歸類為controllers，像是檢查指定tab是否存在、是否需要新增tab、爬到的資料放入sheet中對應的欄位、以及傳送Line通知的功能。</p>
+<h4 id="排程、通知、專案收尾"><a href="#排程、通知、專案收尾" class="headerlink" title="排程、通知、專案收尾"></a>排程、通知、專案收尾</h4><p>在通過Google Sheets API的考驗後，排程工具以及Line Notify的設定簡單多了。但第一次看到Cron排程語法，想說這是什麼密碼啊？幸好參考資料中提供了一個<a target="_blank" rel="noopener" href="https://crontab.guru/">非常棒的網站</a>幫我把他翻譯為人類語言。<br><img src="https://i.imgur.com/0LzUxmf.png" alt="Image"></p>
+<center>翻譯cron</center>
+<br>
+
+<p>最後成果呈現：<br><img src="https://i.imgur.com/IwRlgW0.png" alt="Image"></p>
+<center>爬蟲時間之匯率網站（截圖漏了歐元orz）</center>
+<br>
+
+<p><img src="https://i.imgur.com/Ef37clk.png" alt="Image"></p>
+<center>資訊自動插入第二列，使最新的資訊在最上方</center>
+<br>
+
+<p><img src="https://i.imgur.com/hfDlnFw.png" alt="Image"></p>
+<center>Line Notify自動通知結果</center>
+<br>
+
+<p><img src="https://i.imgur.com/h9qxqFh.png" alt="Image"></p>
+<center>設定的時間一到自動跳出的訊息</center>
+<br>
+
+<p>文落於此已有點長，關於此次專案的心得與反思請見<a href="">下篇文章</a>。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/10/20/Hexo%E6%93%8D%E4%BD%9C/" rel="prev" title="Hexo memo">
+                  <i class="fa fa-chevron-left"></i> Hexo memo
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/11/06/JScrawler-2/" rel="next" title="專案簡介 - 匯率爬蟲小工具（下）">
+                  專案簡介 - 匯率爬蟲小工具（下） <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-pen"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ruby Lo</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

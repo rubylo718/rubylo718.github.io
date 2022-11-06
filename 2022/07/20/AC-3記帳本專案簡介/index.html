@@ -132,7 +132,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -246,15 +246,16 @@
     <div class="post-body" itemprop="articleBody">
         <p>隨著一點一滴的累積，也回頭將AC學期三week2的作業 - 網頁記帳app專案（aka.老爸的私房錢）做了修改與優化。此篇文章為優化後的專案簡介。</p>
 <span id="more"></span>
-<p><a target="_blank" rel="noopener" href="https://peaceful-brook-83746.herokuapp.com/users/login">作品連結</a> | <a target="_blank" rel="noopener" href="https://github.com/rubylo718/ac-expense-tracker">Github</a></p>
+<p><a target="_blank" rel="noopener" href="https://peaceful-brook-83746.herokuapp.com/users/login">作品連結*</a> | <a target="_blank" rel="noopener" href="https://github.com/rubylo718/ac-expense-tracker">Github</a></p>
+<p>*由於heroku免費方案即將於2022&#x2F;11月底終止服務，屆時連結將會失效，請見諒</p>
 <h3 id="為何會選擇這個專案？"><a href="#為何會選擇這個專案？" class="headerlink" title="為何會選擇這個專案？"></a>為何會選擇這個專案？</h3><p>從頭開始建立記錄支出的專案，熟悉後端基本功 - 資料CRUD操作、樣版引擎、使用者認證，以及資料關聯性以及篩選的操作練習。</p>
-<h3 id="使用者功能"><a href="#使用者功能" class="headerlink" title="使用者功能"></a>使用者功能</h3><p><img src="https://i.imgur.com/ZU42k9A.png" alt="Image"></p>
-<ol>
+<h3 id="使用者功能"><a href="#使用者功能" class="headerlink" title="使用者功能"></a>使用者功能</h3><ol>
 <li>使用者可以註冊登入，只能瀏覽與操作自己建立的資料</li>
 <li>瀏覽自己所有支出項目、總金額</li>
 <li>新增、編輯、刪除支出內容</li>
 <li>依據「類別」篩選支出，並顯示該類別的總金額</li>
 </ol>
+<p><img src="https://i.imgur.com/ZU42k9A.png" alt="Image"></p>
 <h3 id="使用技術"><a href="#使用技術" class="headerlink" title="使用技術"></a>使用技術</h3><p>JavaScript, Node.js, Express框架, Express-handlebars樣版引擎, Bootstrap, MongoDB Altas &amp; mongoose, Passport.js使用者認證流程。使用非同步async&#x2F;await語法寫起來更加直覺順暢。</p>
 <h3 id="過程中遇到的困難以及克服"><a href="#過程中遇到的困難以及克服" class="headerlink" title="過程中遇到的困難以及克服"></a>過程中遇到的困難以及克服</h3><h4 id="困難1-類別資料關聯反覆查找"><a href="#困難1-類別資料關聯反覆查找" class="headerlink" title="困難1: 類別資料關聯反覆查找"></a>困難1: 類別資料關聯反覆查找</h4><ul>
 <li>情況說明：專案中有很多使用支出類別(Category)資料的地方，例如：類別對應的icon、類別篩選資料，造成只要資料有關聯到類別的操作，就重複寫<code>Category.find()</code>查找類別的資料。</li>
