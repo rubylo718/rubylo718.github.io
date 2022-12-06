@@ -34,7 +34,6 @@
 <meta property="og:image" content="https://i.imgur.com/YbrkseW.png">
 <meta property="og:image" content="https://i.imgur.com/eHcy8fh.png">
 <meta property="og:image" content="https://i.imgur.com/lXCBcOd.png">
-<meta property="og:image" content="https://i.imgur.com/VuvrSyd.png">
 <meta property="og:image" content="https://i.imgur.com/Ll85O0V.png">
 <meta property="og:image" content="https://i.imgur.com/EwdZF9Q.png">
 <meta property="og:image" content="https://i.imgur.com/sckHNyp.png">
@@ -131,7 +130,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-%E5%AE%B9%E5%99%A8%E5%8C%96"><span class="nav-number">1.</span> <span class="nav-text">Docker 容器化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker-%E6%B5%81%E7%A8%8B"><span class="nav-number">1.1.</span> <span class="nav-text">Docker 流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Dockerfile"><span class="nav-number">1.1.1.</span> <span class="nav-text">Dockerfile</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Docker-Image"><span class="nav-number">1.1.2.</span> <span class="nav-text">Docker Image</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Run-Docker-Container-from-the-Image"><span class="nav-number">1.1.3.</span> <span class="nav-text">Run Docker Container from the Image</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker-Hub"><span class="nav-number">1.2.</span> <span class="nav-text">Docker Hub</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AWS-EC2"><span class="nav-number">2.</span> <span class="nav-text">AWS EC2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Launch-instance"><span class="nav-number">2.1.</span> <span class="nav-text">Launch instance</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Amazon-Machine-Image-AMI"><span class="nav-number">2.1.1.</span> <span class="nav-text">1. Amazon Machine Image (AMI)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Instance-type"><span class="nav-number">2.1.2.</span> <span class="nav-text">2. Instance type</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Key-pair-%E9%87%8D%E8%A6%81"><span class="nav-number">2.1.3.</span> <span class="nav-text">3. Key pair (重要)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Network-settings"><span class="nav-number">2.1.4.</span> <span class="nav-text">4. Network settings</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Connect-to-instance-with-SSH"><span class="nav-number">2.2.</span> <span class="nav-text">Connect to instance with SSH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-Docker-on-the-instance"><span class="nav-number">2.3.</span> <span class="nav-text">Install Docker on the instance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-Docker-Image-to-AWS"><span class="nav-number">2.4.</span> <span class="nav-text">Deploy Docker Image to AWS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Login-DockerHub-and-Run"><span class="nav-number">2.5.</span> <span class="nav-text">Login DockerHub and Run</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9B%B71-%E5%9F%B7%E8%A1%8C%E7%92%B0%E5%A2%83%E4%B8%8D%E7%9B%B8%E5%AE%B9"><span class="nav-number">2.5.1.</span> <span class="nav-text">雷1: 執行環境不相容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9B%B72-%E7%92%B0%E5%A2%83%E8%AE%8A%E6%95%B8%E8%A8%AD%E5%AE%9A%EF%BC%88%E5%8F%88%E6%98%AF%E4%BD%A0%EF%BC%89"><span class="nav-number">2.5.2.</span> <span class="nav-text">雷2: 環境變數設定（又是你）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%84%9F%E6%83%B3"><span class="nav-number">3.</span> <span class="nav-text">感想</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-%E5%AE%B9%E5%99%A8%E5%8C%96"><span class="nav-number">1.</span> <span class="nav-text">Docker 容器化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker-%E6%B5%81%E7%A8%8B"><span class="nav-number">1.1.</span> <span class="nav-text">Docker 流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Dockerfile"><span class="nav-number">1.1.1.</span> <span class="nav-text">Dockerfile</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Docker-Image"><span class="nav-number">1.1.2.</span> <span class="nav-text">Docker Image</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Run-Docker-Container-from-the-Image"><span class="nav-number">1.1.3.</span> <span class="nav-text">Run Docker Container from the Image</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker-Hub"><span class="nav-number">1.2.</span> <span class="nav-text">Docker Hub</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AWS-EC2"><span class="nav-number">2.</span> <span class="nav-text">AWS EC2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Launch-instance"><span class="nav-number">2.1.</span> <span class="nav-text">Launch instance</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Amazon-Machine-Image-AMI"><span class="nav-number">2.1.1.</span> <span class="nav-text">1. Amazon Machine Image (AMI)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Instance-type"><span class="nav-number">2.1.2.</span> <span class="nav-text">2. Instance type</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Key-pair-%E9%87%8D%E8%A6%81"><span class="nav-number">2.1.3.</span> <span class="nav-text">3. Key pair (重要)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Network-settings"><span class="nav-number">2.1.4.</span> <span class="nav-text">4. Network settings</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Connect-to-instance-with-SSH"><span class="nav-number">2.2.</span> <span class="nav-text">Connect to instance with SSH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-Docker-on-the-instance"><span class="nav-number">2.3.</span> <span class="nav-text">Install Docker on the instance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-Docker-Image-to-AWS"><span class="nav-number">2.4.</span> <span class="nav-text">Deploy Docker Image to AWS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Login-DockerHub-and-Run"><span class="nav-number">2.5.</span> <span class="nav-text">Login DockerHub and Run</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%84%9F%E6%83%B3"><span class="nav-number">3.</span> <span class="nav-text">感想</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -340,29 +339,33 @@
 <h3 id="Login-DockerHub-and-Run"><a href="#Login-DockerHub-and-Run" class="headerlink" title="Login DockerHub and Run"></a>Login DockerHub and Run</h3><p><code>docker login</code><br>依照提示輸入帳號密碼登入 DockerHub （ docker image 在 DockerHub 上為 private 時需要）</p>
 <p><code>docker run -p 3000:3000 rubylo718/expense-tracker</code></p>
 <p>這邊踩到兩個雷，以下紀錄：</p>
-<h4 id="雷1-執行環境不相容"><a href="#雷1-執行環境不相容" class="headerlink" title="雷1: 執行環境不相容"></a>雷1: 執行環境不相容</h4><p>跑起來先看到這個錯誤訊息，明明已經打包成容器了怎麼還是不相容呢？</p>
-<p><code>WARNING: The requested image&#39;s platform (linux/arm64/v8) does not match the detected host platform (linux/amd64)</code></p>
+<p><strong>雷1: 執行環境不相容</strong></p>
+<p>跑起來先看到這個錯誤訊息，明明已經打包成容器了怎麼還是不相容呢？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WARNING: The requested image&#x27;s platform (linux/arm64/v8) does not match the detected host platform (linux/amd64)</span><br></pre></td></tr></table></figure>
+
 <p>在我的裝置上（Apple M1 chip) docker 打包的 image 與目前的 instance 執行環境 linux&#x2F;amd64 不相容。</p>
 <p>丟進去 google 得到這個 <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/71000707/docker-get-started-warning-the-requested-images-platform-linux-arm64-v8-doe">stackoverflow 參考回答</a>。我參考回答內容，把原來的 image 刪掉，重新用以下指令打包後，再推上 DockerHub</p>
 <p><code>docker buildx build --platform=linux/amd64 -t rubylo718/expense-tracker .</code></p>
 <p>可以在 DockerHub 上看到 image 檔案的 OS&#x2F;ARCH 屬性質從原本的 linux&#x2F;arm64&#x2F;v8 變成 linux&#x2F;amd64 了。解決。</p>
 <p>事後想想有另一個可能可以解決方法：在 Launch instance 第一步 AMI Architecture 選項時選擇 arm64 。需要重新建立新的 instance 。</p>
-<h4 id="雷2-環境變數設定（又是你）"><a href="#雷2-環境變數設定（又是你）" class="headerlink" title="雷2: 環境變數設定（又是你）"></a>雷2: 環境變數設定（又是你）</h4><p>解決了上面的執行環境之後，<code>docker run</code> 馬上會發現在 EC2 上執行沒有設定環境變數，所以我們的記帳本不知道 port 號，也缺少 URI 無法連結 MongoDB。</p>
+<p><strong>雷2: 環境變數設定（又是你）</strong></p>
+<p>解決了上面的執行環境之後，<code>docker run</code> 馬上會發現在 EC2 上執行沒有設定環境變數，所以缺少 URI 無法連結 MongoDB 報錯。</p>
 <p>先前在本地端跑 docker image 的時候，是使用 <code>docker run --env-file .env</code> 帶入 .env 檔案內的環境變數。但是現在在雲端環境呀，怎麼帶檔案呢？</p>
 <p><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AmazonECS/latest/userguide/taskdef-envfiles.html">官方解法</a>：最完善的解法是使用 AWS Secrets Manager 服務，儲存這些秘密，再帶入 EC2 instance 中。號稱很安全，但是要收費＄＄。另外兩個方法就同這篇文章先前提到 <code>docker run --env</code> 個別帶入，或是 <code>docker run --env-file</code> 檔案帶入。</p>
-<p><img src="https://i.imgur.com/VuvrSyd.png" alt="Image"></p>
 <p>我沒有使用付費服務，但雲端環境也沒想到怎麼帶入 .env 檔案，所以最後只好用 <code>docker run -env</code> 個別帶入了orz</p>
 <p><code>docker run --env VAR1=value1 --env VAR2=value2 --env VAR3=value3 -p 3000:3000 rubylo718/expense-tracker</code></p>
 <p>如此一來 EC2 可以順利收到環境變數，跑起來，登入進行操作也沒問題～</p>
 <p><img src="https://i.imgur.com/Ll85O0V.png" alt="Image"></p>
 <p><img src="https://i.imgur.com/EwdZF9Q.png" alt="Image"></p>
 <p><img src="https://i.imgur.com/sckHNyp.png" alt="Image"></p>
+<br>
+
 <h2 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h2><ol>
 <li>這次參考網路上的教學，搭配官方文件以及各種資訊。</li>
 <li>參考的教學製作日期大概是2021年中，目前在 AWS 上看到的 UI 差別甚大。深感各項工具不斷進步中。</li>
 <li>環境變數設定的問題在 AC 學期 2-3 學到資料庫連線時就遇到過，根據之前的經驗這次困難算還挺快速解決。覺得經過半年經驗累積過後的自己，遇到類似問題時解決的速度快很多！但目前是處理到能跑而已，或許沒有解決真正的問題，但目前就先處理到此了吧。</li>
 </ol>
-<p><em><strong>延伸 topics</strong></em></p>
+<p><strong>延伸 topics</strong></p>
 <ol>
 <li>Public key encryption, <code>.pem</code> 與 <code>.cer</code> 檔 </li>
 <li>傳輸層，TCP，SSH Protocol</li>
