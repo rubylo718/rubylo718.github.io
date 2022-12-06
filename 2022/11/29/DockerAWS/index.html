@@ -31,6 +31,13 @@
 <meta property="og:image" content="https://i.imgur.com/L3m8Mre.png">
 <meta property="og:image" content="https://i.imgur.com/Khvy7Jo.png">
 <meta property="og:image" content="https://i.imgur.com/s5sMQXN.png">
+<meta property="og:image" content="https://i.imgur.com/YbrkseW.png">
+<meta property="og:image" content="https://i.imgur.com/eHcy8fh.png">
+<meta property="og:image" content="https://i.imgur.com/lXCBcOd.png">
+<meta property="og:image" content="https://i.imgur.com/VuvrSyd.png">
+<meta property="og:image" content="https://i.imgur.com/Ll85O0V.png">
+<meta property="og:image" content="https://i.imgur.com/EwdZF9Q.png">
+<meta property="og:image" content="https://i.imgur.com/sckHNyp.png">
 <meta property="article:published_time" content="2022-11-29T15:39:05.000Z">
 <meta property="article:modified_time" content="2022-11-29T15:39:05.000Z">
 <meta property="article:author" content="Ruby Lo">
@@ -124,7 +131,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker-%E5%AE%B9%E5%99%A8%E5%8C%96"><span class="nav-number">1.</span> <span class="nav-text">Docker 容器化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Docker-%E6%B5%81%E7%A8%8B"><span class="nav-number">1.1.</span> <span class="nav-text">Docker 流程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Dockerfile"><span class="nav-number">1.1.1.</span> <span class="nav-text">Dockerfile</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Docker-Image"><span class="nav-number">1.1.2.</span> <span class="nav-text">Docker Image</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%92%B0%E5%A2%83%E8%AE%8A%E6%95%B8%E5%B8%B6%E5%85%A5"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">環境變數帶入</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Run-Docker-Container-from-the-Image"><span class="nav-number">1.1.3.</span> <span class="nav-text">Run Docker Container from the Image</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Docker-Hub"><span class="nav-number">1.2.</span> <span class="nav-text">Docker Hub</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AWS-EC2"><span class="nav-number">2.</span> <span class="nav-text">AWS EC2</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker-%E5%AE%B9%E5%99%A8%E5%8C%96"><span class="nav-number">1.</span> <span class="nav-text">Docker 容器化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Docker-%E6%B5%81%E7%A8%8B"><span class="nav-number">1.1.</span> <span class="nav-text">Docker 流程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Dockerfile"><span class="nav-number">1.1.1.</span> <span class="nav-text">Dockerfile</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Docker-Image"><span class="nav-number">1.1.2.</span> <span class="nav-text">Docker Image</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%92%B0%E5%A2%83%E8%AE%8A%E6%95%B8%E5%B8%B6%E5%85%A5"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">環境變數帶入</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Run-Docker-Container-from-the-Image"><span class="nav-number">1.1.3.</span> <span class="nav-text">Run Docker Container from the Image</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Docker-Hub"><span class="nav-number">1.2.</span> <span class="nav-text">Docker Hub</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AWS-EC2"><span class="nav-number">2.</span> <span class="nav-text">AWS EC2</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#AWS-EC2-%E9%83%A8%E7%BD%B2%E6%B5%81%E7%A8%8B"><span class="nav-number">2.1.</span> <span class="nav-text">AWS EC2 部署流程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Launch-instance"><span class="nav-number">2.1.1.</span> <span class="nav-text">Launch instance</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-Amazon-Machine-Image-AMI"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">1. Amazon Machine Image (AMI)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-Instance-type"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">2. Instance type</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-Key-pair-%E9%87%8D%E8%A6%81"><span class="nav-number">2.1.1.3.</span> <span class="nav-text">3. Key pair (重要)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-Network-settings"><span class="nav-number">2.1.1.4.</span> <span class="nav-text">4. Network settings</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Connect-to-instance-with-SSH"><span class="nav-number">2.1.2.</span> <span class="nav-text">Connect to instance with SSH</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Install-Docker-on-the-instance"><span class="nav-number">2.1.3.</span> <span class="nav-text">Install Docker on the instance</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Deploy-Docker-Image-to-AWS"><span class="nav-number">2.1.4.</span> <span class="nav-text">Deploy Docker Image to AWS</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Login-DockerHub-and-Run"><span class="nav-number">2.1.4.1.</span> <span class="nav-text">Login DockerHub and Run</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E9%9B%B71-%E5%9F%B7%E8%A1%8C%E7%92%B0%E5%A2%83%E4%B8%8D%E7%9B%B8%E5%AE%B9"><span class="nav-number">2.1.4.2.</span> <span class="nav-text">雷1: 執行環境不相容</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E9%9B%B72-%E7%92%B0%E5%A2%83%E8%AE%8A%E6%95%B8%E8%A8%AD%E5%AE%9A%EF%BC%88%E5%8F%88%E6%98%AF%E4%BD%A0%EF%BC%89"><span class="nav-number">2.1.4.3.</span> <span class="nav-text">雷2: 環境變數設定（又是你）</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%84%9F%E6%83%B3"><span class="nav-number">3.</span> <span class="nav-text">感想</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BB%B6%E4%BC%B8-topics"><span class="nav-number">3.1.</span> <span class="nav-text">延伸 topics</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -252,13 +259,14 @@
         <p>近期搜尋職缺，很常看到企業希望後端工程師求職者有部署與 AWS&#x2F;GCP 這類雲端工具的使用經驗，這方面在之前 AC 課程中只有部署在 Heroku 的經驗，所以花點時間來試試。</p>
 <p>在收集資訊的時候也發現雲端部署也常出現 Docker 容器化這個名詞，也一併研究與記錄下來。</p>
 <span id="more"></span>
-<h3 id="Docker-容器化"><a href="#Docker-容器化" class="headerlink" title="Docker 容器化"></a>Docker 容器化</h3><p>Docker 是一種容器化工具，可以將應用程式打包裝進容器 (container) 裡，其中包含程式本身、所需要的 library 、執行環境 (runtime) 等。降低對運行裝置上的作業系統的 dependency，方便部署與管理。部署至雲端伺服器上後，也能與其他應用程式隔離，避免影響到其他程式的運行。其他容器化工具還有 Kubernetes 等。</p>
+<h3 id="Docker-容器化"><a href="#Docker-容器化" class="headerlink" title="Docker 容器化"></a>Docker 容器化</h3><p>Docker 是一種容器化工具，可以將應用程式打包裝進容器 (container) 裡，其中包含程式本身、所需要的 library 、執行環境 (runtime) 等。降低對運行裝置上的作業系統的 dependency。一般工程師開發環境可能是 macOS 或 Windows 作業系統，而商用伺服器通常是 Linux 系統。而容器化就是在降低不同開發環境下運行的需求差異，方便部署與管理。</p>
+<p>另外，部署至雲端伺服器上後，也能與其他應用程式隔離，避免影響到其他程式的運行。其他容器化工具還有 Kubernetes 等。</p>
 <h4 id="Docker-流程"><a href="#Docker-流程" class="headerlink" title="Docker 流程"></a>Docker 流程</h4><p>單一 container 的容器化流程：</p>
 <p>Dockerfile &#x3D;&gt; 建立 Docker Image &#x3D;&gt; 在 Docker Container 中運行</p>
 <p><img src="https://i.imgur.com/nxWQHQ9.png" alt="單一 container 的流程"></p>
 <br>
 
-<h5 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h5><p>Dockerfile 內需撰寫環境設定的指令，包含 node 版本、要複製哪些資料夾&#x2F;檔案（可以設定 layers 讓設定一步步接續執行）、運行 commend 、指定 port 等。</p>
+<h5 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h5><p>Dockerfile 內需撰寫環境設定的指令，包含 node 版本、要複製哪些資料夾&#x2F;檔案（可以設定 layers 讓設定一步步接續執行）、運行 command 、指定 port 等。</p>
 <p>其中注意 <code>FROM node:&lt;version&gt;-alpine</code><br>參考官方文件<a target="_blank" rel="noopener" href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/">Docker docs: dockerfile</a></p>
 <p>Dockerfile 寫好之後，別忘了建立 <code>.dockerignore</code> 檔案，跟 <code>.gitignore</code> 一樣放入不想被打包進去 image 的檔案（例如： <code>.git</code>, <code>.env</code>, <code>node_modules</code>等）</p>
 <p>建立 image (以網頁記帳本專案為例)。Image naming convention: user-name&#x2F;image-name</p>
@@ -286,7 +294,78 @@
 <p><img src="https://i.imgur.com/s5sMQXN.png" alt="Image"></p>
 <br>
 
-<h3 id="AWS-EC2"><a href="#AWS-EC2" class="headerlink" title="AWS EC2"></a>AWS EC2</h3><p>待續～</p>
+<h3 id="AWS-EC2"><a href="#AWS-EC2" class="headerlink" title="AWS EC2"></a>AWS EC2</h3><p>AWC EC2 的全名是 Amazon Web Services Elastic Compute Cloud。AWS 指亞馬遜的雲端運算服務，EC2 指可以讓使用者租用雲端運行所需要的系統，可以在虛擬機器上運行任何自己的軟體或應用程式。這邊的 Elastic 彈性的意思是使用者可以隨時建立、執行、終止自己的虛擬伺服器，用多少算多少費用。以上參考<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/Amazon_EC2">維基百科</a>。</p>
+<h4 id="AWS-EC2-部署流程"><a href="#AWS-EC2-部署流程" class="headerlink" title="AWS EC2 部署流程"></a>AWS EC2 部署流程</h4><p>註冊 account &#x3D;&gt; Launch instance &#x3D;&gt; Connect to instance &#x3D;&gt; Install Docker on the instance &#x3D;&gt; Login Docker and run the image on DockerHub</p>
+<h5 id="Launch-instance"><a href="#Launch-instance" class="headerlink" title="Launch instance"></a>Launch instance</h5><p>註冊完，選擇 AWS EC2 服務進去按 Launch instance 開始一連串的設定：</p>
+<h6 id="1-Amazon-Machine-Image-AMI"><a href="#1-Amazon-Machine-Image-AMI" class="headerlink" title="1. Amazon Machine Image (AMI)"></a>1. Amazon Machine Image (AMI)</h6><p>選免費的選項，選擇同時包含 x86 與 arm ，Architecture 這邊目前不太清楚是否有差異。</p>
+<h6 id="2-Instance-type"><a href="#2-Instance-type" class="headerlink" title="2. Instance type"></a>2. Instance type</h6><p>免費選項是 micro 也足夠使用</p>
+<h6 id="3-Key-pair-重要"><a href="#3-Key-pair-重要" class="headerlink" title="3. Key pair (重要)"></a>3. Key pair (重要)</h6><p>這是一個稱為 public key encryption 的方法，設定好之後會產生一個 public key 放在你的 EC2 instance 上，另一個 private key 則下載保存在本機端。</p>
+<p>注意！ private key 檔案不要放在有 git 追蹤或是任何會 push 至雲端的資料夾中，屆時登入時會讀取本地端檔案（<code>.pem</code> 檔，但我實作下來是產生<code>.cer</code> 憑證檔，待研究）。</p>
+<p>RSA 是一種加密的演算法。SSH protocol 全名為 Secure Shell Protocol，用來安全連接兩台任何通訊裝置。這邊先不深究，繼續做下去～</p>
+<p><img src="https://i.imgur.com/YbrkseW.png" alt="Image"></p>
+<br>
+
+<h6 id="4-Network-settings"><a href="#4-Network-settings" class="headerlink" title="4. Network settings"></a>4. Network settings</h6><p>這邊前段都是預設設定，重點是 firewall (security groups)，要設定控制通過 instance 的防火牆規則。共需要兩組：(1) Allow SSH traffic from anywhere. (使用前面設定的 key pair 驗證) (2) Add custom TCP rule from anywhere through port 3000. 這邊 port 要與 docker 設定使用的 port 相同。</p>
+<p>HTTP 為應用層通訊方法，包含在 TCP 通訊中。<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/OSI_model#Layer_architecture">參考維基百科</a>。</p>
+<p>後續設定就照預設，不需修改。Launch 之後稍等一下就可以在 dashboard 中看到新建立的 instance。</p>
+<p><img src="https://i.imgur.com/eHcy8fh.png" alt="Image"></p>
+<br>
+
+<h5 id="Connect-to-instance-with-SSH"><a href="#Connect-to-instance-with-SSH" class="headerlink" title="Connect to instance with SSH"></a>Connect to instance with SSH</h5><p>在 dashboard 按下 connect 會跳出連接方法，在 SSH client tab 下會有提示。<br>打開 terminal ，打開 private key location folder，照指示貼上 command：</p>
+<p><code>chmod 400 &lt;key pair name&gt;</code></p>
+<p>只允許目前使用者存取 private key，此裝置上的其他使用者不可使用。另外也設定此 private key read only 不可修改。</p>
+<p><code>ssh -i &quot;&lt;key pair name&gt;&quot; &lt;user account&gt;@&lt;public IP address&gt;</code><br>user account: ec2-user<br>-i tag 表示 identity file</p>
+<p>看到以下畫面，就是成功透過 SSH 連接 EC2 instance。（那個形狀是什麼…看不懂）</p>
+<p><img src="https://i.imgur.com/lXCBcOd.png" alt="Image"></p>
+<br>
+
+<h5 id="Install-Docker-on-the-instance"><a href="#Install-Docker-on-the-instance" class="headerlink" title="Install Docker on the instance"></a>Install Docker on the instance</h5><p>看到 terminal 提示就可以知道：AWS EC2 instance 環境是 Linux，安裝或更新程式或套件的指令是 <code>yum</code>。 </p>
+<p>yum 是套件管理工具，類似我們在 Node.js環境下使用的 npm。</p>
+<p><code>sudo yum update -y</code></p>
+<p>先更新環境，確保環境是最新版本。<br>-sudo 代表以管理者身份使用者進行</p>
+<p><code>sudo yum install docker</code></p>
+<p>安裝 docker，會提示下載資料大小</p>
+<p><code>sudo service docker start</code></p>
+<p>在背景下啟動 docker</p>
+<p><code>sudo usermod -a -G docker ec2-user</code></p>
+<p>把 ec2-user 加入 docker group 就可以不用每次都請求管理者權限 <code>sudo</code> 來執行指令。跑完後 <code>exit</code> 離開 server 再重新連接。此時 ec2-user 可以使用 docker 指令。（try on  <code>docker info</code> )</p>
+<h5 id="Deploy-Docker-Image-to-AWS"><a href="#Deploy-Docker-Image-to-AWS" class="headerlink" title="Deploy Docker Image to AWS"></a>Deploy Docker Image to AWS</h5><p>有幾種方式可以部署：</p>
+<ol>
+<li>Docker Compose (章魚圖案)：可以部署複數個 containers</li>
+<li>Amazon ECS (Elastic Container Service): AWS 專門用來部署 image 的服務</li>
+</ol>
+<p>目前單純只有一個 docker container 先直接部署在 EC2，使用免費方案就好。</p>
+<h6 id="Login-DockerHub-and-Run"><a href="#Login-DockerHub-and-Run" class="headerlink" title="Login DockerHub and Run"></a>Login DockerHub and Run</h6><p><code>docker login</code><br>依照提示輸入帳號密碼登入 DockerHub （ docker image 在 DockerHub 上為 private 時需要）</p>
+<p><code>docker run -p 3000:3000 rubylo718/expense-tracker</code></p>
+<p>這邊踩到兩個雷，以下紀錄：</p>
+<h6 id="雷1-執行環境不相容"><a href="#雷1-執行環境不相容" class="headerlink" title="雷1: 執行環境不相容"></a>雷1: 執行環境不相容</h6><p>跑起來先看到這個錯誤訊息，明明已經打包成容器了怎麼還是不相容呢？</p>
+<p><code>WARNING: The requested image&#39;s platform (linux/arm64/v8) does not match the detected host platform (linux/amd64)</code></p>
+<p>在我的裝置上（Apple M1 chip) docker 打包的 image 與目前的 instance 執行環境 linux&#x2F;amd64 不相容。</p>
+<p>丟進去 google 得到這個 <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/71000707/docker-get-started-warning-the-requested-images-platform-linux-arm64-v8-doe">stackoverflow 參考回答</a>。我參考回答內容，把原來的 image 刪掉，重新用以下指令打包後，再推上 DockerHub</p>
+<p><code>docker buildx build --platform=linux/amd64 -t rubylo718/expense-tracker .</code></p>
+<p>可以在 DockerHub 上看到 image 檔案的 OS&#x2F;ARCH 屬性質從原本的 linux&#x2F;arm64&#x2F;v8 變成 linux&#x2F;amd64 了。解決。</p>
+<p>事後想想有另一個可能可以解決方法：在 Launch instance 第一步 AMI Architecture 選項時選擇 arm64 。需要重新建立新的 instance 。</p>
+<h6 id="雷2-環境變數設定（又是你）"><a href="#雷2-環境變數設定（又是你）" class="headerlink" title="雷2: 環境變數設定（又是你）"></a>雷2: 環境變數設定（又是你）</h6><p>解決了上面的執行環境之後，<code>docker run</code> 馬上會發現在 EC2 上執行沒有設定環境變數，所以我們的記帳本不知道 port 號，也缺少 URI 無法連結 MongoDB。</p>
+<p>先前在本地端跑 docker image 的時候，是使用 <code>docker run --env-file .env</code> 帶入 .env 檔案內的環境變數。但是現在在雲端環境呀，怎麼帶檔案呢？</p>
+<p><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AmazonECS/latest/userguide/taskdef-envfiles.html">官方解法</a>：最完善的解法是使用 AWS Secrets Manager 服務，儲存這些秘密，再帶入 EC2 instance 中。號稱很安全，但是要收費＄＄。另外兩個方法就同這篇文章先前提到 <code>docker run --env</code> 個別帶入，或是 <code>docker run --env-file</code> 檔案帶入。</p>
+<p><img src="https://i.imgur.com/VuvrSyd.png" alt="Image"></p>
+<p>我沒有使用付費服務，但雲端環境也沒想到怎麼帶入 .env 檔案，所以最後只好用 <code>docker run -env</code> 個別帶入了orz</p>
+<p><code>docker run --env VAR1=value1 --env VAR2=value2 --env VAR3=value3 -p 3000:3000 rubylo718/expense-tracker</code></p>
+<p>如此一來 EC2 可以順利收到環境變數，跑起來，登入進行操作也沒問題～</p>
+<p><img src="https://i.imgur.com/Ll85O0V.png" alt="Image"></p>
+<p><img src="https://i.imgur.com/EwdZF9Q.png" alt="Image"></p>
+<p><img src="https://i.imgur.com/sckHNyp.png" alt="Image"></p>
+<h3 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h3><ol>
+<li>這次參考網路上的教學，搭配官方文件以及各種資訊。</li>
+<li>參考的教學製作日期大概是2021年中，目前在 AWS 上看到的 UI 差別甚大。深感各項工具不斷進步中。</li>
+<li>環境變數設定的問題在 AC 學期 2-3 學到資料庫連線時就遇到過，根據之前的經驗這次困難算還挺快速解決。覺得經過半年經驗累積過後的自己，遇到類似問題時解決的速度快很多！但目前是處理到能跑而已，或許沒有解決真正的問題，但目前就先處理到此了吧。</li>
+</ol>
+<h4 id="延伸-topics"><a href="#延伸-topics" class="headerlink" title="延伸 topics"></a>延伸 topics</h4><ol>
+<li>Public key encryption, <code>.pem</code> 與 <code>.cer</code> 檔 </li>
+<li>傳輸層，TCP，SSH Protocol</li>
+<li>加密演算法 RSA，跟之前用過的 bcrypt 加鹽雜湊有什麼不同的應用</li>
+<li>CI&#x2F;CD 如何運作，以及在 AWS 上如何進行</li>
+</ol>
 
     </div>
 
