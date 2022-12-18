@@ -127,7 +127,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -272,7 +272,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://rubylo718.github.io/2022/02/11/JS-key-value/">
+    <link itemprop="mainEntityOfPage" href="https://rubylo718.github.io/2022/03/20/JS-event-loop/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -290,7 +290,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/02/11/JS-key-value/" class="post-title-link" itemprop="url">JS-處理key-value結構資料</a>
+          <a href="/2022/03/20/JS-event-loop/" class="post-title-link" itemprop="url">JS-event-loop</a>
         </h2>
 
         <div class="post-meta-container">
@@ -301,7 +301,7 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2022-02-11 00:00:00" itemprop="dateCreated datePublished" datetime="2022-02-11T00:00:00+08:00">2022-02-11</time>
+      <time title="Created: 2022-03-20 00:00:00" itemprop="dateCreated datePublished" datetime="2022-03-20T00:00:00+08:00">2022-03-20</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -323,13 +323,11 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>Object.keys(), Object.values(), &amp; Object.entries()</p>
-<blockquote>
-<p>這篇的起因是AC 2–1期末的技術驗收題目中，其中一題是需要撰寫一段程式，將1~3999的正整數，轉換成羅馬字。這一題要自己設計資料結構。</p>
-</blockquote>
+          <p>本文為AC 2–2學習能力驗收作業，筆記內容與截圖皆整理自以下影片</p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=8aGhZQkoFbQ"><img src="http://img.youtube.com/vi/8aGhZQkoFbQ/0.jpg" alt="Image"></a></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2022/02/11/JS-key-value/#more" rel="contents">
+              <a class="btn" href="/2022/03/20/JS-event-loop/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -417,6 +415,94 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/02/11/JS-genArray1to100/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://rubylo718.github.io/2022/02/11/JS-key-value/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ruby Lo">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ruby Lo">
+      <meta itemprop="description" content="努力學習程式開發，期望練成能在不同公司/產業/國家間移動的謀生技能，而且能透過技能與經驗的累積，提升自己在職場上的價值，幫助我進入更好更自由的工作環境。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Ruby Lo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/02/11/JS-key-value/" class="post-title-link" itemprop="url">JS-處理key-value結構資料</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-02-11 00:00:00" itemprop="dateCreated datePublished" datetime="2022-02-11T00:00:00+08:00">2022-02-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Javascript/" itemprop="url" rel="index"><span itemprop="name">Javascript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>Object.keys(), Object.values(), &amp; Object.entries()</p>
+<blockquote>
+<p>這篇的起因是AC 2–1期末的技術驗收題目中，其中一題是需要撰寫一段程式，將1~3999的正整數，轉換成羅馬字。這一題要自己設計資料結構。</p>
+</blockquote>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/02/11/JS-key-value/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
