@@ -22,7 +22,7 @@
 
     <meta name="description" content="透過 Vue.js 官網 tutorial 學習的筆記。學習標的為 Vue 3, using composition API. Introduction.vue 一個檔案可以包含 HTML (template), CSS (styles), and JavaScript (component’s logic). 稱 Single-File Components (SFC).">
 <meta property="og:type" content="article">
-<meta property="og:title" content="筆記 - Vue.js Intro">
+<meta property="og:title" content="筆記 - Vue.js Intro (1)">
 <meta property="og:url" content="https://rubylo718.github.io/2022/12/18/Vue-intro/index.html">
 <meta property="og:site_name" content="Ruby Lo">
 <meta property="og:description" content="透過 Vue.js 官網 tutorial 學習的筆記。學習標的為 Vue 3, using composition API. Introduction.vue 一個檔案可以包含 HTML (template), CSS (styles), and JavaScript (component’s logic). 稱 Single-File Components (SFC).">
@@ -38,10 +38,10 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://rubylo718.github.io/2022/12/18/Vue-intro/","path":"2022/12/18/Vue-intro/","title":"筆記 - Vue.js Intro"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://rubylo718.github.io/2022/12/18/Vue-intro/","path":"2022/12/18/Vue-intro/","title":"筆記 - Vue.js Intro (1)"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>筆記 - Vue.js Intro | Ruby Lo</title>
+<title>筆記 - Vue.js Intro (1) | Ruby Lo</title>
   
 
 
@@ -131,13 +131,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -205,12 +205,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="筆記 - Vue.js Intro | Ruby Lo">
+      <meta itemprop="name" content="筆記 - Vue.js Intro (1) | Ruby Lo">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          筆記 - Vue.js Intro
+          筆記 - Vue.js Intro (1)
         </h1>
 
         <div class="post-meta-container">
@@ -261,6 +261,7 @@
 
 <p>Reactive objects are <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy">JavaScript Proxies</a> and behave just like normal objects. The difference is that Vue is able to track the property access and mutations of a reactive object.<br>之後再讀：<a target="_blank" rel="noopener" href="https://vuejs.org/guide/extras/reactivity-in-depth.html">Reactivity in Depth</a></p>
 <p>To use reactive state in a component’s template, declare and return them from a component’s <code>setup()</code> function:</p>
+<p><strong>實作發現 <code>&lt;script setup&gt;</code> 下面不能 export，就直接寫裡面的東西就好了</strong> (2022&#x2F;12&#x2F;24)</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; reactive &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="comment">// `setup` is a special hook dedicated for composition API.</span></span><br><span class="line">  <span class="title function_">setup</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> state = <span class="title function_">reactive</span>(&#123; <span class="attr">count</span>: <span class="number">0</span> &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">increment</span>(<span class="params"></span>) &#123;</span><br><span class="line">      state.<span class="property">count</span>++</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// expose the state to the template</span></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      state,</span><br><span class="line">      increment</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;increment&quot;</span>&gt;</span></span><br><span class="line">    &#123;&#123; state.count &#125;&#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h3 id="lt-script-setup-gt"><a href="#lt-script-setup-gt" class="headerlink" title="&lt;script setup&gt;"></a><code>&lt;script setup&gt;</code></h3><p>待補</p>

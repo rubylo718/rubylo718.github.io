@@ -20,27 +20,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"rubylo718.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="2022年3月班 隨著學了越多，就會越想把自己的作品做得更完整，或是說，做出「我平常逛網站會覺得好用，或是應該要這樣」的功能，會覺得很有趣。">
+    <meta name="description" content="透過 Vue.js 官網 tutorial 學習的筆記。學習標的為 Vue 3, using composition API.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ALPHA Camp 學期2-3 自學經驗回顧">
-<meta property="og:url" content="https://rubylo718.github.io/2022/04/26/AC-2-3-recap/index.html">
+<meta property="og:title" content="筆記 - Vue.js Intro (2)">
+<meta property="og:url" content="https://rubylo718.github.io/2022/12/24/Vue-intro-02/index.html">
 <meta property="og:site_name" content="Ruby Lo">
-<meta property="og:description" content="2022年3月班 隨著學了越多，就會越想把自己的作品做得更完整，或是說，做出「我平常逛網站會覺得好用，或是應該要這樣」的功能，會覺得很有趣。">
+<meta property="og:description" content="透過 Vue.js 官網 tutorial 學習的筆記。學習標的為 Vue 3, using composition API.">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-04-25T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-04-25T16:00:00.000Z">
+<meta property="article:published_time" content="2022-12-24T07:30:24.000Z">
+<meta property="article:modified_time" content="2022-12-24T07:30:24.000Z">
 <meta property="article:author" content="Ruby Lo">
+<meta property="article:tag" content="Vue">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://rubylo718.github.io/2022/04/26/AC-2-3-recap/">
+<link rel="canonical" href="https://rubylo718.github.io/2022/12/24/Vue-intro-02/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://rubylo718.github.io/2022/04/26/AC-2-3-recap/","path":"2022/04/26/AC-2-3-recap/","title":"ALPHA Camp 學期2-3 自學經驗回顧"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://rubylo718.github.io/2022/12/24/Vue-intro-02/","path":"2022/12/24/Vue-intro-02/","title":"筆記 - Vue.js Intro (2)"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>ALPHA Camp 學期2-3 自學經驗回顧 | Ruby Lo</title>
+<title>筆記 - Vue.js Intro (2) | Ruby Lo</title>
   
 
 
@@ -104,7 +105,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -117,6 +118,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Lifecycle-and-Template-Refs"><span class="nav-number">1.</span> <span class="nav-text">Lifecycle and Template Refs</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Template-Refs"><span class="nav-number">1.1.</span> <span class="nav-text">Template Refs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lifecycle-Hooks"><span class="nav-number">1.2.</span> <span class="nav-text">Lifecycle Hooks</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Watchers-watch-function"><span class="nav-number">2.</span> <span class="nav-text">Watchers - watch() function</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -190,7 +192,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://rubylo718.github.io/2022/04/26/AC-2-3-recap/">
+    <link itemprop="mainEntityOfPage" href="https://rubylo718.github.io/2022/12/24/Vue-intro-02/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -203,12 +205,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="ALPHA Camp 學期2-3 自學經驗回顧 | Ruby Lo">
+      <meta itemprop="name" content="筆記 - Vue.js Intro (2) | Ruby Lo">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          ALPHA Camp 學期2-3 自學經驗回顧
+          筆記 - Vue.js Intro (2)
         </h1>
 
         <div class="post-meta-container">
@@ -219,7 +221,7 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2022-04-26 00:00:00" itemprop="dateCreated datePublished" datetime="2022-04-26T00:00:00+08:00">2022-04-26</time>
+      <time title="Created: 2022-12-24 15:30:24" itemprop="dateCreated datePublished" datetime="2022-12-24T15:30:24+08:00">2022-12-24</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -227,7 +229,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/ALPHA-Camp/" itemprop="url" rel="index"><span itemprop="name">ALPHA Camp</span></a>
+          <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
         </span>
     </span>
 
@@ -241,20 +243,26 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>2022年3月班</p>
-<p>隨著學了越多，就會越想把自己的作品做得更完整，或是說，做出「我平常逛網站會覺得好用，或是應該要這樣」的功能，會覺得很有趣。</p>
+        <p>透過 Vue.js 官網 tutorial 學習的筆記。學習標的為 Vue 3, using composition API.</p>
 <span id="more"></span>
-
-<p>舉個例子，在第三週作業「重構餐廳清單」中，除了作業驗收標準的要求之外，也挑戰了sorting資料的功能。成功使用下拉選單實作出sorting功能後，發現一個問題：<strong>sorting重新渲染畫面後，應該要讓sorting的選項停留在使用者剛才選的選項，讓使用者知道目前看到的畫面的sorting條件。</strong></p>
-<p>在想實作這功能，到成功完成，回想起這個經驗，大致過程如下：</p>
-<ol>
-<li>先自己嘗試，從錯誤的樣態，或是error message等線索，蒐集資訊。</li>
-<li>依照對開發工具、套件的認知，先猜想這功能的邏輯、資料傳遞應該會是如何進行。例如：sorting重新渲染時，要有個變數記錄user的選項，在傳回給handlebars動態渲染。</li>
-<li>用關鍵字找資訊，此時要快速瀏覽、試錯，掃過前幾個搜尋結果，看能不能得到線索，例如歸納出這些結果的共同點、共同關鍵字、更精確的關鍵字。</li>
-<li>如果查到前幾項資料都不適用，或嘗試都失敗，就停下，更換關鍵字再次搜尋。如果搜尋結果中有出現官方文件，可以進去看看，確認自己對套件應該可以達到的功能猜想沒有錯誤，或是關鍵字是否精確。</li>
-<li>更換幾次關鍵字都失敗的話，要注意：可能是自己的猜想方向錯了，或對工具套件的功能有所誤會，必須往不同方向去重新猜想，或是再回到官方文件搜集資訊，甚至向外發問求助。切勿花太多時間一直撞同一面牆。</li>
-</ol>
-<p>在外面野生環境可沒有像ALPHA Camp教案這樣精美詳細的中文說明，但我已更有信心能以目前所學的技術知識，並運用查找資訊的能力，快速聚焦到掌握關鍵資訊，達成目標。</p>
+<h1 id="Lifecycle-and-Template-Refs"><a href="#Lifecycle-and-Template-Refs" class="headerlink" title="Lifecycle and Template Refs"></a>Lifecycle and Template Refs</h1><p>Vue handles all the DOM updates by reactivity and declarative rendering.<br>But there will be cases where we need to manually work with the DOM.</p>
+<h2 id="Template-Refs"><a href="#Template-Refs" class="headerlink" title="Template Refs"></a>Template Refs</h2><p>Request a template ref,  a reference to an element in the template, using the <a target="_blank" rel="noopener" href="https://vuejs.org/api/built-in-special-attributes.html#ref">special <code>ref</code> attribute</a>:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">ref</span>=<span class="string">&quot;p&quot;</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Declare a ref with matching name to access the ref:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> p = <span class="title function_">ref</span>(<span class="literal">null</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>The initial value of the ref is <code>null</code>, since the element does not exist yet when <code>&lt;script setup&gt;</code> is executed.</li>
+<li>The template ref is only accessible after the component is mounted. 安裝&#x2F;架設好</li>
+</ul>
+<h2 id="Lifecycle-Hooks"><a href="#Lifecycle-Hooks" class="headerlink" title="Lifecycle Hooks"></a>Lifecycle Hooks</h2><p>Commonly used lifecycle hooks: <code>onMounted</code>, <code>onUpdated</code>, <code>onUnmounted</code></p>
+<p>Use <code>onMounted()</code> function to run code after mount.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; ref, onMounted &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">const</span> p = <span class="title function_">ref</span>(<span class="literal">null</span>)</span><br><span class="line"><span class="title function_">onMounted</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// component is now mounted</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>This is called a lifecycle hook - it allows us to register a callback to be called at certain times of the component’s lifecycle. There are other hooks such as <code>onUpdated</code> and <code>onUnmounted</code>.</p>
+<p>See <a target="_blank" rel="noopener" href="https://vuejs.org/guide/essentials/lifecycle.html">Lifecycle Hooks</a>, <a target="_blank" rel="noopener" href="https://vuejs.org/guide/essentials/lifecycle.html#lifecycle-diagram">Lifecycle Diagram</a>, <a target="_blank" rel="noopener" href="https://vuejs.org/api/composition-api-lifecycle.html">Composition API: Lifecycle Hooks</a></p>
+<h1 id="Watchers-watch-function"><a href="#Watchers-watch-function" class="headerlink" title="Watchers - watch() function"></a>Watchers - <code>watch()</code> function</h1><p>there are cases where we need to perform “side effects” in reaction to state changes - for example, mutating the DOM, or changing another piece of state based on the result of an async operation.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; ref, watch &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> count = <span class="title function_">ref</span>(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="title function_">watch</span>(count, <span class="function">(<span class="params">newCount</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// yes, console.log() is a side effect</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`new count is: <span class="subst">$&#123;newCount&#125;</span>`</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>watch() can directly watch a ref, and the callback gets fired whenever count’s value changes. watch() can also watch other types of data sources.</p>
+<p>See <a target="_blank" rel="noopener" href="https://vuejs.org/guide/essentials/watchers.html">Watchers</a></p>
 
     </div>
 
@@ -263,18 +271,21 @@
     
 
     <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Vue/" rel="tag"># Vue</a>
+          </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/03/20/AC-2-2-recap/" rel="prev" title="ALPHA Camp 學期2-2 回顧自己的進步-ORID">
-                  <i class="fa fa-chevron-left"></i> ALPHA Camp 學期2-2 回顧自己的進步-ORID
+                <a href="/2022/12/23/pjt-init-memo/" rel="prev" title="筆記 - 後端專案初期設置">
+                  <i class="fa fa-chevron-left"></i> 筆記 - 後端專案初期設置
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/07/20/AC-3-expenseTracker/" rel="next" title="專案簡介 - 網頁記帳本app">
-                  專案簡介 - 網頁記帳本app <i class="fa fa-chevron-right"></i>
+                <a href="/2022/12/24/Vue-intro-03/" rel="next" title="筆記 - Vue.js Intro (3) Components">
+                  筆記 - Vue.js Intro (3) Components <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
