@@ -119,7 +119,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Intro"><span class="nav-number">1.</span> <span class="nav-text">Intro</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cookie-based-%E7%99%BB%E5%85%A5%E6%A9%9F%E5%88%B6"><span class="nav-number">1.0.1.</span> <span class="nav-text">cookie-based 登入機制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#token-based-%E7%99%BB%E5%85%A5%E6%A9%9F%E5%88%B6"><span class="nav-number">1.0.2.</span> <span class="nav-text">token-based 登入機制</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JWT-JSON-Web-Token"><span class="nav-number">2.</span> <span class="nav-text">JWT: JSON Web Token</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%A6%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text">實作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%99%BB%E5%85%A5%E8%88%87%E7%B0%BD%E7%99%BC-JWT"><span class="nav-number">3.0.1.</span> <span class="nav-text">登入與簽發 JWT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BA%AB%E4%BB%BD%E8%AA%8D%E8%AD%89"><span class="nav-number">3.0.2.</span> <span class="nav-text">身份認證</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A8%AD%E5%AE%9A-Passport-jwt-strategy-config-x2F-passport-js"><span class="nav-number">3.0.2.1.</span> <span class="nav-text">設定 Passport-jwt strategy (config&#x2F;passport.js)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%87%E8%AA%8D%E8%AD%89%E7%A8%8B%E5%BA%8F%E5%B0%81%E8%A3%9D%E6%88%90-middleware-%E5%8A%A0%E5%85%A5%E8%B7%AF%E7%94%B1%E4%B8%AD"><span class="nav-number">3.0.2.2.</span> <span class="nav-text">將認證程序封裝成 middleware 加入路由中</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Summary"><span class="nav-number">4.</span> <span class="nav-text">Summary</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Intro"><span class="nav-number">1.</span> <span class="nav-text">Intro</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cookie-based-%E7%99%BB%E5%85%A5%E6%A9%9F%E5%88%B6"><span class="nav-number">1.1.</span> <span class="nav-text">cookie-based 登入機制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#token-based-%E7%99%BB%E5%85%A5%E6%A9%9F%E5%88%B6"><span class="nav-number">1.2.</span> <span class="nav-text">token-based 登入機制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JWT-JSON-Web-Token"><span class="nav-number">2.</span> <span class="nav-text">JWT: JSON Web Token</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%A6%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text">實作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%99%BB%E5%85%A5%E8%88%87%E7%B0%BD%E7%99%BC-JWT"><span class="nav-number">3.1.</span> <span class="nav-text">登入與簽發 JWT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BA%AB%E4%BB%BD%E8%AA%8D%E8%AD%89"><span class="nav-number">3.2.</span> <span class="nav-text">身份認證</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A8%AD%E5%AE%9A-Passport-jwt-strategy-config-x2F-passport-js"><span class="nav-number">3.2.1.</span> <span class="nav-text">設定 Passport-jwt strategy (config&#x2F;passport.js)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%87%E8%AA%8D%E8%AD%89%E7%A8%8B%E5%BA%8F%E5%B0%81%E8%A3%9D%E6%88%90-middleware-%E5%8A%A0%E5%85%A5%E8%B7%AF%E7%94%B1%E4%B8%AD"><span class="nav-number">3.2.2.</span> <span class="nav-text">將認證程序封裝成 middleware 加入路由中</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Summary"><span class="nav-number">4.</span> <span class="nav-text">Summary</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -143,7 +143,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -247,7 +247,7 @@
         <p>之前在 AC 課程最後一週才學到前後分離與 JWT 認證機制，當時進度很趕。趁做另一個專案的時候來複習，並記錄開發流程。</p>
 <span id="more"></span>
 
-<h1 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h1><p>HTTP stateless 的特性下，每個 request 都是獨立的。故若想保留使用者登入狀態，常用「交換憑證」的方式來達成。</p>
+<h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><p>HTTP stateless 的特性下，每個 request 都是獨立的。故若想保留使用者登入狀態，常用「交換憑證」的方式來達成。</p>
 <h3 id="cookie-based-登入機制"><a href="#cookie-based-登入機制" class="headerlink" title="cookie-based 登入機制"></a>cookie-based 登入機制</h3><ul>
 <li>cookie：用戶端的憑證，有如會員卡，卡上有會員編號 (也就是 session_id)</li>
 <li>session：伺服器端的憑證對照表，有如會員名冊，可以透過會員編號 (session_id) 查找到使用者資訊 (user_id)<br>當 client 端發送請求時，會在 cookie 中帶有 session_id 一起傳送給伺服器，伺服器到 session 中尋找，若成功找到該 id 即可確認使用者身份。</li>
@@ -256,7 +256,7 @@
 <h3 id="token-based-登入機制"><a href="#token-based-登入機制" class="headerlink" title="token-based 登入機制"></a>token-based 登入機制</h3><p>與 cookie-based 同樣是「交換憑證讓 client 與 server 認出彼此」的機制，但改用 token 來做為憑證。client 端在 <code>POST /singin</code> 的時候，會用帳號與密碼向 server 拿到一個 token ，之後發送的每一個 HTTP request 都夾帶這個 token。</p>
 <br>
 
-<h1 id="JWT-JSON-Web-Token"><a href="#JWT-JSON-Web-Token" class="headerlink" title="JWT: JSON Web Token"></a>JWT: JSON Web Token</h1><blockquote>
+<h2 id="JWT-JSON-Web-Token"><a href="#JWT-JSON-Web-Token" class="headerlink" title="JWT: JSON Web Token"></a>JWT: JSON Web Token</h2><blockquote>
 <p>JSON Web Token (JWT) is a compact, URL-safe means of representing claims to be transferred between two parties.  The claims in a JWT are encoded as a JSON object that is used as the payload of a JSON Web Signature (JWS) structure or as the plaintext of a JSON Web Encryption (JWE) structure, enabling the claims to be digitally signed or integrity protected with a Message Authentication Code (MAC) and&#x2F;or encrypted.</p>
 </blockquote>
 <p>用 JSON object 來製作 token，規範了 token 由三個部分所組成：</p>
@@ -267,7 +267,7 @@
 </ul>
 <br>
 
-<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><p>登入機制簡單分為兩個階段</p>
+<h2 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h2><p>登入機制簡單分為兩個階段</p>
 <p>(1) 登入 &#x3D;&gt; 簽發 JWT</p>
 <p>client: <code>POST/singin</code> with account and password</p>
 <p>server: validate account and password &#x3D;&gt; find the user &#x3D;&gt; sign a JWT &#x3D;&gt; send back to client</p>
@@ -324,7 +324,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// routes/index.js</span></span><br><span class="line"><span class="keyword">const</span> authenticated = <span class="built_in">require</span>(<span class="string">&#x27;../middleware/auth&#x27;</span>)</span><br><span class="line">router.<span class="title function_">get</span>(<span class="string">&#x27;/&#x27;</span>, authenticated, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  res.<span class="title function_">send</span>(<span class="string">&#x27;hello world&#x27;</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <br>
 
-<h1 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h1><ol>
+<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><ol>
 <li>登入 controller 中引入 jsonwebtoken 套件，使用 jwt.sign() 簽發 token （參數： payload 是什麼內容、secret 、token 效期等）</li>
 <li>config&#x2F;passport.js 檔案中設定 authentication strategy，不同的 strategy 有不同的客制選項（jwt options: secret, token 夾帶方式等）。passport.use(new JwtStrategy(jwtOptions, function(payload, next){…})，本次專案用 user.id 作為 payload.id，故 User.findByPk() 傳入 payload.id ，找到 user 的話就回傳</li>
 <li>引入設定好的 passport 檔案（config&#x2F;passport.js) 使用 <code>passport.authenticate()</code> 來進行認證程序，並將其封裝成 middleware，放在路由中。也別忘了在主程式中引入 passport 並在進入路由前初始化 <code>app.use(passport.initialize())</code>。</li>
