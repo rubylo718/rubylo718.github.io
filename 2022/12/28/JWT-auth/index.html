@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"rubylo718.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="之前在 AC 課程最後一週才學到前後分離與 JWT 認證機制，短期記憶已不復在。趁做另一個專案的時候來複習，並記錄開發流程。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="筆記 - JWT 認證機制與實作流程">
+<meta property="og:url" content="https://rubylo718.github.io/2022/12/28/JWT-auth/index.html">
+<meta property="og:site_name" content="Ruby Lo">
+<meta property="og:description" content="之前在 AC 課程最後一週才學到前後分離與 JWT 認證機制，短期記憶已不復在。趁做另一個專案的時候來複習，並記錄開發流程。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-12-28T10:50:08.000Z">
+<meta property="article:modified_time" content="2022-12-28T10:50:08.000Z">
+<meta property="article:author" content="Ruby Lo">
+<meta property="article:tag" content="JWT">
+<meta property="article:tag" content="authentication">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://rubylo718.github.io/2022/12/28/JWT-auth/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://rubylo718.github.io/2022/12/28/JWT-auth/","path":"2022/12/28/JWT-auth/","title":"筆記 - JWT 認證機制與實作流程"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>筆記 - JWT 認證機制與實作流程 | Ruby Lo</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Ruby Lo</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">吃飯運動睡覺打扣</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Intro"><span class="nav-number">1.</span> <span class="nav-text">Intro</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#cookie-based-%E7%99%BB%E5%85%A5%E6%A9%9F%E5%88%B6"><span class="nav-number">1.1.</span> <span class="nav-text">cookie-based 登入機制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#token-based-%E7%99%BB%E5%85%A5%E6%A9%9F%E5%88%B6"><span class="nav-number">1.2.</span> <span class="nav-text">token-based 登入機制</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JWT-JSON-Web-Token"><span class="nav-number">2.</span> <span class="nav-text">JWT: JSON Web Token</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%A6%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text">實作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%99%BB%E5%85%A5%E8%88%87%E7%B0%BD%E7%99%BC-JWT"><span class="nav-number">3.1.</span> <span class="nav-text">登入與簽發 JWT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BA%AB%E4%BB%BD%E8%AA%8D%E8%AD%89"><span class="nav-number">3.2.</span> <span class="nav-text">身份認證</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A8%AD%E5%AE%9A-Passport-jwt-%E7%AD%96%E7%95%A5-%E8%BA%AB%E4%BB%BD%E8%AA%8D%E8%AD%89"><span class="nav-number">3.2.1.</span> <span class="nav-text">設定 Passport-jwt 策略 (身份認證)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%87%E8%AA%8D%E8%AD%89%E7%A8%8B%E5%BA%8F%E5%B0%81%E8%A3%9D%E6%88%90-middleware"><span class="nav-number">3.2.2.</span> <span class="nav-text">將認證程序封裝成 middleware</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%87-middleware-%E5%8A%A0%E5%85%A5-app-METHOD-%E4%B8%AD"><span class="nav-number">3.2.3.</span> <span class="nav-text">將 middleware 加入 app.METHOD()中</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B8%BD%E7%B5%90"><span class="nav-number">4.</span> <span class="nav-text">總結</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Ruby Lo</p>
+  <div class="site-description" itemprop="description">努力學習程式開發，期望練成能在不同公司/產業/國家間移動的謀生技能，而且能透過技能與經驗的累積，提升自己在職場上的價值，幫助我進入更好更自由的工作環境。</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/rubylo718" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;rubylo718" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:rubylo718@gmail.com" title="E-Mail → mailto:rubylo718@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/wan-tzu-lo" title="LinkedIn → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;wan-tzu-lo" rel="noopener" target="_blank"><i class="fa-brands fa-linkedin-in fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="Back to top">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://rubylo718.github.io/2022/12/28/JWT-auth/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ruby Lo">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ruby Lo">
+      <meta itemprop="description" content="努力學習程式開發，期望練成能在不同公司/產業/國家間移動的謀生技能，而且能透過技能與經驗的累積，提升自己在職場上的價值，幫助我進入更好更自由的工作環境。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="筆記 - JWT 認證機制與實作流程 | Ruby Lo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          筆記 - JWT 認證機制與實作流程
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-12-28 18:50:08" itemprop="dateCreated datePublished" datetime="2022-12-28T18:50:08+08:00">2022-12-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>之前在 AC 課程最後一週才學到前後分離與 JWT 認證機制，短期記憶已不復在。趁做另一個專案的時候來複習，並記錄開發流程。</p>
+<span id="more"></span>
+
+<h1 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h1><p>HTTP stateless 的特性下，每個 request 都是獨立的。故若想保留使用者登入狀態，常用「交換憑證」的方式來達成。</p>
+<h2 id="cookie-based-登入機制"><a href="#cookie-based-登入機制" class="headerlink" title="cookie-based 登入機制"></a>cookie-based 登入機制</h2><ul>
+<li>cookie：用戶端的憑證，有如會員卡，卡上有會員編號 (也就是 session_id)</li>
+<li>session：伺服器端的憑證對照表，有如會員名冊，可以透過會員編號 (session_id) 查找到使用者資訊 (user_id)<br>當 client 端發送請求時，會在 cookie 中帶有 session_id 一起傳送給伺服器，伺服器到 session 中尋找，若成功找到該 id 即可確認使用者身份。</li>
+</ul>
+<p>但是<strong>cookie 的值只能在特定網域內被存取</strong>，在前後分離的開發中，當前後端站部署在不同網域時，就會無法使用 cookie-based 的方式去做身份驗證。</p>
+<h2 id="token-based-登入機制"><a href="#token-based-登入機制" class="headerlink" title="token-based 登入機制"></a>token-based 登入機制</h2><p>與 cookie-based 同樣是「交換憑證讓 client 與 server 認出彼此」的機制，但改用 token 來做為憑證。client 端在 <code>POST /singin</code> 的時候，會用帳號與密碼向 server 拿到一個 token ，之後發送的每一個 HTTP request 都夾帶這個 token。</p>
+<h1 id="JWT-JSON-Web-Token"><a href="#JWT-JSON-Web-Token" class="headerlink" title="JWT: JSON Web Token"></a>JWT: JSON Web Token</h1><blockquote>
+<p>JSON Web Token (JWT) is a compact, URL-safe means of representing claims to be transferred between two parties.  The claims in a JWT are encoded as a JSON object that is used as the payload of a JSON Web Signature (JWS) structure or as the plaintext of a JSON Web Encryption (JWE) structure, enabling the claims to be digitally signed or integrity protected with a Message Authentication Code (MAC) and&#x2F;or encrypted.</p>
+</blockquote>
+<p>用 JSON object 來製作 token，規範了 token 由三個部分所組成：</p>
+<ul>
+<li>Header - 標記 token 的類型與雜湊函式名稱</li>
+<li>Payload - 要攜帶的資料，例如 user_id 與時間戳記，也可以指定 token 的過期時間</li>
+<li>Signature - 根據 Header 和 Payload，加上密鑰 (secret) 進行雜湊，產生一組不可反解的亂數，當成簽章，用來驗證 JWT 是否經過篡改。</li>
+</ul>
+<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><p>登入機制簡單分為兩個階段</p>
+<p>(1) 登入 &#x3D;&gt; 簽發 JWT</p>
+<p>client: <code>POST/singin</code> with account and password</p>
+<p>server: validate account and password &#x3D;&gt; find the user &#x3D;&gt; sign a JWT &#x3D;&gt; send back to client</p>
+<p>(2) 身份認證 &#x3D;&gt; 使用網站服務</p>
+<p>client: send request bearer JWT</p>
+<p>server: verify JWT and find user thought <code>password.authenticate()</code> &#x3D;&gt; send req.user &#x3D;&gt; accept the request</p>
+<h2 id="登入與簽發-JWT"><a href="#登入與簽發-JWT" class="headerlink" title="登入與簽發 JWT"></a>登入與簽發 JWT</h2><p>在 router 檔案中新增登入路由，注意登入路由不需要認證</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">router.<span class="title function_">post</span>(<span class="string">&#x27;/users/signin&#x27;</span>, userController.<span class="property">signIn</span>)</span><br></pre></td></tr></table></figure>
+
+<p>在 controller 中引入 jwt 套件，並簽發 JWT： </p>
+<p><code>jwt.sign(payload, secretOrPrivateKey, [options, callback])</code></p>
+<ul>
+<li><code>payload</code>: 想要打包的資訊 (object)</li>
+<li><code>secretOrPrivateKey</code>: 放在環境變數的密鑰，JWT 會拿這組密鑰加上 header 和 payload 進行雜湊產生一組不可反解的亂數，避免 payload 和 header 資訊被篡改。</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://github.com/auth0/node-jsonwebtoken#jwtsignpayload-secretorprivatekey-options-callback">參考官方文件</a></p>
+<blockquote>
+<p>(Asynchronous) If a callback is supplied, the callback is called with the err or the JWT.</p>
+<p>(Synchronous) Returns the JsonWebToken as string</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// controller/user-controller.js</span></span><br><span class="line"><span class="keyword">const</span> jwt = <span class="built_in">require</span>(<span class="string">&#x27;jsonwebtoken&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> userController = &#123;</span><br><span class="line">  <span class="attr">signIn</span>: <span class="keyword">async</span> (req, res, next) =&gt; &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="comment">// 登入</span></span><br><span class="line">      <span class="comment">// const &#123; account, password &#125; =  req.body</span></span><br><span class="line">      <span class="comment">// check user exists and password is correct （略）</span></span><br><span class="line"></span><br><span class="line">      <span class="comment">// jwt.sign 簽發 JWT</span></span><br><span class="line">      <span class="comment">// 此處將 user.id 作為 payload 資訊，token 效期 7 天</span></span><br><span class="line">      <span class="keyword">const</span> payload = &#123; <span class="attr">id</span>: user.<span class="property">id</span> &#125;      </span><br><span class="line">      <span class="keyword">const</span> token = jwt.<span class="title function_">sign</span>(payload, process.<span class="property">env</span>.<span class="property">JWT_SECRET</span>, &#123; <span class="attr">expiresIn</span>: <span class="string">&#x27;7d&#x27;</span>&#125;) </span><br><span class="line">      res.<span class="title function_">json</span>(&#123;</span><br><span class="line">        <span class="attr">status</span>: <span class="string">&#x27;success&#x27;</span>, </span><br><span class="line">        <span class="attr">data</span>: &#123; token, user &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">      <span class="title function_">next</span>(err)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = userController</span><br></pre></td></tr></table></figure>
+
+<h2 id="身份認證"><a href="#身份認證" class="headerlink" title="身份認證"></a>身份認證</h2><p>client 發出請求時同時攜帶 token</p>
+<p>server 需負責解析 token 是否合法且有效。</p>
+<p>實作包含兩階段：(1) 設定 passport-jwt strategy (2) 實作 middleware 並視需求加入路由中。</p>
+<h3 id="設定-Passport-jwt-策略-身份認證"><a href="#設定-Passport-jwt-策略-身份認證" class="headerlink" title="設定 Passport-jwt 策略 (身份認證)"></a>設定 Passport-jwt 策略 (身份認證)</h3><p><code>npm i passport passport-jwt</code> </p>
+<p><code>touch config/passport.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// config/passport.js</span></span><br><span class="line"><span class="keyword">const</span> passport = <span class="built_in">require</span>(<span class="string">&#x27;passport&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">JWTStrategy</span> = <span class="built_in">require</span>(<span class="string">&#x27;passport-jwt&#x27;</span>).<span class="property">Strategy</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">ExtractJWT</span> = <span class="built_in">require</span>(<span class="string">&#x27;passport-jwt&#x27;</span>).<span class="property">ExtractJwt</span></span><br><span class="line"><span class="keyword">const</span> &#123; <span class="title class_">User</span> &#125; = <span class="built_in">require</span>(<span class="string">&#x27;../models&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// setup passport strategy</span></span><br><span class="line"><span class="keyword">const</span> jwtOptions = &#123;</span><br><span class="line">  <span class="attr">secretOrKey</span>: process.<span class="property">env</span>.<span class="property">JWT_SECRET</span>,</span><br><span class="line">  <span class="attr">jwtFromRequest</span>: <span class="title class_">ExtractJwt</span>.<span class="title function_">fromAuthHeaderAsBearerToken</span>(),</span><br><span class="line">  <span class="attr">passReqToCallback</span>: <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.passportjs.org/packages/passport-jwt/">參考 passport-jwt 設定</a></p>
+<p><code>options</code>:</p>
+<ul>
+<li>secretOrKey: 密鑰 (REQUIRED unless secretOrKeyProvider is provided)</li>
+<li>jwtFromRequest (REQUIRED): Request 如何攜帶 JWT 的方法，參考 <a target="_blank" rel="noopener" href="https://www.passportjs.org/packages/passport-jwt/#extracting-the-jwt-from-the-request">設定選項</a></li>
+<li>passReqToCallback: If true the request will be passed to the verify callback. i.e. verify(request, jwt_payload, done_callback). 設定 true 可以把 callback 的第一個參數拿到 req 裡（這邊後來暫時沒用到，local strategy 的時候需要 req.flash 的時候會有用，要設定）</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 續 config/passport.js</span></span><br><span class="line"><span class="comment">// signin時簽發的 jwt 中，payload.id 為 user.id</span></span><br><span class="line">passport.<span class="title function_">use</span>( <span class="keyword">new</span> <span class="title class_">JwtStrategy</span>(jwtOptions, <span class="title function_">async</span>(payload, next) =&gt; &#123; </span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">// 找 user，找到以後回傳給 req.user 來得到登入使用者</span></span><br><span class="line">    <span class="keyword">const</span> user = <span class="keyword">await</span> <span class="title class_">User</span>.<span class="title function_">findByPk</span>(payload.<span class="property">id</span>, &#123;</span><br><span class="line">      <span class="attr">attributes</span>: &#123; <span class="attr">excluded</span>: [<span class="string">&#x27;password&#x27;</span>] &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">if</span> (!user) <span class="keyword">return</span> <span class="title function_">next</span>(<span class="literal">null</span>, <span class="literal">false</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">next</span>(<span class="literal">null</span>, user)</span><br><span class="line">  &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">    <span class="title function_">next</span>(err)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>
+
+<h3 id="將認證程序封裝成-middleware"><a href="#將認證程序封裝成-middleware" class="headerlink" title="將認證程序封裝成 middleware"></a>將認證程序封裝成 middleware</h3><p><code>touch middleware/auth.js</code></p>
+<p><a target="_blank" rel="noopener" href="https://www.passportjs.org/packages/passport-jwt/#authenticate-requests"><code>passport.authenticate()</code>方法</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// middleware/auth.js</span></span><br><span class="line"><span class="keyword">const</span> passport = <span class="built_in">require</span>(<span class="string">&#x27;../config/passport&#x27;</span>) <span class="comment">// 這邊要引入的 passport 是我們設定好的那個</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">authenticated</span> = (<span class="params">req, res, next</span>) =&gt; &#123;</span><br><span class="line">  passport.<span class="title function_">authenticate</span>(<span class="string">&#x27;jwt&#x27;</span>, &#123; <span class="attr">session</span>: <span class="literal">false</span> &#125;, <span class="function">(<span class="params">err, user</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (err || !user) <span class="keyword">return</span> res.<span class="title function_">status</span>(<span class="number">401</span>).<span class="title function_">json</span>(&#123; <span class="attr">status</span>: <span class="string">&#x27;error&#x27;</span>, <span class="attr">message</span>: <span class="string">&#x27;Unauthorized.&#x27;</span> &#125;)</span><br><span class="line">    <span class="keyword">if</span> (user) req.<span class="property">user</span> = user</span><br><span class="line">    <span class="title function_">next</span>()</span><br><span class="line">  &#125;)(req, res, next)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = authenticated</span><br></pre></td></tr></table></figure>
+
+<h3 id="將-middleware-加入-app-METHOD-中"><a href="#將-middleware-加入-app-METHOD-中" class="headerlink" title="將 middleware 加入 app.METHOD()中"></a>將 middleware 加入 app.METHOD()中</h3><p>參考 <a target="_blank" rel="noopener" href="http://expressjs.com/en/api.html#app.post.method">express 官方文件</a> 我們知道 <code>app.METHOD(path, callback, [, callback ...])</code> 其中 callback 可以是 middleware (用逗號連、或是放在 array 裡面、或是前述組合等等)。</p>
+<p>別忘了在主程式 app.js 中引入 passport 套件並且初始化</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 主程式 app.js</span></span><br><span class="line"><span class="keyword">const</span> passport = <span class="built_in">require</span>(<span class="string">&#x27;passport&#x27;</span>) <span class="comment">// 這邊引入 passport or config/passport 感覺都可以</span></span><br><span class="line">...</span><br><span class="line">app.<span class="title function_">use</span>(passport.<span class="title function_">initialize</span>()) <span class="comment">// 要放在路由前面</span></span><br><span class="line">app.<span class="title function_">use</span>(routes)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>然後就可以將認證 middleware 放在路由中了</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// routes/index.js</span></span><br><span class="line"><span class="keyword">const</span> authenticated = <span class="built_in">require</span>(<span class="string">&#x27;../middleware/auth&#x27;</span>)</span><br><span class="line">router.<span class="title function_">get</span>(<span class="string">&#x27;/&#x27;</span>, authenticated, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  res.<span class="title function_">send</span>(<span class="string">&#x27;hello world&#x27;</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h1 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h1><ol>
+<li>登入 controller 中引入 jsonwebtoken 套件 jwt.sign 簽發 token （參數： payload 是什麼內容、secret 、token 效期等）</li>
+<li>config&#x2F;passport.js 檔案中設定 authentication strategy（options: secret, token 夾帶方式等），不同的 strategy 有不同的客制選項。本次專案用 user.id 作為 payload.id，故傳入 User.findByPk() 傳入 payload.id ，找到 user 的話就回傳。</li>
+<li>引入設定好的 passport 檔案（config&#x2F;passport.js) 使用 <code>passport.authenticate()</code> 來進行認證程序，並將其封裝成 middleware，放在路由中。也別忘了在主程式中引入 passport 並在進入路由前初始化 <code>app.use(passport.initialize())</code>。</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JWT/" rel="tag"># JWT</a>
+              <a href="/tags/authentication/" rel="tag"># authentication</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/12/25/Vue-framework/" rel="prev" title="筆記 - Vue.js 檔案結構">
+                  <i class="fa fa-chevron-left"></i> 筆記 - Vue.js 檔案結構
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-pen"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ruby Lo</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
