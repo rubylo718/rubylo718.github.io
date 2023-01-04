@@ -132,7 +132,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -143,7 +143,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">20</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -324,6 +324,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// routes/index.js</span></span><br><span class="line"><span class="keyword">const</span> authenticated = <span class="built_in">require</span>(<span class="string">&#x27;../middleware/auth&#x27;</span>)</span><br><span class="line">router.<span class="title function_">get</span>(<span class="string">&#x27;/&#x27;</span>, authenticated, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  res.<span class="title function_">send</span>(<span class="string">&#x27;hello world&#x27;</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <br>
 
+<hr>
 <h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><ol>
 <li>登入 controller 中引入 jsonwebtoken 套件，使用 jwt.sign() 簽發 token （參數： payload 是什麼內容、secret 、token 效期等）</li>
 <li>config&#x2F;passport.js 檔案中設定 authentication strategy，不同的 strategy 有不同的客制選項（jwt options: secret, token 夾帶方式等）。passport.use(new JwtStrategy(jwtOptions, function(payload, next){…})，本次專案用 user.id 作為 payload.id，故 User.findByPk() 傳入 payload.id ，找到 user 的話就回傳</li>
@@ -374,7 +375,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-pen"></i>
   </span>
