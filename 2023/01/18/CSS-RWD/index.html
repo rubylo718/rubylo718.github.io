@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"rubylo718.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="應用 Flexbox 排版實作 RWD">
+<meta property="og:type" content="article">
+<meta property="og:title" content="筆記 - 應用 Flexbox 實作 RWD 排版">
+<meta property="og:url" content="https://rubylo718.github.io/2023/01/18/CSS-RWD/index.html">
+<meta property="og:site_name" content="Ruby Lo">
+<meta property="og:description" content="應用 Flexbox 排版實作 RWD">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-01-18T13:28:31.000Z">
+<meta property="article:modified_time" content="2023-01-18T13:28:31.000Z">
+<meta property="article:author" content="Ruby Lo">
+<meta property="article:tag" content="CSS">
+<meta property="article:tag" content="RWD">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://rubylo718.github.io/2023/01/18/CSS-RWD/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://rubylo718.github.io/2023/01/18/CSS-RWD/","path":"2023/01/18/CSS-RWD/","title":"筆記 - 應用 Flexbox 實作 RWD 排版"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>筆記 - 應用 Flexbox 實作 RWD 排版 | Ruby Lo</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Ruby Lo</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">吃飯運動睡覺打扣</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#RWD-Responsive-Web-Design-%E9%9F%BF%E6%87%89%E5%BC%8F%E7%B6%B2%E7%AB%99%E8%A8%AD%E8%A8%88"><span class="nav-number">1.</span> <span class="nav-text">RWD (Responsive Web Design) 響應式網站設計</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A3%BD%E4%BD%9C-RWD-%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8B%95%E4%BD%9C%E9%A0%86%E5%BA%8F"><span class="nav-number">1.1.</span> <span class="nav-text">製作 RWD 的基本動作順序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Mobile-First-%E8%A1%8C%E5%8B%95%E5%84%AA%E5%85%88%E7%9A%84%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87"><span class="nav-number">1.1.1.</span> <span class="nav-text">Mobile First 行動優先的設計原則</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Breakpoint"><span class="nav-number">1.1.2.</span> <span class="nav-text">Breakpoint</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS-media-queries"><span class="nav-number">1.1.3.</span> <span class="nav-text">CSS media queries</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8C%87%E5%AE%9A%E5%AA%92%E9%AB%94%E9%A1%9E%E5%9E%8B-media-types-%EF%BC%88%E6%97%A9%E6%9C%9F%E4%BD%BF%E7%94%A8%EF%BC%89"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">指定媒體類型 media types （早期使用）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AA%92%E9%AB%94%E6%9F%A5%E8%A9%A2-media-queries"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">媒體查詢 media queries</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#import-%E9%80%B2%E5%85%A5-CSS"><span class="nav-number">1.1.3.3.</span> <span class="nav-text">@import 進入 CSS</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Viewport-amp-Pixels"><span class="nav-number">1.2.</span> <span class="nav-text">Viewport &amp; Pixels</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%A6%E9%AB%94%E5%83%8F%E7%B4%A0%E8%88%87-PPIs"><span class="nav-number">1.2.1.</span> <span class="nav-text">實體像素與 PPIs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%9E%A2%E5%B9%95%E8%A7%A3%E6%9E%90%E5%BA%A6"><span class="nav-number">1.2.2.</span> <span class="nav-text">螢幕解析度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS-%E5%83%8F%E7%B4%A0-px"><span class="nav-number">1.2.3.</span> <span class="nav-text">CSS 像素 px</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A8%AD%E5%AE%9A-viewport"><span class="nav-number">1.2.4.</span> <span class="nav-text">設定 viewport</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E5%B0%8D%E5%96%AE%E4%BD%8D"><span class="nav-number">1.3.</span> <span class="nav-text">相對單位</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%99%BE%E5%88%86%E6%AF%94"><span class="nav-number">1.3.1.</span> <span class="nav-text">百分比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Viewport-%E7%9B%B8%E5%B0%8D%E5%96%AE%E4%BD%8D"><span class="nav-number">1.3.2.</span> <span class="nav-text">Viewport 相對單位</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#em-%E5%AD%97%E9%AB%94%E7%9B%B8%E5%B0%8D%E5%96%AE%E4%BD%8D"><span class="nav-number">1.3.3.</span> <span class="nav-text">em 字體相對單位</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%90%E5%88%B6%E5%BD%88%E6%80%A7"><span class="nav-number">1.3.4.</span> <span class="nav-text">限制彈性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#max-width-%E6%87%89%E7%94%A8%EF%BC%9Acontainer"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">max-width 應用：container</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#min-width-%E6%87%89%E7%94%A8%EF%BC%9A%E8%A1%A8%E5%96%AE%E5%AF%AC%E5%BA%A6"><span class="nav-number">1.3.4.2.</span> <span class="nav-text">min-width 應用：表單寬度</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RWD-%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87-Mostly-Fluid"><span class="nav-number">1.4.</span> <span class="nav-text">RWD 設計原則 - Mostly Fluid</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Flexbox-%E6%9E%B6%E6%A7%8B"><span class="nav-number">1.4.1.</span> <span class="nav-text">Flexbox 架構</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A8%AD%E5%AE%9A-breakpoint"><span class="nav-number">1.4.2.</span> <span class="nav-text">設定 breakpoint</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B1%80%E9%83%A8%E5%B0%B1%E5%A5%BD"><span class="nav-number">1.4.3.</span> <span class="nav-text">局部就好</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RWD-%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87-Tiny-Tweaks"><span class="nav-number">1.5.</span> <span class="nav-text">RWD 設計原則 - Tiny Tweaks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E8%9E%A2%E5%B9%95"><span class="nav-number">1.5.1.</span> <span class="nav-text">小螢幕</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%83%E7%B4%A0%E4%B9%8B%E9%96%93%E9%81%A9%E5%BA%A6%E7%95%99%E7%99%BD"><span class="nav-number">1.5.1.1.</span> <span class="nav-text">元素之間適度留白</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E9%AB%94%E5%A4%A7%E5%B0%8F"><span class="nav-number">1.5.1.2.</span> <span class="nav-text">字體大小</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%A7%E8%9E%A2%E5%B9%95"><span class="nav-number">1.5.2.</span> <span class="nav-text">大螢幕</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AF%8F%E8%A1%8C%E7%9A%84%E5%AD%97%E5%85%83%E6%95%B8"><span class="nav-number">1.5.2.1.</span> <span class="nav-text">每行的字元數</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E9%AB%94%E5%A4%A7%E5%B0%8F-1"><span class="nav-number">1.5.2.2.</span> <span class="nav-text">字體大小</span></a></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Ruby Lo</p>
+  <div class="site-description" itemprop="description">努力學習程式開發，期望練成能在不同公司/產業/國家間移動的謀生技能，而且能透過技能與經驗的累積，提升自己在職場上的價值，幫助我進入更好更自由的工作環境。</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/rubylo718" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;rubylo718" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:rubylo718@gmail.com" title="E-Mail → mailto:rubylo718@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/wan-tzu-lo" title="LinkedIn → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;wan-tzu-lo" rel="noopener" target="_blank"><i class="fa-brands fa-linkedin-in fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="Back to top">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://rubylo718.github.io/2023/01/18/CSS-RWD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ruby Lo">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ruby Lo">
+      <meta itemprop="description" content="努力學習程式開發，期望練成能在不同公司/產業/國家間移動的謀生技能，而且能透過技能與經驗的累積，提升自己在職場上的價值，幫助我進入更好更自由的工作環境。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="筆記 - 應用 Flexbox 實作 RWD 排版 | Ruby Lo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          筆記 - 應用 Flexbox 實作 RWD 排版
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-01-18 21:28:31" itemprop="dateCreated datePublished" datetime="2023-01-18T21:28:31+08:00">2023-01-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AD%86%E8%A8%98/" itemprop="url" rel="index"><span itemprop="name">筆記</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>應用 Flexbox 排版實作 RWD</p>
+<span id="more"></span>
+<h1 id="RWD-Responsive-Web-Design-響應式網站設計"><a href="#RWD-Responsive-Web-Design-響應式網站設計" class="headerlink" title="RWD (Responsive Web Design) 響應式網站設計"></a>RWD (Responsive Web Design) 響應式網站設計</h1><ul>
+<li>同一組網頁內容，在不同裝置不同尺寸的螢幕上，必須有不同的呈現方式</li>
+<li><strong>透過 CSS 的控制，讓同一份 HTML 網頁能在螢幕尺寸改變時，自動回應最適當的 CSS layout</strong></li>
+<li>RWD 是一種「設計原則」，包含不同的流動模式，例如 mostly fluid, column drop, tiny tweaks 等等。<a target="_blank" rel="noopener" href="https://web.dev/learn/design/">參考學習資源</a></li>
+<li>原生 CSS 中適合應用 RWD 的佈局系統包括：<ul>
+<li>flexbox</li>
+<li>grid</li>
+</ul>
+</li>
+</ul>
+<p>DevTools: viewport 分成 Responsive 與 特定裝置</p>
+<p>網站與應用程式開發期間使用 responsive 模式為預設模式。透過調整 viewport 大小觀察網站的行為</p>
+<br>
+
+<hr>
+<h2 id="製作-RWD-的基本動作順序"><a href="#製作-RWD-的基本動作順序" class="headerlink" title="製作 RWD 的基本動作順序"></a>製作 RWD 的基本動作順序</h2><ol>
+<li>定義預設的 viewport 尺寸</li>
+<li>使用 CSS media queries （媒體查詢）</li>
+<li>設定 breakpoint （分界點）</li>
+</ol>
+<h3 id="Mobile-First-行動優先的設計原則"><a href="#Mobile-First-行動優先的設計原則" class="headerlink" title="Mobile First 行動優先的設計原則"></a>Mobile First 行動優先的設計原則</h3><p>此設計原則強調：</p>
+<ol>
+<li><strong>應該從最小螢幕尺寸開始考慮</strong>，也就是手機。由於小螢幕能顯示的內容比較少，能運用的佈局有限，因此它應該優先被考慮。先做出迎合最小螢幕的網站內容，再慢慢思考當螢幕變大時，可以追加什麼網站內容。</li>
+</ol>
+<blockquote>
+<p>Mobile First 的焦點是「網站內容如何逐漸變多」，而不是單純把同一套內容塞進不同尺寸</p>
+</blockquote>
+<ol start="2">
+<li><p><strong>把行動裝置的使用者體驗放在設定的核心</strong></p>
+</li>
+<li><p>考慮行動裝置效能略差於電腦，且程式是逐行執行，故將行動版的城市碼放在前面，以提高提供行動版畫面的速度。</p>
+</li>
+</ol>
+<h3 id="Breakpoint"><a href="#Breakpoint" class="headerlink" title="Breakpoint"></a>Breakpoint</h3><p>當尺寸改變時，網頁佈局發生了顯著的變化，這些尺寸的界線叫做 breakpoint，也就是 CSS 樣式轉換的發生點。常見的有：320px、480px、720px、768px、960px、1024px。每設一個 breakpoint 意味需要準備多一份 CSS 樣式，要抓得多細是看設計的需求。</p>
+<p>除了上述幾個在設備間切換的主要分界點 (major breakpoint)，也會設定次要分界點 (minor breakpoint) 來調整比較細微的 CSS 變化，像是元素的邊距、避免文字超過頁面寬度，或是調整圖片尺寸。</p>
+<p>例如： </p>
+<ul>
+<li>3 major breaks: 480 &#x2F; 768 &#x2F; 1024</li>
+<li>3 minor breaks: 320 &#x2F; 720 &#x2F; 900</li>
+</ul>
+<blockquote>
+<p>主要分界點負責重大排版變化，次要分界點負責細部的設計優化</p>
+</blockquote>
+<h3 id="CSS-media-queries"><a href="#CSS-media-queries" class="headerlink" title="CSS media queries"></a>CSS media queries</h3><h4 id="指定媒體類型-media-types-（早期使用）"><a href="#指定媒體類型-media-types-（早期使用）" class="headerlink" title="指定媒體類型 media types （早期使用）"></a>指定媒體類型 media types （早期使用）</h4><p>以前 (CSS2) 只需要區分螢幕看網頁與列印，引入不同的 CSS 樣式檔案，透過 <code>media</code> 指派給不同的裝置。例如以下依序為所有裝置 (all)、螢幕 (screen)、印表機 (print)：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;link href=<span class="string">&quot;css/style.css&quot;</span> rel=<span class="string">&quot;stylesheet&quot;</span> type=<span class="string">&quot;text/css&quot;</span> media=<span class="string">&quot;all&quot;</span> /&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">&quot;css/screen.css&quot;</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span> <span class="attr">media</span>=<span class="string">&quot;screen&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">&quot;css/print.css&quot;</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span> <span class="attr">media</span>=<span class="string">&quot;print&quot;</span> /&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<h4 id="媒體查詢-media-queries"><a href="#媒體查詢-media-queries" class="headerlink" title="媒體查詢 media queries"></a>媒體查詢 media queries</h4><p>直接指定媒體名稱作法無法應付各式各樣的螢幕尺寸，CSS3 直接使用條件查詢，稱為 media queries。在 media type 上加入 media feature ，用括號表示，如下例。設定不同的 breakpoint 來引入不同的 CSS layout 達到能回應不同寬度螢幕的網頁。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> (<span class="attribute">max-width</span>: <span class="number">600px</span>) &#123;...//styles&#125;</span><br><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">max-width</span>: <span class="number">600px</span>) &#123;...//styles&#125;</span><br><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>: <span class="number">600px</span>) <span class="keyword">and</span> (<span class="attribute">max-width</span>: <span class="number">1000px</span>) &#123;...//styles&#125;</span><br></pre></td></tr></table></figure>
+
+<p>各種 media feature，可用 <code>and / or / not</code> 等，條件為 true 就會繼續執行</p>
+<ul>
+<li>max-width</li>
+<li>max-width</li>
+<li>min-height</li>
+<li>min-height</li>
+<li>orientation&#x3D;portrait 任何高度大於寬度的瀏覽器（直向）</li>
+<li>orientation&#x3D;landscape 任何寬度大於高度的瀏覽器（橫向）</li>
+</ul>
+<p>根據 mobile first 原則，尺寸小的設定放在最上面</p>
+<h4 id="import-進入-CSS"><a href="#import-進入-CSS" class="headerlink" title="@import 進入 CSS"></a>@import 進入 CSS</h4><p>若樣式太多，CSS 可以使用 <code>@import</code> 來引入文件，就可以在同一份 CSS file 中統一管理網站樣式。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@import</span> url(<span class="string">&#x27;styles.css&#x27;</span>) screen <span class="keyword">and</span> (<span class="attribute">max-width</span>: <span class="number">670px</span>);</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<hr>
+<h2 id="Viewport-amp-Pixels"><a href="#Viewport-amp-Pixels" class="headerlink" title="Viewport &amp; Pixels"></a>Viewport &amp; Pixels</h2><p>名詞解釋：</p>
+<ul>
+<li>實體像素與 PPIs</li>
+<li>螢幕解析度</li>
+<li>CSS 像素 px</li>
+</ul>
+<h3 id="實體像素與-PPIs"><a href="#實體像素與-PPIs" class="headerlink" title="實體像素與 PPIs"></a>實體像素與 PPIs</h3><p>實體像素（或稱硬體像素）指螢幕上會發光的最小硬體單位。手機上常用「每寸像素數 pixels per inch」，也就是像素密度。</p>
+<h3 id="螢幕解析度"><a href="#螢幕解析度" class="headerlink" title="螢幕解析度"></a>螢幕解析度</h3><p>螢幕解析度指一個螢幕每一個方向的像素數量，例如1280 x 920 表示橫向有 1280像素，縱向有 920 像素，螢幕像素總數為 1280 x 920 個。單位面積內的像素越多，代表解析度越高。</p>
+<h3 id="CSS-像素-px"><a href="#CSS-像素-px" class="headerlink" title="CSS 像素 px"></a>CSS 像素 px</h3><p>CSS 像素是由全球資訊網 (World Wide Web, 也就是 W3C) 創立的抽象名詞，它是一個無視裝置差別而且等長的測量單位，專門用在網頁開發使用。</p>
+<h3 id="設定-viewport"><a href="#設定-viewport" class="headerlink" title="設定 viewport"></a>設定 viewport</h3><ul>
+<li><p>告訴瀏覽器 viewport 的寬度以什麼為基準</p>
+</li>
+<li><p>這個寬度與 CSS 之間的比例關係</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- &lt;head&gt; 中 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>使用 <code>&lt;meta name=&quot;viewport&quot;&gt;</code> 標籤並帶入以下兩個屬性：</p>
+</li>
+<li><p><code>width=device-width</code> 調整內容寬度為裝置寬度</p>
+</li>
+<li><p><code>initial-scale=1.0</code> 設定「CSS 像素」和「裝置像素」的比例為 1:1</p>
+</li>
+</ul>
+<br>
+
+<hr>
+<h2 id="相對單位"><a href="#相對單位" class="headerlink" title="相對單位"></a>相對單位</h2><h3 id="百分比"><a href="#百分比" class="headerlink" title="百分比"></a>百分比</h3><p>最常用的相對單位，viewport 尺寸改變時，元素與 viewport 同時動態縮放。根據父元素的比例計算：<code>target ÷ context = result</code></p>
+<ul>
+<li>target: 原本的絕對單位</li>
+<li>context: 父元素的單位</li>
+<li>result: 百分比</li>
+</ul>
+<h3 id="Viewport-相對單位"><a href="#Viewport-相對單位" class="headerlink" title="Viewport 相對單位"></a>Viewport 相對單位</h3><p>想抓取 viewport 的長度，尤其是當你在製作佔滿一整個頁面的全版視覺的時候，會使用 viewport 百分比長度，這些單位會隨著 viewport 尺寸一起縮放</p>
+<ul>
+<li><code>vw</code>: 對應到 width of viewport 的比例</li>
+<li><code>vh</code>: 對應到 height of viewport 的比例</li>
+<li><code>vmin</code>: 等於 vw 或 vh 較小的值</li>
+<li><code>vmax</code>: 等於 vw 或 vh 較大的值</li>
+</ul>
+<p>以 viewport 寬 1200 像素、高 900 像素為例：<br>1vw &#x3D; viewport 寬度的 1% &#x3D; 12 像素<br>1vh &#x3D; viewport 高度的 1% &#x3D; 9 像素<br>1vmax &#x3D; 12 像素<br>1vmin &#x3D; 9 像素</p>
+<p>width: 100 vw 就佔了整個視窗寬度<br>width: 50 vw 就是一半視窗寬度</p>
+<h3 id="em-字體相對單位"><a href="#em-字體相對單位" class="headerlink" title="em 字體相對單位"></a>em 字體相對單位</h3><p><code>em</code> 用於文字大小，以父元素的 font-size 為基準。</p>
+<p>以父元素的字體大小為 16px 為例，子元素設定<br>1em &#x3D; 16 像素<br>0.5em &#x3D; 8 像素<br>2em &#x3D; 32 像素</p>
+<h3 id="限制彈性"><a href="#限制彈性" class="headerlink" title="限制彈性"></a>限制彈性</h3><p>使用相對單位時，內容會隨著 viewport 縮放，但又想控制最大或最小高或寬，不想太大，維持圖片的清晰度。</p>
+<p>例如圖片寬度隨父元素縮放，但最大寬度不超過 960px</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">img</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">max-width</span>: <span class="number">960px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="max-width-應用：container"><a href="#max-width-應用：container" class="headerlink" title="max-width 應用：container"></a>max-width 應用：container</h4><p>將網站內容整個包在 container 中（或稱 wrapper）中，以便讓內容置中。這個 container 通常會設定為 <code>width: 100%</code>，但如果放在超級寬的螢幕上，container 延展開來一行文字會被拉的很長，反而不好閱讀。故此時使用 <code>max-width</code>來限制 container 最大寬度，若 viewport 太大時寬度還是可以維持。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">90%</span>;</span><br><span class="line">  <span class="attribute">max-width</span>: <span class="number">960px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="min-width-應用：表單寬度"><a href="#min-width-應用：表單寬度" class="headerlink" title="min-width 應用：表單寬度"></a>min-width 應用：表單寬度</h4><p>例如填寫地址或 e-mail 的欄位，用 min-width 設定寬度下限，就不會隨 viewport 縮到太小。</p>
+<br>
+
+<hr>
+<p>以下學習 RWD 設計模式：局部流動（Mostly Fluid）與細微調整（Tiny Tweaks）。使用 media queries 配置，max-width 設定延伸限制。</p>
+<h2 id="RWD-設計原則-Mostly-Fluid"><a href="#RWD-設計原則-Mostly-Fluid" class="headerlink" title="RWD 設計原則 - Mostly Fluid"></a>RWD 設計原則 - Mostly Fluid</h2><p>流動指內容佈局會隨 viewport 尺寸而流動。</p>
+<ul>
+<li>在小螢幕上，內容垂直堆疊；大螢幕上，內容多欄排列</li>
+<li>當 viewport 放大到某個 breakpoint 時，內容會停止流動，固定置中，維持網頁易讀性。</li>
+</ul>
+<h3 id="Flexbox-架構"><a href="#Flexbox-架構" class="headerlink" title="Flexbox 架構"></a>Flexbox 架構</h3><p>根據 HTML 結構，定義出 flexbox 架構</p>
+<p>container: <code>.wrapper</code></p>
+<p>items: <code>&lt;header&gt;, &lt;nav&gt;, &lt;main&gt;, &lt;aside&gt;, &lt;footer&gt;</code></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 將 .wrapper 宣告為 flex container, 並且用 flex-flow 設定排列方式 */</span></span><br><span class="line"><span class="selector-class">.wrapper</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">flex-flow</span>: row wrap;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="設定-breakpoint"><a href="#設定-breakpoint" class="headerlink" title="設定 breakpoint"></a>設定 breakpoint</h3><ul>
+<li>600px 以下：堆疊</li>
+<li>600px 與 900px 之前：main 與 aside 多欄排列（main: 70%, aside: 30%)</li>
+<li>900px 以上：nav, main , aside 多欄排列(20%, 60%, 20%)</li>
+</ul>
+<p>Mobile first 所以小尺寸先寫。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 不需要調整 width: 100% 的元素，他們會自然地佔滿一排 */</span></span><br><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>: <span class="number">600px</span>) &#123;</span><br><span class="line">  <span class="selector-tag">main</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">70%</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-tag">aside</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">30%</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>: <span class="number">900px</span>) &#123;</span><br><span class="line">  <span class="selector-tag">main</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">60%</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-tag">nav</span>, <span class="selector-tag">aside</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">20%</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-tag">nav</span> &#123;</span><br><span class="line">    <span class="attribute">min-height</span>: <span class="number">400px</span>;</span><br><span class="line">    <span class="attribute">line-height</span>: <span class="number">400px</span>; <span class="comment">/*讓文字垂直置中 */</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="局部就好"><a href="#局部就好" class="headerlink" title="局部就好"></a>局部就好</h3><p>在 Mostly Fluid 設計模式中，內容會有最大寬度，不會隨 viewport 無限延展。故設定最大寬度 900px ，超過後就不在延伸。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.wrapper</span> &#123;</span><br><span class="line">  <span class="attribute">max-width</span>: <span class="number">900px</span>;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>參考資料 <a target="_blank" rel="noopener" href="https://baymard.com/blog/line-length-readability">Readability: The Optimal Line Length</a></p>
+<br>
+
+<hr>
+<h2 id="RWD-設計原則-Tiny-Tweaks"><a href="#RWD-設計原則-Tiny-Tweaks" class="headerlink" title="RWD 設計原則 - Tiny Tweaks"></a>RWD 設計原則 - Tiny Tweaks</h2><p>不同 viewport 針對局部的 UX 進行微調與優化，適用文字內容多，由文字和影像組成的單列佈局網站。例如字體大小、字體間距、段落間距、行高等微調。</p>
+<h3 id="小螢幕"><a href="#小螢幕" class="headerlink" title="小螢幕"></a>小螢幕</h3><h4 id="元素之間適度留白"><a href="#元素之間適度留白" class="headerlink" title="元素之間適度留白"></a>元素之間適度留白</h4><p>目的：讓視線集中，提高閱讀性</p>
+<ul>
+<li>內文不離螢幕邊框太近： container 四周增加 padding 1em</li>
+<li>文字間不要太緊密：paragraph 設定 line-height 1.5 </li>
+<li>增加段落間距：margin-bottom 2em</li>
+</ul>
+<h4 id="字體大小"><a href="#字體大小" class="headerlink" title="字體大小"></a>字體大小</h4><ul>
+<li>小螢幕上，標題不需要佔太大空間： <code>&lt;h1&gt;</code> font-size 將為 28 px</li>
+<li>段落文字縮小，彌補 container 的 padding</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: <span class="string">&#x27;Open Sans&#x27;</span>;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">20px</span>;  </span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">1em</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">1.4em</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">0.8em</span>;</span><br><span class="line">  <span class="attribute">line-height</span>: <span class="number">1.5</span>;</span><br><span class="line">  <span class="attribute">margin-bottom</span>: <span class="number">2em</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="大螢幕"><a href="#大螢幕" class="headerlink" title="大螢幕"></a>大螢幕</h3><p>以 Bootstrap 對大螢幕定義的 992px 為 breakpoint </p>
+<h4 id="每行的字元數"><a href="#每行的字元數" class="headerlink" title="每行的字元數"></a>每行的字元數</h4><p>為維持易讀性，桌機閱讀理想上每行的字元應在 50 - 75 之間（有些研究可以擴大到 85 字元）</p>
+<ul>
+<li>使每行長度維持在 80 的字以內：限制 container max-width 800px</li>
+</ul>
+<h4 id="字體大小-1"><a href="#字體大小-1" class="headerlink" title="字體大小"></a>字體大小</h4><p>桌機的閱讀距離比手機長，故需把字體放大</p>
+<ul>
+<li>字體放大：paragraph font-size 1em (&#x3D; container 20px)</li>
+<li>行高增加：paragraph line-height 1.6em</li>
+<li>標題字體也放大：<code>&lt;h1&gt;</code> font-size 1.6em</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>: <span class="number">992px</span>) &#123;</span><br><span class="line">  <span class="selector-class">.container</span> &#123;</span><br><span class="line">     <span class="attribute">max-width</span>: <span class="number">800px</span>;</span><br><span class="line">     <span class="attribute">margin</span>: <span class="number">0</span> auto;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="selector-tag">h1</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">1.6em</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="selector-tag">p</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">1em</span>;</span><br><span class="line">    <span class="attribute">line-height</span>: <span class="number">1.6em</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CSS/" rel="tag"># CSS</a>
+              <a href="/tags/RWD/" rel="tag"># RWD</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/01/17/CSS-fundamental/" rel="prev" title="筆記 - CSS 基礎">
+                  <i class="fa fa-chevron-left"></i> 筆記 - CSS 基礎
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/01/19/CSS-Grid/" rel="next" title="筆記 - CSS Grid 排版系統">
+                  筆記 - CSS Grid 排版系統 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-pen"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ruby Lo</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

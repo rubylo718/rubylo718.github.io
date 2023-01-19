@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"rubylo718.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="本篇學習 CSS grid 排版系統與 Bootstrap 使用。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="筆記 - CSS Grid 排版系統">
+<meta property="og:url" content="https://rubylo718.github.io/2023/01/19/CSS-Grid/index.html">
+<meta property="og:site_name" content="Ruby Lo">
+<meta property="og:description" content="本篇學習 CSS grid 排版系統與 Bootstrap 使用。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-01-19T09:21:20.000Z">
+<meta property="article:modified_time" content="2023-01-19T09:21:20.000Z">
+<meta property="article:author" content="Ruby Lo">
+<meta property="article:tag" content="CSS">
+<meta property="article:tag" content="Grid">
+<meta property="article:tag" content="Bootstrap">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://rubylo718.github.io/2023/01/19/CSS-Grid/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://rubylo718.github.io/2023/01/19/CSS-Grid/","path":"2023/01/19/CSS-Grid/","title":"筆記 - CSS Grid 排版系統"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>筆記 - CSS Grid 排版系統 | Ruby Lo</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Ruby Lo</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">吃飯運動睡覺打扣</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Grid-%E5%85%83%E7%B4%A0%E5%AE%A3%E5%91%8A"><span class="nav-number">1.</span> <span class="nav-text">Grid 元素宣告</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%BE%A9-grid-container"><span class="nav-number">1.1.</span> <span class="nav-text">定義 grid container</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%BE%A9-grid-items"><span class="nav-number">1.2.</span> <span class="nav-text">定義 grid items</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%96%AE%E4%BD%8D%E4%BD%BF%E7%94%A8"><span class="nav-number">1.3.</span> <span class="nav-text">單位使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%BE%A9%E9%96%93%E8%B7%9D"><span class="nav-number">1.4.</span> <span class="nav-text">定義間距</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C-item-%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">操作 item 配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap-Grid-System"><span class="nav-number">3.</span> <span class="nav-text">Bootstrap Grid System</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Ruby Lo</p>
+  <div class="site-description" itemprop="description">努力學習程式開發，期望練成能在不同公司/產業/國家間移動的謀生技能，而且能透過技能與經驗的累積，提升自己在職場上的價值，幫助我進入更好更自由的工作環境。</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/rubylo718" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;rubylo718" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:rubylo718@gmail.com" title="E-Mail → mailto:rubylo718@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/wan-tzu-lo" title="LinkedIn → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;wan-tzu-lo" rel="noopener" target="_blank"><i class="fa-brands fa-linkedin-in fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="Back to top">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://rubylo718.github.io/2023/01/19/CSS-Grid/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ruby Lo">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ruby Lo">
+      <meta itemprop="description" content="努力學習程式開發，期望練成能在不同公司/產業/國家間移動的謀生技能，而且能透過技能與經驗的累積，提升自己在職場上的價值，幫助我進入更好更自由的工作環境。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="筆記 - CSS Grid 排版系統 | Ruby Lo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          筆記 - CSS Grid 排版系統
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-01-19 17:21:20" itemprop="dateCreated datePublished" datetime="2023-01-19T17:21:20+08:00">2023-01-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AD%86%E8%A8%98/" itemprop="url" rel="index"><span itemprop="name">筆記</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>本篇學習 CSS grid 排版系統與 Bootstrap 使用。</p>
+<span id="more"></span>
+
+<ul>
+<li>Flexbox 一維排版：已有現成內容，微調間距或對其方式（content-out）</li>
+<li>Grid 網格排版：先有排版設計，把元素放進去（layout-in）</li>
+</ul>
+<p>Grid system 由一組水平線和一組垂直線交錯組合而成，這些相交而成的線被稱為「欄 (column)」和「列 (row)」，可以想成是隱形的輔助線，用來調整間距和對齊。</p>
+<h2 id="Grid-元素宣告"><a href="#Grid-元素宣告" class="headerlink" title="Grid 元素宣告"></a>Grid 元素宣告</h2><h3 id="定義-grid-container"><a href="#定義-grid-container" class="headerlink" title="定義 grid container"></a>定義 grid container</h3><p>display: grid</p>
+<h3 id="定義-grid-items"><a href="#定義-grid-items" class="headerlink" title="定義 grid items"></a>定義 grid items</h3><p>定義 column 與 row 來形成 grid。以 3 column x 2 row 網格為例</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.wrapper</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  <span class="attribute">grid-template-rows</span>: <span class="number">75px</span> <span class="number">75px</span>;    </span><br><span class="line">  <span class="attribute">grid-template-columns</span>: <span class="number">100px</span> <span class="number">100px</span> <span class="number">100px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="單位使用"><a href="#單位使用" class="headerlink" title="單位使用"></a>單位使用</h3><p><code>grid-template-rows</code> 與 <code>grid-template-columns</code> 除了 px 之外，還有其他單位可以使用：</p>
+<ul>
+<li>px, em, rem, %</li>
+<li>fr: <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=ZPtpzuRajzM">fraction</a>, 指 container 剩餘空間分幾等分。當容器寬度改變時，fr 也能彈性縮放</li>
+<li>minmax(min, max): 給定尺寸的最小與最大值</li>
+<li>repeat(times, width): 大量劃定重複性的區塊，例如 <code>repeat(5, 50px)</code></li>
+<li>auto: 會有兩種行為<ul>
+<li>若搭配其他彈性單位（例如 fr），auto 元素尺寸照內容自動調整</li>
+<li>搭配固定單位（例如 px），auto 自動延伸填滿剩餘空間</li>
+</ul>
+</li>
+</ul>
+<h3 id="定義間距"><a href="#定義間距" class="headerlink" title="定義間距"></a>定義間距</h3><p><code>grid-gap</code> 在格子之間加入間隔</p>
+<p><code>grid-gap</code> 是 <code>grid-row-gap</code> 與 <code>grid-column-gap</code> 合併，先 row 再 column</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">grid-gap</span>: <span class="number">5px</span> <span class="number">20px</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="操作-item-配置"><a href="#操作-item-配置" class="headerlink" title="操作 item 配置"></a>操作 item 配置</h2><p>操作時需要用 grid line 來思考，若希望 item1 橫跨第一條線到第四條線，則寫</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item1</span> &#123;</span><br><span class="line">  <span class="attribute">grid-column-start</span>: <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">grid-column-end</span>: <span class="number">4</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 或是 */</span></span><br><span class="line"><span class="selector-class">.item1</span> &#123;</span><br><span class="line">  <span class="attribute">grid-column</span>: <span class="number">1</span> / <span class="number">4</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Bootstrap-Grid-System"><a href="#Bootstrap-Grid-System" class="headerlink" title="Bootstrap Grid System"></a>Bootstrap Grid System</h2><p><a target="_blank" rel="noopener" href="https://getbootstrap.com/docs/5.3/layout/grid/#how-it-works">官網 docs &gt; layout &gt; grid</a></p>
+<ol>
+<li><p>Bootstrap 最基本的元素是 container，所以起手式都是把 container div 放在 body 裡面。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Bootstrap container 默認的設計模式是 Mostly Fluid，表示在不同的 breakpoint 會修改 container 的最大寬度。若將 <code>.container</code> 改為 <code>.container-fluid</code> 則使畫面佔據整個 viewport 的寬度 (width: 100%)。</p>
+</li>
+<li><p>Bootstrap grid item 是由 row 包裝 column 而組成，每個 column 就是單個 item，是 row 的直接子元素才能運行。</p>
+</li>
+<li><p>Bootstrap CSS 默認為 flexbox ，故若 column 沒有指定寬度，每個 column 都是相同寬度。 Bootstrap grid layout 是以 12 個 column 來建構而成，若要指定 column 寬度，就指定類別，例如 <code>.col-4</code> 就會佔據 1&#x2F;3 的寬度。</p>
+</li>
+<li><p>當 viewport 變小時，grid row 會按比例縮小，每個 column item 會保持相對寬度。</p>
+</li>
+<li><p>Bootstrap layout 內含 6 個 breakpoint (<a target="_blank" rel="noopener" href="https://getbootstrap.com/docs/5.3/layout/grid/#grid-options">官網docs &gt; layout &gt; grid</a>)，等同 CSS media query 中的 <code>min-width</code>，表示在該 breakpoint 寬度以上的排版，使用時加入 class 即可。例如 <code>.col-sm-8</code> 指在 viewport 寬度 &gt;&#x3D; 576px 時，item 寬度要 8 個 column 寬。由於 mobile first，bootstrap 設計是為較大的 viewport 寬來設定 media query （跟之前學習的一樣），所以若沒指定都是預設最小 viewport 樣式 (&lt; 576px)。</p>
+</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;row&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-12 col-md-4 col-lg-3&quot;</span>&gt;</span>1<span class="tag">&lt;/<span class="name">div</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-12 col-md-4 col-lg-3&quot;</span>&gt;</span>2<span class="tag">&lt;/<span class="name">div</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-12 col-md-4 col-lg-6&quot;</span>&gt;</span>3<span class="tag">&lt;/<span class="name">div</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span> </span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;row&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-12 col-md-6 col-lg-8&quot;</span>&gt;</span>4<span class="tag">&lt;/<span class="name">div</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-12 col-md-6 col-lg-4&quot;</span>&gt;</span>5<span class="tag">&lt;/<span class="name">div</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span> </span><br></pre></td></tr></table></figure>
+
+<p>這樣就只需要加 html 元素類別，不用寫任何一行 CSS 就可以排版了。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CSS/" rel="tag"># CSS</a>
+              <a href="/tags/Grid/" rel="tag"># Grid</a>
+              <a href="/tags/Bootstrap/" rel="tag"># Bootstrap</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/01/18/CSS-RWD/" rel="prev" title="筆記 - 應用 Flexbox 實作 RWD 排版">
+                  <i class="fa fa-chevron-left"></i> 筆記 - 應用 Flexbox 實作 RWD 排版
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-pen"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ruby Lo</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

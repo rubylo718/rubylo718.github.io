@@ -136,18 +136,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">26</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -260,7 +260,7 @@
 <h2 id="Leetcode-8-String-to-Integer-atoi"><a href="#Leetcode-8-String-to-Integer-atoi" class="headerlink" title="Leetcode 8. String to Integer (atoi)"></a>Leetcode 8. String to Integer (atoi)</h2><p>總之緣起是這一題<a target="_blank" rel="noopener" href="https://leetcode.com/problems/string-to-integer-atoi/">Leetcode 8.</a>，題目要把 string 轉成在 32-bit 含正負號的整數。</p>
 <p>依照題目需求，把 string 讀入之後，從 index &#x3D; 0 開始先去除前頭的空白，然後讀到正號貨負號的話就用將 sign 值存成 1 或 -1。</p>
 <p>接下來是要確認每個 character 是 數字 digits 而不是文字或其他符號。</p>
-<p>(1) 求職小組夥伴 Allen 是用 object 做成表格來檢查，object 的 key 一定會是 string</p>
+<p>(1) 小組夥伴 Allen 是用 object 做成表格來檢查，object 的 key 一定會是 string</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> digits = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">  digits[i] = i <span class="comment">// 一開始有寫 digits[i + &quot;&quot;] 把 number 轉成 string</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// digits = &#123; &quot;0&quot;: 0, &quot;1&quot;: 1, &quot;2&quot;: 2, ... , &quot;9&quot;: 9 &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> result = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = index; i &lt; s.<span class="property">length</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">if</span> (digits[s[i]] !=== <span class="literal">undefined</span>) &#123;<span class="comment">// is digit</span></span><br><span class="line">  result = result * <span class="number">10</span> + digits[s[i]]</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">break</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>(2) 聽完 Allen 講完隔天我自己寫這題的時候，是先把 digits 弄成 string 存到 array 中，然後用 <code>if string[i] in array</code> 來判斷 character 是否為數字</p>
