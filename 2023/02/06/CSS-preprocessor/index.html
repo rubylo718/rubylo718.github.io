@@ -20,12 +20,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"rubylo718.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="認識 CSS preprocessor 與 webpack 任務管理工具。">
+    <meta name="description" content="認識 CSS preprocessor - Sass、任務管理工具 webpack，以及 CSS naming convention。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="筆記 - CSS 預處理器與 webpack">
 <meta property="og:url" content="https://rubylo718.github.io/2023/02/06/CSS-preprocessor/index.html">
 <meta property="og:site_name" content="Ruby Lo">
-<meta property="og:description" content="認識 CSS preprocessor 與 webpack 任務管理工具。">
+<meta property="og:description" content="認識 CSS preprocessor - Sass、任務管理工具 webpack，以及 CSS naming convention。">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://i.imgur.com/Q5iDqvw.png">
 <meta property="og:image" content="https://i.imgur.com/VF2G7DR.png">
@@ -33,6 +33,8 @@
 <meta property="article:modified_time" content="2023-02-06T08:55:46.000Z">
 <meta property="article:author" content="Ruby Lo">
 <meta property="article:tag" content="CSS">
+<meta property="article:tag" content="Sass">
+<meta property="article:tag" content="Webpack">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://i.imgur.com/Q5iDqvw.png">
 
@@ -140,12 +142,12 @@
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-count">30</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -232,7 +234,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%AD%86%E8%A8%98/" itemprop="url" rel="index"><span itemprop="name">筆記</span></a>
+          <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
         </span>
     </span>
 
@@ -246,7 +248,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>認識 CSS preprocessor 與 webpack 任務管理工具。</p>
+        <p>認識 CSS preprocessor - Sass、任務管理工具 webpack，以及 CSS naming convention。</p>
 <span id="more"></span>
 
 <h2 id="CSS-預處理器"><a href="#CSS-預處理器" class="headerlink" title="CSS 預處理器"></a>CSS 預處理器</h2><p>CSS (Cascading Style Sheets) 階層樣式表，是從上而下將所有樣式設定逐條夾到 .css 文件中，但有語法重複、可維護性不佳、可讀性不佳的問題。</p>
@@ -285,7 +287,7 @@
 <li>利用各種 loader 來識別檔案類型，並轉譯成 瀏覽器可接受的語法，例如 Babel 設定來轉譯 JavaScript ES6-11 的語法</li>
 <li>打包過程中可透過 plugin 工具 (minify, uglify) 來進行程式碼優化。</li>
 </ul>
-<p>現今前端框架的 CLI 工具，例如 create-react-app 或 Vue CLI，都整合了 Webpack 將專案的打包工作做好通用的預設設定，簡化了許多開發者這部分的負擔，並可以無痛的使用這些框架來有效管理程式碼。</p>
+<p>現今前端框架的 CLI 工具，例如 create-react-app 或 Vue CLI，都有整合 Webpack 專案打包工作的通用的預設。</p>
 <p><a target="_blank" rel="noopener" href="https://www.webpackjs.com/concepts/">webpack 官網</a> | <a target="_blank" rel="noopener" href="https://tw.alphacamp.co/blog/webpack-introduction">參考文章-AC</a> | <a target="_blank" rel="noopener" href="https://medium.com/i-am-mike/%E4%BB%80%E9%BA%BC%E6%98%AFwebpack-%E4%BD%A0%E9%9C%80%E8%A6%81webpack%E5%97%8E-2d8f9658241d">參考文章-教學文</a></p>
 <h3 id="webpack-開發環境建立"><a href="#webpack-開發環境建立" class="headerlink" title="webpack 開發環境建立"></a>webpack 開發環境建立</h3><h4 id="專案初始化"><a href="#專案初始化" class="headerlink" title="專案初始化"></a>專案初始化</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init -y</span><br></pre></td></tr></table></figure>
 
@@ -327,7 +329,8 @@
 <p>CSS</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">article</span> <span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">1.2em</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">article</span> <span class="selector-tag">h2</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">1em</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">article</span> + <span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="檔案模組化"><a href="#檔案模組化" class="headerlink" title="檔案模組化"></a>檔案模組化</h3><p>我們可以將檔案拆成多個，配合上妥善的命名，讓專案變得更容易管理<br><img src="https://i.imgur.com/VF2G7DR.png" alt="Image"></p>
+<h3 id="檔案模組化"><a href="#檔案模組化" class="headerlink" title="檔案模組化"></a>檔案模組化</h3><p>我們可以將檔案拆成多個，配合上妥善的命名，讓專案變得更容易管理。</p>
+<p><img src="https://i.imgur.com/VF2G7DR.png" alt="Image"></p>
 <ul>
 <li>開頭為底線 _ 的檔名在 Sass 中稱之為 partial，也就是一個低階的模組</li>
 <li>使用 @use 來引用 partial。引用名稱不包含底線與副檔名</li>
@@ -348,7 +351,7 @@
 
 <p>CSS</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">article</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">1em</span>;</span><br><span class="line">  <span class="attribute">font-weight</span>: normal;</span><br><span class="line">  <span class="attribute">color</span>: black;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">footer</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">0.8em</span>;</span><br><span class="line">  <span class="attribute">font-weight</span>: bolder;</span><br><span class="line">  <span class="attribute">color</span>: grey;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=Zz6eOVaaelI">推薦教學影片- Learn Sass In 20 Minutes</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=Zz6eOVaaelI">推薦教學影片 - Learn Sass In 20 Minutes</a></p>
 <hr>
 <h2 id="CSS-naming-convention"><a href="#CSS-naming-convention" class="headerlink" title="CSS naming convention"></a>CSS naming convention</h2><p>命名慣例透過 class name 了解結點功能或是帶有什麼屬性，以利多人協作。</p>
 <p>主流命名慣例分為：</p>
@@ -378,6 +381,8 @@
     <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/CSS/" rel="tag"># CSS</a>
+              <a href="/tags/Sass/" rel="tag"># Sass</a>
+              <a href="/tags/Webpack/" rel="tag"># Webpack</a>
           </div>
 
         
