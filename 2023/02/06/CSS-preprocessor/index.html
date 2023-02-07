@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"rubylo718.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="認識 CSS preprocessor 與 webpack 任務管理工具。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="筆記 - CSS 預處理器與 webpack">
+<meta property="og:url" content="https://rubylo718.github.io/2023/02/06/CSS-preprocessor/index.html">
+<meta property="og:site_name" content="Ruby Lo">
+<meta property="og:description" content="認識 CSS preprocessor 與 webpack 任務管理工具。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.imgur.com/Q5iDqvw.png">
+<meta property="og:image" content="https://i.imgur.com/VF2G7DR.png">
+<meta property="article:published_time" content="2023-02-06T08:55:46.000Z">
+<meta property="article:modified_time" content="2023-02-06T08:55:46.000Z">
+<meta property="article:author" content="Ruby Lo">
+<meta property="article:tag" content="CSS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/Q5iDqvw.png">
+
+
+<link rel="canonical" href="https://rubylo718.github.io/2023/02/06/CSS-preprocessor/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://rubylo718.github.io/2023/02/06/CSS-preprocessor/","path":"2023/02/06/CSS-preprocessor/","title":"筆記 - CSS 預處理器與 webpack"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>筆記 - CSS 預處理器與 webpack | Ruby Lo</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Ruby Lo</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">吃飯運動睡覺打扣</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS-%E9%A0%90%E8%99%95%E7%90%86%E5%99%A8"><span class="nav-number">1.</span> <span class="nav-text">CSS 預處理器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8D%E8%A9%9E%E9%87%90%E6%B8%85"><span class="nav-number">1.1.</span> <span class="nav-text">名詞釐清</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D-Sass"><span class="nav-number">1.2.</span> <span class="nav-text">安裝 Sass</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%83%85%E5%A2%83%E6%8C%87%E4%BB%A4"><span class="nav-number">1.3.</span> <span class="nav-text">常用情境指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B7%A8%E8%AD%AF%E5%96%AE%E4%B8%80-sass-%E6%AA%94%E6%A1%88%E7%82%BA-css-%E6%AA%94%E6%A1%88"><span class="nav-number">1.3.1.</span> <span class="nav-text">編譯單一 sass 檔案為 css 檔案</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%BD%E8%B9%A4%E5%96%AE%E4%B8%80-sass-%E6%AA%94%E6%A1%88%E4%B8%A6%E6%8C%81%E7%BA%8C%E7%B7%A8%E8%AD%AF%E6%88%90-css"><span class="nav-number">1.3.2.</span> <span class="nav-text">追蹤單一 sass 檔案並持續編譯成 css</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%BD%E8%B9%A4%E8%B3%87%E6%96%99%E5%A4%BE%E4%B8%A6%E6%8C%81%E7%BA%8C%E7%B7%A8%E8%AD%AF%E6%88%90-css"><span class="nav-number">1.3.3.</span> <span class="nav-text">追蹤資料夾並持續編譯成 css</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Webpack"><span class="nav-number">2.</span> <span class="nav-text">Webpack</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#webpack-%E9%96%8B%E7%99%BC%E7%92%B0%E5%A2%83%E5%BB%BA%E7%AB%8B"><span class="nav-number">2.1.</span> <span class="nav-text">webpack 開發環境建立</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%88%E6%A1%88%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">2.1.1.</span> <span class="nav-text">專案初始化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6"><span class="nav-number">2.1.2.</span> <span class="nav-text">安裝套件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E8%A8%AD%E5%AE%9A%E6%AA%94"><span class="nav-number">2.1.3.</span> <span class="nav-text">建立設定檔</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#webpack-%E8%A8%AD%E5%AE%9A"><span class="nav-number">2.1.4.</span> <span class="nav-text">webpack 設定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#html-%E8%BC%89%E5%85%A5%E7%B7%A8%E8%BC%AF%E5%BE%8C%E6%AA%94%E6%A1%88"><span class="nav-number">2.1.5.</span> <span class="nav-text">html 載入編輯後檔案</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A8%AD%E5%AE%9A%E7%B7%A8%E8%AD%AF%E8%85%B3%E6%9C%AC-script"><span class="nav-number">2.1.6.</span> <span class="nav-text">設定編譯腳本 script</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%B7%E8%A1%8C%E7%B7%A8%E8%AD%AF"><span class="nav-number">2.1.7.</span> <span class="nav-text">執行編譯</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sass-%E6%A0%B8%E5%BF%83%E8%AA%9E%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">Sass 核心語法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%8A%E6%95%B8%E8%88%87%E9%81%8B%E7%AE%97%E5%AD%90"><span class="nav-number">3.1.</span> <span class="nav-text">變數與運算子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A2%E7%8B%80%E7%B5%90%E6%A7%8B"><span class="nav-number">3.2.</span> <span class="nav-text">巢狀結構</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AA%94%E6%A1%88%E6%A8%A1%E7%B5%84%E5%8C%96"><span class="nav-number">3.3.</span> <span class="nav-text">檔案模組化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B9%BC%E6%89%BF%E8%88%87%E8%A6%86%E5%AF%AB"><span class="nav-number">3.4.</span> <span class="nav-text">繼承與覆寫</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mixin"><span class="nav-number">3.5.</span> <span class="nav-text">mixin</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS-naming-convention"><span class="nav-number">4.</span> <span class="nav-text">CSS naming convention</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Ruby Lo</p>
+  <div class="site-description" itemprop="description">努力學習程式開發，期望練成能在不同公司/產業/國家間移動的謀生技能，而且能透過技能與經驗的累積，提升自己在職場上的價值，幫助我進入更好更自由的工作環境。</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/rubylo718" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;rubylo718" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:rubylo718@gmail.com" title="E-Mail → mailto:rubylo718@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/wan-tzu-lo" title="LinkedIn → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;wan-tzu-lo" rel="noopener" target="_blank"><i class="fa-brands fa-linkedin-in fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="Back to top">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://rubylo718.github.io/2023/02/06/CSS-preprocessor/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ruby Lo">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ruby Lo">
+      <meta itemprop="description" content="努力學習程式開發，期望練成能在不同公司/產業/國家間移動的謀生技能，而且能透過技能與經驗的累積，提升自己在職場上的價值，幫助我進入更好更自由的工作環境。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="筆記 - CSS 預處理器與 webpack | Ruby Lo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          筆記 - CSS 預處理器與 webpack
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-02-06 16:55:46" itemprop="dateCreated datePublished" datetime="2023-02-06T16:55:46+08:00">2023-02-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AD%86%E8%A8%98/" itemprop="url" rel="index"><span itemprop="name">筆記</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>認識 CSS preprocessor 與 webpack 任務管理工具。</p>
+<span id="more"></span>
+
+<h2 id="CSS-預處理器"><a href="#CSS-預處理器" class="headerlink" title="CSS 預處理器"></a>CSS 預處理器</h2><p>CSS (Cascading Style Sheets) 階層樣式表，是從上而下將所有樣式設定逐條夾到 .css 文件中，但有語法重複、可維護性不佳、可讀性不佳的問題。</p>
+<p>更有效的 CSS 撰寫與管理：CSS Preprocessor 預處理器</p>
+<p>目前流行的 CSS 預處理器： Sass, Less, Stylus</p>
+<h3 id="名詞釐清"><a href="#名詞釐清" class="headerlink" title="名詞釐清"></a>名詞釐清</h3><ul>
+<li>Sass&#x2F;SCSS 為目前業界主流，SCSS (Sassy CSS) 副檔名為 <code>.scss</code></li>
+<li>Sass indented syntax 副檔名為 <code>.sass</code> 為舊版語法</li>
+</ul>
+<p>編寫 <code>.scss</code> 檔案 透過編譯 (compile) 成 plain CSS 讓瀏覽器使用。</p>
+<h3 id="安裝-Sass"><a href="#安裝-Sass" class="headerlink" title="安裝 Sass"></a>安裝 Sass</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install sass@1.26.7</span><br></pre></td></tr></table></figure>
+
+<h3 id="常用情境指令"><a href="#常用情境指令" class="headerlink" title="常用情境指令"></a>常用情境指令</h3><h4 id="編譯單一-sass-檔案為-css-檔案"><a href="#編譯單一-sass-檔案為-css-檔案" class="headerlink" title="編譯單一 sass 檔案為 css 檔案"></a>編譯單一 sass 檔案為 css 檔案</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx sass main.scss output.css</span><br></pre></td></tr></table></figure>
+<p>會跑出很多檔案，其中 output.css 是編譯的結果</p>
+<h4 id="追蹤單一-sass-檔案並持續編譯成-css"><a href="#追蹤單一-sass-檔案並持續編譯成-css" class="headerlink" title="追蹤單一 sass 檔案並持續編譯成 css"></a>追蹤單一 sass 檔案並持續編譯成 css</h4><p>使用 <code>--watch</code> 當 .scss 檔案有變動，自動編譯成 .css 檔案</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx sass --watch main.scss:output.css</span><br></pre></td></tr></table></figure>
+
+<h4 id="追蹤資料夾並持續編譯成-css"><a href="#追蹤資料夾並持續編譯成-css" class="headerlink" title="追蹤資料夾並持續編譯成 css"></a>追蹤資料夾並持續編譯成 css</h4><p>追蹤整個資料夾（包含子資料夾）中的 .scss 檔案，並輸出 .css 檔案至另一個資料夾。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx sass --watch scss_dir:css_dir</span><br></pre></td></tr></table></figure>
+<p>接下來在 scss_dir 資料夾裡的變動，都會同步到 css_dir 資料夾中。</p>
+<hr>
+<h2 id="Webpack"><a href="#Webpack" class="headerlink" title="Webpack"></a>Webpack</h2><p>Webpack 與 gulp 為前端實務上常使用的任務管理工具。</p>
+<p>Webpack 為 module bundler （模組打包工具），從進入點 entry point 中開始分析專案結構，找出每個模組間的依賴關係 dependency，並分析其中是否有瀏覽器不能直接使用的語法（例如 scss），甚至檢查程式碼中是否有引入 CSS, 圖片檔等，將他們轉換並打包在一起，最後產出瀏覽器可以識別的檔案（html, js, css）以方便部署。</p>
+<ul>
+<li>模組化：大型專案中，依照功能切成一個個的小 module （檔案），方便組織與管理。</li>
+<li>打包：模組會依照各自負責的功能，會有父子組件相互依賴，解析模組間的依賴關係並把最後的結果輸出，方便部署</li>
+</ul>
+<p>另外 webpack 對模組有更廣泛的定義，除了 JavaScript 功能之外，另外像是</p>
+<ul>
+<li>透過 npm 安裝引用的第三方套件 </li>
+<li>使用 CSS 預處理器與法</li>
+<li>各種圖檔格式引入</li>
+</ul>
+<p>其他用途： </p>
+<ul>
+<li>利用各種 loader 來識別檔案類型，並轉譯成 瀏覽器可接受的語法，例如 Babel 設定來轉譯 JavaScript ES6-11 的語法</li>
+<li>打包過程中可透過 plugin 工具 (minify, uglify) 來進行程式碼優化。</li>
+</ul>
+<p>現今前端框架的 CLI 工具，例如 create-react-app 或 Vue CLI，都整合了 Webpack 將專案的打包工作做好通用的預設設定，簡化了許多開發者這部分的負擔，並可以無痛的使用這些框架來有效管理程式碼。</p>
+<p><a target="_blank" rel="noopener" href="https://www.webpackjs.com/concepts/">webpack 官網</a> | <a target="_blank" rel="noopener" href="https://tw.alphacamp.co/blog/webpack-introduction">參考文章-AC</a> | <a target="_blank" rel="noopener" href="https://medium.com/i-am-mike/%E4%BB%80%E9%BA%BC%E6%98%AFwebpack-%E4%BD%A0%E9%9C%80%E8%A6%81webpack%E5%97%8E-2d8f9658241d">參考文章-教學文</a></p>
+<h3 id="webpack-開發環境建立"><a href="#webpack-開發環境建立" class="headerlink" title="webpack 開發環境建立"></a>webpack 開發環境建立</h3><h4 id="專案初始化"><a href="#專案初始化" class="headerlink" title="專案初始化"></a>專案初始化</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init -y</span><br></pre></td></tr></table></figure>
+
+<h4 id="安裝套件"><a href="#安裝套件" class="headerlink" title="安裝套件"></a>安裝套件</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install webpack@4.43.0 webpack-cli@3.3.11 mini-css-extract-plugin@0.9.0 css-loader@3.5.3 sass-loader@8.0.2 </span><br></pre></td></tr></table></figure>
+<ul>
+<li>webpack &amp; webpack-cli：主要的打包工具</li>
+<li>css-loader &amp; sass-loader：編譯 sass 檔案</li>
+<li>mini-css-extract-plugin：抽離 css 檔案</li>
+</ul>
+<h4 id="建立設定檔"><a href="#建立設定檔" class="headerlink" title="建立設定檔"></a>建立設定檔</h4><p>專案架構規劃如下圖：<br><img src="https://i.imgur.com/Q5iDqvw.png" alt="專案架構規劃"><br>root：index.html  及 webpack.config.js，<br>src 資料夾:：編譯前的原始碼 (source)</p>
+<p>網頁的 index.html 放在專案的第一層<br>Sass 設定檔放在 src&#x2F;scss&#x2F;main.scss<br>設定 webpack 進入點： src&#x2F;main.js，webpack 會以這個檔案作為出發點依序去找相關連的檔案</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./scss/main.scss&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;JS loaded!&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="webpack-設定"><a href="#webpack-設定" class="headerlink" title="webpack 設定"></a>webpack 設定</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// webpack.config.js</span></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">MiniCssExtractPlugin</span> = <span class="built_in">require</span>(<span class="string">&#x27;mini-css-extract-plugin&#x27;</span>)</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">entry</span>: <span class="string">&#x27;./src/main.js&#x27;</span>,</span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">path</span>: path.<span class="title function_">resolve</span>(__dirname, <span class="string">&#x27;dist&#x27;</span>),</span><br><span class="line">    <span class="attr">filename</span>: <span class="string">&#x27;bundle.js&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">module</span>: &#123;</span><br><span class="line">    <span class="attr">rules</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/\.scss$/</span>,</span><br><span class="line">        <span class="attr">use</span>: [</span><br><span class="line">          <span class="title class_">MiniCssExtractPlugin</span>.<span class="property">loader</span>,</span><br><span class="line">          <span class="string">&#x27;css-loader&#x27;</span>,</span><br><span class="line">          <span class="string">&#x27;sass-loader&#x27;</span></span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">plugins</span>: [<span class="keyword">new</span> <span class="title class_">MiniCssExtractPlugin</span>()]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>entry：進入點指向 ‘.&#x2F;src&#x2F;main.js’</li>
+<li>output：檔案編譯後的輸出位置，把 main.js 打包成 dist 資料夾裡面的 bundle.js</li>
+<li>rules 裡面針對 *.scss 副檔名的檔案，使用 mini-css-extract-plugin、css-loader 及 sass-loader 三個 loader 來編譯</li>
+<li>編譯後的 scss 只會改變副檔名，檔名的部分不變 (main.css)</li>
+</ul>
+<h4 id="html-載入編輯後檔案"><a href="#html-載入編輯後檔案" class="headerlink" title="html 載入編輯後檔案"></a>html 載入編輯後檔案</h4><p>在 index.html 來載入預計編譯好的檔案位置（dist&#x2F;bundle.js, dist&#x2F;main.css）</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;dist/main.css&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;dist/bundle.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="設定編譯腳本-script"><a href="#設定編譯腳本-script" class="headerlink" title="設定編譯腳本 script"></a>設定編譯腳本 script</h4><p>在 package.json 中新增一個 script</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">   <span class="attr">&quot;build&quot;</span><span class="punctuation">:</span> <span class="string">&quot;webpack --mode production&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="執行編譯"><a href="#執行編譯" class="headerlink" title="執行編譯"></a>執行編譯</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run build</span><br></pre></td></tr></table></figure>
+<p>run 完之後就可以在專案中看到 dist 資料夾，包含 js 以及被編譯過的 css</p>
+<hr>
+<h2 id="Sass-核心語法"><a href="#Sass-核心語法" class="headerlink" title="Sass 核心語法"></a>Sass 核心語法</h2><h3 id="變數與運算子"><a href="#變數與運算子" class="headerlink" title="變數與運算子"></a>變數與運算子</h3><p>冒號進行變數指派，分號結尾。可以針對數值進行計算。<br>例如<br>Sass</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$font-stack</span>: Helvetica, sans-serif;</span><br><span class="line"><span class="variable">$font-size</span>: <span class="number">18px</span>;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.comment</span> &#123;</span><br><span class="line">  <span class="attribute">font</span>: <span class="number">100%</span> <span class="variable">$font-stack</span>;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">8</span>/<span class="number">10</span>*<span class="variable">$font-size</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>CSS</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.comment</span> &#123;</span><br><span class="line">  <span class="attribute">font</span>: <span class="number">100%</span> Helvetica, sans-serif;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">14.4px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>補充：考量到網頁的 accessibility，使用相對單位讓瀏覽器自行調整字體大小，以適用於不同使用者。</p>
+<h3 id="巢狀結構"><a href="#巢狀結構" class="headerlink" title="巢狀結構"></a>巢狀結構</h3><p>在 sass 中可以使用巢狀語法來編寫 組合選擇符（nested combinator）例如空白、&gt; + ~ 等，以達到更好的可讀性。<br>例子為針對 <code>&lt;article&gt;</code> 底下的 <code>&lt;h1&gt;&lt;h2&gt;</code> 標籤進行設定，使文章中標題的表現與全站的標題不同。<br>Sass</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">article</span> &#123;</span><br><span class="line">  <span class="selector-tag">h1</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">1.2em</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-tag">h2</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">1.0em</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  +<span class="selector-tag">div</span>&#123; </span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">20px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>CSS</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">article</span> <span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">1.2em</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">article</span> <span class="selector-tag">h2</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">1em</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">article</span> + <span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="檔案模組化"><a href="#檔案模組化" class="headerlink" title="檔案模組化"></a>檔案模組化</h3><p>我們可以將檔案拆成多個，配合上妥善的命名，讓專案變得更容易管理<br><img src="https://i.imgur.com/VF2G7DR.png" alt="Image"></p>
+<ul>
+<li>開頭為底線 _ 的檔名在 Sass 中稱之為 partial，也就是一個低階的模組</li>
+<li>使用 @use 來引用 partial。引用名稱不包含底線與副檔名</li>
+<li>模組有自己的命名空間 (namespace) ，使用模組中的變數時，必須給命名空間加上前綴，例如 base.$primary-color</li>
+</ul>
+<h3 id="繼承與覆寫"><a href="#繼承與覆寫" class="headerlink" title="繼承與覆寫"></a>繼承與覆寫</h3><p>讓多個類別都使用共同的屬性。使用 % 宣告類別，並使用 @extend 來執行繼承。若要覆寫屬性，則直接宣告即可。</p>
+<p>例如，頁面中三種訊息要使用不同字體顏色，但同樣的邊線、padding，透過繼承（邊線與 padding）與覆寫（字體顏色）來寫程式碼。</p>
+<p>Sass</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">%message &#123;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">10px</span>;</span><br><span class="line">  <span class="attribute">color</span>: black;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.message-success</span> &#123;</span><br><span class="line">  <span class="keyword">@extend</span> %message;</span><br><span class="line">  <span class="attribute">color</span>: green;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.message-info</span> &#123;</span><br><span class="line">  <span class="keyword">@extend</span> %message;</span><br><span class="line">  <span class="attribute">color</span>: yellow;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.message-error</span> &#123;</span><br><span class="line">  <span class="keyword">@extend</span> %message;</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>CSS </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.message-error</span>, <span class="selector-class">.message-info</span>, <span class="selector-class">.message-success</span> &#123;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">10px</span>;</span><br><span class="line">  <span class="attribute">color</span>: black;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.message-success</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: green;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.message-info</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: yellow;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.message-error</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="mixin"><a href="#mixin" class="headerlink" title="mixin"></a>mixin</h3><p>在物件導向程式設計中，mixin 意指一種工具形式的類別，用以附加在目標類別之上，為目標類別增添額外的方法或屬性，可以將它視作一種更彈性的繼承 (inherit) 的實作方式。</p>
+<p>在 Sass 裡，使用 @mixin 進行宣告，使用 @include 使用 mixin。在以下例子中，我們創建了一個名為 font-setting 的 mixin</p>
+<p>Sass</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> font-setting(<span class="variable">$size</span>, <span class="variable">$weight</span>, <span class="variable">$color</span>) &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="variable">$size</span>;</span><br><span class="line">  <span class="attribute">font-weight</span>: <span class="variable">$weight</span>;</span><br><span class="line">  <span class="attribute">color</span>: <span class="variable">$color</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">article</span> &#123; <span class="keyword">@include</span> font-setting(<span class="number">1.0em</span>, normal, black); &#125;</span><br><span class="line"><span class="selector-tag">footer</span> &#123; <span class="keyword">@include</span> font-setting(<span class="number">0.8em</span>, bolder, grey); &#125;</span><br></pre></td></tr></table></figure>
+
+<p>CSS</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">article</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">1em</span>;</span><br><span class="line">  <span class="attribute">font-weight</span>: normal;</span><br><span class="line">  <span class="attribute">color</span>: black;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">footer</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">0.8em</span>;</span><br><span class="line">  <span class="attribute">font-weight</span>: bolder;</span><br><span class="line">  <span class="attribute">color</span>: grey;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=Zz6eOVaaelI">推薦教學影片- Learn Sass In 20 Minutes</a></p>
+<hr>
+<h2 id="CSS-naming-convention"><a href="#CSS-naming-convention" class="headerlink" title="CSS naming convention"></a>CSS naming convention</h2><p>命名慣例透過 class name 了解結點功能或是帶有什麼屬性，以利多人協作。</p>
+<p>主流命名慣例分為：</p>
+<ul>
+<li>OOCSS (Object oriented CSS)：物件導向命名法，例如 Bootstrap 中 .btn 代表按鈕的樣式，d-flex 代表以 flex 方式排版</li>
+<li>SMACSS (Scalable and Modular Architecture for CSS)：明確地透過結構模組化來命名，如 Base、Layout、Module、State、Theme</li>
+<li>BEM (Block Element Modifier)：透過 BEM 三者來命名，可以避免樣式衝突，確保每個組件名字都是獨一無二的，同時能以透過觀察 class 名稱，就能了解 CSS 階層架構，例如 <code>list__item--hover</code> 為滑鼠滑過表單子項目時的樣式<ul>
+<li>Block: 指在 Web 開發中的模組，每個 Block 在邏輯和功能上都應該是互相獨立的</li>
+<li>Element: 相依於 Block 中的一環，不能單獨使用，以 ‘__’ 連接 Block</li>
+<li>Modifier: 用於定義 Block 或 Element 的外觀、狀態或類型，以 ‘–’ 連接對象</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">&quot;order-form&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">&quot;order-form__name-input&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">&quot;order-form__name-input--disabled&quot;</span> <span class="attr">disabled</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>由於 BEM 命名會產生很長的類別名稱，在 Sass 中可以透過 &amp; 符號帶入父層名稱，來使得代碼更加簡潔：<br>Sass</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.order-form</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">50%</span>;</span><br><span class="line">  &amp;__name-<span class="selector-tag">input</span> &#123; <span class="comment">// 等同 .order-form__name-input</span></span><br><span class="line">    <span class="attribute">width</span>: <span class="number">50%</span>;</span><br><span class="line">    &amp;<span class="attr">--disabled</span> &#123; <span class="comment">// 等同 .order-form__name-input--disabled</span></span><br><span class="line">      <span class="attribute">width</span>: <span class="number">50%</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>CSS</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.order-form</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">50%</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.order-form__name-input</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">50%</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.order-form__name-input--disabled</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">50%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CSS/" rel="tag"># CSS</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/01/19/CSS-Grid/" rel="prev" title="筆記 - CSS Grid 排版系統">
+                  <i class="fa fa-chevron-left"></i> 筆記 - CSS Grid 排版系統
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-pen"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ruby Lo</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
