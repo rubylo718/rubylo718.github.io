@@ -20,12 +20,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"rubylo718.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="Simple Twitter專案，是以「前後分離、團隊協作」的方式，在兩週內開發一個類似Twitter的網頁應用程式，指定功能包含註冊登入、推文留言、按讚、追蹤…等等的功能，可以說是AC畢業生們的必經之路。">
+    <meta name="description" content="Simple Twitter 專案，是以「前後分離、團隊協作」的方式，在兩週內開發一個類似 Twitter 的網頁應用程式，指定功能包含註冊登入、推文留言、按讚、追蹤…等等的功能，可以說是 AC 畢業生們的必經之路。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ALPHA Camp畢業專案-Simple Twitter專案回顧與反思">
 <meta property="og:url" content="https://rubylo718.github.io/2022/09/01/twitterReflection/index.html">
 <meta property="og:site_name" content="Ruby Lo">
-<meta property="og:description" content="Simple Twitter專案，是以「前後分離、團隊協作」的方式，在兩週內開發一個類似Twitter的網頁應用程式，指定功能包含註冊登入、推文留言、按讚、追蹤…等等的功能，可以說是AC畢業生們的必經之路。">
+<meta property="og:description" content="Simple Twitter 專案，是以「前後分離、團隊協作」的方式，在兩週內開發一個類似 Twitter 的網頁應用程式，指定功能包含註冊登入、推文留言、按讚、追蹤…等等的功能，可以說是 AC 畢業生們的必經之路。">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://i.imgur.com/xnuhMuP.png">
 <meta property="og:image" content="https://i.imgur.com/ezf1gD7.png">
@@ -247,37 +247,37 @@
     
     <div class="post-body" itemprop="articleBody">
         <blockquote>
-<p>Simple Twitter專案，是以「前後分離、團隊協作」的方式，在兩週內開發一個類似Twitter的網頁應用程式，指定功能包含註冊登入、推文留言、按讚、追蹤…等等的功能，可以說是AC畢業生們的必經之路。</p>
+<p>Simple Twitter 專案，是以「前後分離、團隊協作」的方式，在兩週內開發一個類似 Twitter 的網頁應用程式，指定功能包含註冊登入、推文留言、按讚、追蹤…等等的功能，可以說是 AC 畢業生們的必經之路。</p>
 </blockquote>
 <span id="more"></span>
 <p><a target="_blank" rel="noopener" href="https://ziwenying.com/simple-twitter-frontend/#/login">Simple Twitter入口*</a> (測試帳號 user1, 密碼12345678)</p>
-<p>*由於heroku免費方案即將於2022&#x2F;11月底終止服務，屆時連結將會失效，請見諒</p>
+<p>*由於 heroku 免費方案即將於 2022&#x2F;11 月底終止服務，屆時連結將會失效，請見諒</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/ritachien/twitter-api-2022">後端Github Repo</a> | <a target="_blank" rel="noopener" href="https://github.com/ziwenying/simple-twitter-frontend">前端Github Repo</a></p>
 <p><img src="https://i.imgur.com/xnuhMuP.png" alt="包含前端夥伴們修復破版的心情XD"></p>
-<center>Simple Twitter首頁，包含前端夥伴們修復破版的心情XD </center>
+<center>Simple Twitter 首頁，包含前端夥伴們修復破版的心情 XD </center>
 
 <hr>
-<h3 id="專案概述"><a href="#專案概述" class="headerlink" title="專案概述"></a>專案概述</h3><p>專案選擇以「前後分離」的開發模式進行。前端為YT與Ziwen兩位同學，使用Vue.js進行開發。後端API Server由Rita與我使用Node.js與Express.js框架開發，運用關連式資料庫MySQL，並部署至Heroku雲端空間。</p>
+<h3 id="專案概述"><a href="#專案概述" class="headerlink" title="專案概述"></a>專案概述</h3><p>專案選擇以「前後分離」的開發模式進行。前端為 YT 與 Ziwen 兩位同學，使用 Vue.js 進行開發。後端 API Server 由 Rita 與我使用 Node.js 與 Express.js 框架開發，運用關連式資料庫 MySQL，並部署至 Heroku 雲端空間。</p>
 <h3 id="組隊考量與過程"><a href="#組隊考量與過程" class="headerlink" title="組隊考量與過程"></a>組隊考量與過程</h3><p>專案要順利完成，團隊協調性與開發技術能力同等重要；又耳聞業界是以前後分離開發模式為主流，加上觀察前後端同學人數懸殊。所以我早早決定：主動組隊，希望以前後分離模式協作開發！</p>
 <p>後端同學Rita是我進AC學期二以來一路相同進度的同學，儘管從未見過本人，但在工作坊、學習平台、社群上的交流，注意到她除了學習歷程與我相似，也感受到她對細節的注重，討論問題的過程中展現積極還有分析理解能力，是與我相似的學習風格，也很欣賞她喜歡動手嘗試新工具，所以學期三一開始就主動邀請她一起組隊！</p>
-<p>與前端同學的交流機會較少，與Rita討論後，決定邀請在學期二作業觀摩中印象深刻的前端T同學，再請他邀請目前進度班級中他想合作的同學YT。可惜T同學因為個人規劃決定退出Twitter開發，所以我們再請YT邀請了Ziwen，隊伍就這樣組成了！</p>
-<h3 id="開發過程"><a href="#開發過程" class="headerlink" title="開發過程"></a>開發過程</h3><h4 id="開發前期"><a href="#開發前期" class="headerlink" title="開發前期"></a>開發前期</h4><p>團隊先從拆解User stroy開始，逐項確定各項功能以及允收標準（如圖）。AC學習教練的叮嚀串接的部分可能是容易遇到問題的環節，所以小組也約定優先進行登入至首頁的部分，完成即進行部署與串接測試，及早排除可能的困難。同時也確定團隊的文件平台(HackMD)、即時溝通工具(Discord)。前端夥伴非常快速地，從UI設計稿中拆解需要的元件與所需資料；後端以TDD的方式，依據測試檔規格定義ERD與Model，以RESTful方式依據資料切分路由，整理成API List方便管理、也讓前端夥伴容易查找。另外不論是前後端的開發中，PR送出後皆需另一位成員進行code review後才合併至主線，所以小組也先約定了coding style以及commit的寫法。</p>
-<p><img src="https://i.imgur.com/ezf1gD7.png" alt="從User Stroy到Acceptance Criteria（此圖僅包含部分），需要團隊共同逐項確認"></p>
-<center>從User Stroy到Acceptance Criteria（此圖僅包含部分），需要團隊共同逐項確認</center>
+<p>與前端同學的交流機會較少，與 Rita 討論後，決定邀請在學期二作業觀摩中印象深刻的前端T同學，再請他邀請目前進度班級中他想合作的同學 YT。可惜T同學因為個人規劃決定退出 Twitter 開發，所以我們再請 YT 邀請了 Ziwen，隊伍就這樣組成了！</p>
+<h3 id="開發過程"><a href="#開發過程" class="headerlink" title="開發過程"></a>開發過程</h3><h4 id="開發前期"><a href="#開發前期" class="headerlink" title="開發前期"></a>開發前期</h4><p>團隊先從拆解 User stroy 開始，逐項確定各項功能以及允收標準（如圖）。AC 學習教練的叮嚀串接的部分可能是容易遇到問題的環節，所以小組也約定優先進行登入至首頁的部分，完成即進行部署與串接測試，及早排除可能的困難。同時也確定團隊的文件平台 (HackMD)、即時溝通工具 (Discord)。前端夥伴非常快速地，從UI 設計稿中拆解需要的元件與所需資料；後端以 TDD 的方式，依據測試檔規格定義 ERD 與 Model，以 RESTful 方式依據資料切分路由，整理成 API List 方便管理、也讓前端夥伴容易查找。另外不論是前後端的開發中，PR 送出後皆需另一位成員進行 code review 後才合併至主線，所以小組也先約定了 coding style 以及 commit 的寫法。</p>
+<p><img src="https://i.imgur.com/ezf1gD7.png" alt="從User Stroy 到 Acceptance Criteria（此圖僅包含部分），需要團隊共同逐項確認"></p>
+<center>從 User Stroy 到 Acceptance Criteria（此圖僅包含部分），需要團隊共同逐項確認</center>
 <br/>
 
-<h4 id="分工細節"><a href="#分工細節" class="headerlink" title="分工細節"></a>分工細節</h4><p>後端從閱讀測試文件確認路由具體需求，共同確認路由清單、開發順序後，依照controller分類進行分工，分頭進行開發，除了一方遇到問題時不影響另一方進度，也避免許多可能的merge conflicts。我主要負責首頁取得所有推文、取得與更新使用者相關資訊、以及回覆的相關路由開發，這些路由的API文件的撰寫與維護，種子資料撰寫由我與隊友分攤。同時我也負責每日彙整小組進度回報，確定大家都有在軌道上，還有與AC或導師的聯繫、安排會議。</p>
-<h4 id="專案管理"><a href="#專案管理" class="headerlink" title="專案管理"></a>專案管理</h4><p>在專案開始時我為團隊建立了Trello看板，根據敏捷的精神，從左至右放置了To Do, Developing, Testing, Send to Code Review, Merged, Deployed的列表，並定義每張卡片只能包含一個功能，Developing中一人只能有一張卡片（開發一個功能），也讓Trello連動Github，讓卡片可以連結PR狀態，方便管理相對應的工作。開發中後期待辦事項一多的時候，謹慎思考並選擇最應該優先處理的那張卡片，放Developing中，再看著一張張卡片被完成移往右邊，Trello看似簡單的設計與操作，出乎意料外地讓我獲得許多踏實感！</p>
+<h4 id="分工細節"><a href="#分工細節" class="headerlink" title="分工細節"></a>分工細節</h4><p>後端從閱讀測試文件確認路由具體需求，共同確認路由清單、開發順序後，依照 controller 分類進行分工，分頭進行開發，除了一方遇到問題時不影響另一方進度，也避免許多可能的 merge conflicts。我主要負責首頁取得所有推文、取得與更新使用者相關資訊、以及回覆的相關路由開發，這些路由的 API 文件的撰寫與維護，種子資料撰寫由我與隊友分攤。同時我也負責每日彙整小組進度回報，確定大家都有在軌道上，還有與 AC 或導師的聯繫、安排會議。</p>
+<h4 id="專案管理"><a href="#專案管理" class="headerlink" title="專案管理"></a>專案管理</h4><p>在專案開始時我為團隊建立了 Trello 看板，根據敏捷的精神，從左至右放置了 To Do, Developing, Testing, Send to Code Review, Merged, Deployed 的列表，並定義每張卡片只能包含一個功能，Developing 中一人只能有一張卡片（開發一個功能），也讓 Trello 連動 Github，讓卡片可以連結 PR 狀態，方便管理相對應的工作。開發中後期待辦事項一多的時候，謹慎思考並選擇最應該優先處理的那張卡片，放 Developing 中，再看著一張張卡片被完成移往右邊，Trello 看似簡單的設計與操作，出乎意料外地讓我獲得許多踏實感！</p>
 <p><img src="https://i.imgur.com/C07bhQp.png" alt="開發初期的Trello看板"></p>
-<center>開發初期的Trello看板</center>
+<center>開發初期的 Trello 看板</center>
 
 <hr>
-<h3 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h3><h4 id="收穫"><a href="#收穫" class="headerlink" title="收穫"></a>收穫</h4><p>收穫最大的部分是整體團隊協作經驗，這個是全然不同的工作模式，除了團隊所有人需要的聚焦與同步，也了解與前端夥伴、後端夥伴的不同的溝通需求與分工，也使用了很多十分有幫助的工具（例如trello, github issue等），在code review中學習抓到適當的commit粒度，review的過程哪方面是需要多加注意、哪些是可以信任隊友的。</p>
-<h4 id="反思"><a href="#反思" class="headerlink" title="反思"></a>反思</h4><p>由於學期三的學習份量十分紮實，因為我個人的進度，沒有辦法在專案開始前提前進行準備。進入專案開發週時，一開始腦袋需要適應API Server以資料切分路由的開發模式，也花了一點時間梳理與熟悉協作開發的工作流程與細節，感謝後端夥伴Rita的耐心與支援。同時也經由開發前期的文件準備、目標對焦、ERD與路由清單來逐漸摸索出整個專案的模樣，感受到在動手開發前，定義資料格式、約定工作優先順序的溝通，都是往後團隊開發需要優先考慮的重要事項。</p>
-<h4 id="檢討"><a href="#檢討" class="headerlink" title="檢討"></a>檢討</h4><p>一開始對測試檔的內容理解不夠，造成已經討論決議要怎麼做、並確實依照決議開發出來，到跑測試後才發現預期的結果無法符合測試檔規格（例如回傳資料的格式），雖然我很及時地發現、承認錯誤，並快速提供正確的資料格式給前端，但也提醒自己：往後在TDD開發的模式，要將測試檔內容仔細理解確實，避免因為沒確認好規格，造成反覆修改先前定義好的事項。</p>
+<h3 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h3><h4 id="收穫"><a href="#收穫" class="headerlink" title="收穫"></a>收穫</h4><p>收穫最大的部分是整體團隊協作經驗，這個是全然不同的工作模式，除了團隊所有人需要的聚焦與同步，也了解與前端夥伴、後端夥伴的不同的溝通需求與分工，也使用了很多十分有幫助的工具（例如 trello, github issue 等），在 code review 中學習抓到適當的 commit 粒度，review 的過程哪方面是需要多加注意、哪些是可以信任隊友的。</p>
+<h4 id="反思"><a href="#反思" class="headerlink" title="反思"></a>反思</h4><p>由於學期三的學習份量十分紮實，因為我個人的進度，沒有辦法在專案開始前提前進行準備。進入專案開發週時，一開始腦袋需要適應 API Server 以資料切分路由的開發模式，也花了一點時間梳理與熟悉協作開發的工作流程與細節，感謝後端夥伴 Rita 的耐心與支援。同時也經由開發前期的文件準備、目標對焦、ERD 與路由清單來逐漸摸索出整個專案的模樣，感受到在動手開發前，定義資料格式、約定工作優先順序的溝通，都是往後團隊開發需要優先考慮的重要事項。</p>
+<h4 id="檢討"><a href="#檢討" class="headerlink" title="檢討"></a>檢討</h4><p>一開始對測試檔的內容理解不夠，造成已經討論決議要怎麼做、並確實依照決議開發出來，到跑測試後才發現預期的結果無法符合測試檔規格（例如回傳資料的格式），雖然我很及時地發現、承認錯誤，並快速提供正確的資料格式給前端，但也提醒自己：往後在 TDD 開發的模式，要將測試檔內容仔細理解確實，避免因為沒確認好規格，造成反覆修改先前定義好的事項。</p>
 <hr>
-<h3 id="感謝"><a href="#感謝" class="headerlink" title="感謝"></a>感謝</h3><p>感謝AC設計3個sprint的開發週期，幫助團隊對焦與同步，也安排助教能適時提供幫助與建議，讓全員無經驗的團隊，也能穩紮穩打在時程內順利完成所有指定功能。</p>
-<p>感謝我的夥伴們，雖然我們除錯除到最後一天，不像有些小組進度飛快，但我認為我們小組在心態上非常強壯，一步步穩紮穩打，夥伴們也都很主動幫助團隊需要的部分，合作與溝通上也十分協調，相信每個成員都有很完整的協作開發體驗。在審查結果上，我們除了每個能力指標皆有達到期待外，在前端「功能性」、後端「功能完整度」與「技術掌握」等指標獲得評審超越期待(amazing)的肯定，教練也稱讚我們code review做得很到位，十分感謝夥伴們的努力，也感謝當初主動出擊開始組隊的自己。</p>
+<h3 id="感謝"><a href="#感謝" class="headerlink" title="感謝"></a>感謝</h3><p>感謝 AC 設計 3 個 sprint 的開發週期，幫助團隊對焦與同步，也安排助教能適時提供幫助與建議，讓全員無經驗的團隊，也能穩紮穩打在時程內順利完成所有指定功能。</p>
+<p>感謝我的夥伴們，雖然我們除錯除到最後一天，不像有些小組進度飛快，但我認為我們小組在心態上非常強壯，一步步穩紮穩打，夥伴們也都很主動幫助團隊需要的部分，合作與溝通上也十分協調，相信每個成員都有很完整的協作開發體驗。在審查結果上，我們除了每個能力指標皆有達到期待外，在前端「功能性」、後端「功能完整度」與「技術掌握」等指標獲得評審超越期待 (amazing) 的肯定，教練也稱讚我們 code review 做得很到位，十分感謝夥伴們的努力，也感謝當初主動出擊開始組隊的自己。</p>
 
     </div>
 

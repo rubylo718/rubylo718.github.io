@@ -319,8 +319,7 @@
 <p>查看目前狀態<br><code>npx sequelize db:migrate:status</code></p>
 <p>還原至特定版本<br><code>npx sequelize db:migrate:undo:all --to XXXXXXXXXXXXXX-create-todo.js</code></p>
 <p>還原至初始狀態<br><code>npx sequelize db:migrate:undo:all</code></p>
-<p>新增 migration 檔案</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx sequelize migration:generate --name (說明 migration 目的)</span><br></pre></td></tr></table></figure>
+<p>新增 migration 檔案<br><code>npx sequelize migration:generate --name (說明 migration 目的)</code></p>
 <p>在檔名上盡量把 model 和欄位的名稱帶進去，再選用一個適當的動詞，如 add</p>
 <p><a target="_blank" rel="noopener" href="https://sequelize.org/docs/v6/other-topics/migrations/">官網說明</a> | <a target="_blank" rel="noopener" href="https://sequelize.org/docs/v6/other-topics/query-interface/">queryInterface 指令</a></p>
 

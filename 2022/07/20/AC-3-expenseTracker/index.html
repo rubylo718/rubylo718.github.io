@@ -20,12 +20,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"rubylo718.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="隨著一點一滴的累積，也回頭將AC學期三week2的作業 - 網頁記帳app專案（aka.老爸的私房錢）做了修改與優化。此篇文章為優化後的專案簡介。">
+    <meta name="description" content="隨著一點一滴的累積，也回頭將 AC 學期三 week 2 的作業 - 網頁記帳 app 專案（aka.老爸的私房錢）做了修改與優化。此篇文章為優化後的專案簡介。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="專案簡介 - 網頁記帳本app">
 <meta property="og:url" content="https://rubylo718.github.io/2022/07/20/AC-3-expenseTracker/index.html">
 <meta property="og:site_name" content="Ruby Lo">
-<meta property="og:description" content="隨著一點一滴的累積，也回頭將AC學期三week2的作業 - 網頁記帳app專案（aka.老爸的私房錢）做了修改與優化。此篇文章為優化後的專案簡介。">
+<meta property="og:description" content="隨著一點一滴的累積，也回頭將 AC 學期三 week 2 的作業 - 網頁記帳 app 專案（aka.老爸的私房錢）做了修改與優化。此篇文章為優化後的專案簡介。">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://i.imgur.com/ZU42k9A.png">
 <meta property="article:published_time" content="2022-07-19T16:00:00.000Z">
@@ -244,11 +244,11 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>隨著一點一滴的累積，也回頭將AC學期三week2的作業 - 網頁記帳app專案（aka.老爸的私房錢）做了修改與優化。此篇文章為優化後的專案簡介。</p>
+        <p>隨著一點一滴的累積，也回頭將 AC 學期三 week 2 的作業 - 網頁記帳 app 專案（aka.老爸的私房錢）做了修改與優化。此篇文章為優化後的專案簡介。</p>
 <span id="more"></span>
 <p><a target="_blank" rel="noopener" href="https://peaceful-brook-83746.herokuapp.com/users/login">作品連結*</a> | <a target="_blank" rel="noopener" href="https://github.com/rubylo718/ac-expense-tracker">Github</a></p>
-<p>*由於heroku免費方案即將於2022&#x2F;11月底終止服務，屆時連結將會失效，請見諒</p>
-<h3 id="為何會選擇這個專案？"><a href="#為何會選擇這個專案？" class="headerlink" title="為何會選擇這個專案？"></a>為何會選擇這個專案？</h3><p>從頭開始建立記錄支出的專案，熟悉後端基本功 - 資料CRUD操作、樣版引擎、使用者認證，以及資料關聯性以及篩選的操作練習。</p>
+<p>*由於 heroku 免費方案即將於 2022&#x2F;11 月底終止服務，屆時連結將會失效，請見諒</p>
+<h3 id="為何會選擇這個專案？"><a href="#為何會選擇這個專案？" class="headerlink" title="為何會選擇這個專案？"></a>為何會選擇這個專案？</h3><p>從頭開始建立記錄支出的專案，熟悉後端基本功 - 資料 CRUD 操作、樣版引擎、使用者認證，以及資料關聯性以及篩選的操作練習。</p>
 <h3 id="使用者功能"><a href="#使用者功能" class="headerlink" title="使用者功能"></a>使用者功能</h3><ol>
 <li>使用者可以註冊登入，只能瀏覽與操作自己建立的資料</li>
 <li>瀏覽自己所有支出項目、總金額</li>
@@ -256,21 +256,21 @@
 <li>依據「類別」篩選支出，並顯示該類別的總金額</li>
 </ol>
 <p><img src="https://i.imgur.com/ZU42k9A.png" alt="Image"></p>
-<h3 id="使用技術"><a href="#使用技術" class="headerlink" title="使用技術"></a>使用技術</h3><p>JavaScript, Node.js, Express框架, Express-handlebars樣版引擎, Bootstrap, MongoDB Altas &amp; mongoose, Passport.js使用者認證流程。使用非同步async&#x2F;await語法寫起來更加直覺順暢。</p>
+<h3 id="使用技術"><a href="#使用技術" class="headerlink" title="使用技術"></a>使用技術</h3><p>JavaScript, Node.js, Express 框架, Express-handlebars 樣版引擎, Bootstrap, MongoDB Altas &amp; mongoose, Passport.js 使用者認證流程。使用非同步 async&#x2F;await 語法寫起來更加直覺順暢。</p>
 <h3 id="過程中遇到的困難以及克服"><a href="#過程中遇到的困難以及克服" class="headerlink" title="過程中遇到的困難以及克服"></a>過程中遇到的困難以及克服</h3><h4 id="困難1-類別資料關聯反覆查找"><a href="#困難1-類別資料關聯反覆查找" class="headerlink" title="困難1: 類別資料關聯反覆查找"></a>困難1: 類別資料關聯反覆查找</h4><ul>
-<li>情況說明：專案中有很多使用支出類別(Category)資料的地方，例如：類別對應的icon、類別篩選資料，造成只要資料有關聯到類別的操作，就重複寫<code>Category.find()</code>查找類別的資料。</li>
-<li>已知問題：一次操作重複查詢資料庫，造成運行資源以及user時間上的浪費。</li>
-<li>改善方法：在與同學交流時，知道了語法<code>populate()</code>。利用Record model的關聯，用上<code>populate()</code>直接一步取出關聯資料，省下很多非同步的步驟，也省下不少變數宣告。<a target="_blank" rel="noopener" href="https://github.com/rubylo718/ac-expense-tracker/commit/ad74c5c6856eec656464a3a4eca5a4215c499ec5">Commit</a></li>
+<li>情況說明：專案中有很多使用支出類別 (Category) 資料的地方，例如：類別對應的 icon、類別篩選資料，造成只要資料有關聯到類別的操作，就重複寫 <code>Category.find()</code> 查找類別的資料。</li>
+<li>已知問題：一次操作重複查詢資料庫，造成運行資源以及 user 時間上的浪費。</li>
+<li>改善方法：在與同學交流時，知道了語法 <code>populate()</code>。利用 Record model 的關聯，用上 <code>populate()</code> 直接一步取出關聯資料，省下很多非同步的步驟，也省下不少變數宣告。<a target="_blank" rel="noopener" href="https://github.com/rubylo718/ac-expense-tracker/commit/ad74c5c6856eec656464a3a4eca5a4215c499ec5">Commit</a></li>
 </ul>
 <h4 id="困難2-篩選後下拉選單顯示所選擇的項目"><a href="#困難2-篩選後下拉選單顯示所選擇的項目" class="headerlink" title="困難2: 篩選後下拉選單顯示所選擇的項目"></a>困難2: 篩選後下拉選單顯示所選擇的項目</h4><ul>
-<li>情況說明：篩選後重新渲染的畫面中，選單應該要顯示剛選取的選項，使user明白目前呈現資料的篩選條件。</li>
-<li>已知問題：想要寫「若某選項是所選擇的項目，則加入selected」渲染時就會顯示該選項，但Handlebars if-helper <code>&#123;&#123;#if true&#125;&#125; render here &#123;&#123;/is&#125;&#125;</code>（條件成立時，才會渲染兩個雙花括之間的內容），if只能傳一個變數，沒有辦法寫條件判斷運算式。</li>
-<li>改善方法：自訂helper：透過Handlebars.js原本if-help的原始碼，複製修改成可以接受if條件是，增加到自己專案中來使用。<a target="_blank" rel="noopener" href="https://github.com/rubylo718/ac-expense-tracker/commit/b28f8c028c00d419cfe1e78e411583fce876a0eb">Commit</a></li>
+<li>情況說明：篩選後重新渲染的畫面中，選單應該要顯示剛選取的選項，使 user 明白目前呈現資料的篩選條件。</li>
+<li>已知問題：想要寫「若某選項是所選擇的項目，則加入 selected」渲染時就會顯示該選項，但Handlebars if-helper <code>&#123;&#123;#if true&#125;&#125; render here &#123;&#123;/is&#125;&#125;</code>（條件成立時，才會渲染兩個雙花括之間的內容），if 只能傳一個變數，沒有辦法寫條件判斷運算式。</li>
+<li>改善方法：自訂 helper：透過 Handlebars.js 原本 if-help 的原始碼，複製修改成可以接受 if 條件是，增加到自己專案中來使用。<a target="_blank" rel="noopener" href="https://github.com/rubylo718/ac-expense-tracker/commit/b28f8c028c00d419cfe1e78e411583fce876a0eb">Commit</a></li>
 </ul>
 <h3 id="反思與感受"><a href="#反思與感受" class="headerlink" title="反思與感受"></a>反思與感受</h3><ol>
-<li><p>在後續學習到關聯資料庫以及SQL語法後，就會感受到查詢功能強大之處，是利用資料間的關聯性，有效率地組合出前端所需的資料，也是後端基本功，各種資料庫語法都應該會有類似<code>populate()</code>的功能，後續的學習會更有對相關技術的敏感度。</p>
+<li><p>在後續學習到關聯資料庫以及 SQL 語法後，就會感受到查詢功能強大之處，是利用資料間的關聯性，有效率地組合出前端所需的資料，也是後端基本功，各種資料庫語法都應該會有類似 <code>populate()</code> 的功能，後續的學習會更有對相關技術的敏感度。</p>
 </li>
-<li><p>關於「篩選後下拉選單要顯示所選擇的項目」，加上此處的選項是<code>&#123;&#123;#each&#125;&#125;</code>渲染出來的，增加了許多變數。當初花了很長的時間google查找資訊與嘗試。當時的我並沒有辦法想到「依照現有可得的資訊，來客製化自己想要的功能」，這就是透過動手做來累積經驗的價值。</p>
+<li><p>關於「篩選後下拉選單要顯示所選擇的項目」，加上此處的選項是 <code>&#123;&#123;#each&#125;&#125;</code> 渲染出來的，增加了許多變數。當初花了很長的時間 google 查找資訊與嘗試。當時的我並沒有辦法想到「依照現有可得的資訊，來客製化自己想要的功能」，這就是透過動手做來累積經驗的價值。</p>
 </li>
 </ol>
 
