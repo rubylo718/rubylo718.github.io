@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"rubylo718.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="本篇從 React 官網 React Docs BETA的 Conditional Rendering 部分開始。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="筆記 - React Intro (1) Conditional Rendering">
+<meta property="og:url" content="https://rubylo718.github.io/2023/03/16/React-intro-02/index.html">
+<meta property="og:site_name" content="Ruby Lo">
+<meta property="og:description" content="本篇從 React 官網 React Docs BETA的 Conditional Rendering 部分開始。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-03-16T05:11:04.000Z">
+<meta property="article:modified_time" content="2023-03-16T05:11:04.000Z">
+<meta property="article:author" content="Ruby Lo">
+<meta property="article:tag" content="React">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://rubylo718.github.io/2023/03/16/React-intro-02/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://rubylo718.github.io/2023/03/16/React-intro-02/","path":"2023/03/16/React-intro-02/","title":"筆記 - React Intro (1) Conditional Rendering"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>筆記 - React Intro (1) Conditional Rendering | Ruby Lo</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Ruby Lo</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">吃飯運動睡覺打扣</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Conditional-Rendering"><span class="nav-number">1.</span> <span class="nav-text">Conditional Rendering</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Conditionally-returning-JSX"><span class="nav-number">1.1.</span> <span class="nav-text">Conditionally returning JSX</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Conditionally-including-JSX"><span class="nav-number">1.2.</span> <span class="nav-text">Conditionally including JSX</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Conditional-ternary-operator"><span class="nav-number">1.2.1.</span> <span class="nav-text">Conditional (ternary) operator (? :)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Logical-AND-operator-amp-amp"><span class="nav-number">1.2.2.</span> <span class="nav-text">Logical AND operator (&amp;&amp;)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Conditionally-assigning-JSX-to-a-variable"><span class="nav-number">1.2.3.</span> <span class="nav-text">Conditionally assigning JSX to a variable</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Recap-of-Conditional-Rendering"><span class="nav-number">1.3.</span> <span class="nav-text">Recap of Conditional Rendering</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Rendering-Lists"><span class="nav-number">2.</span> <span class="nav-text">Rendering Lists</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Rendering-data-from-arrays"><span class="nav-number">2.1.</span> <span class="nav-text">Rendering data from arrays</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Filtering-arrays-of-items"><span class="nav-number">2.2.</span> <span class="nav-text">Filtering arrays of items</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Keeping-list-items-in-order-with-key"><span class="nav-number">2.3.</span> <span class="nav-text">Keeping list items in order with key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Recap-of-Rendering-Lists"><span class="nav-number">2.4.</span> <span class="nav-text">Recap of Rendering Lists</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Ruby Lo</p>
+  <div class="site-description" itemprop="description">努力學習程式開發，期望練成能在不同公司/產業/國家間移動的謀生技能，而且能透過技能與經驗的累積，提升自己在職場上的價值，幫助我進入更好更自由的工作環境。</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/rubylo718" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;rubylo718" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:rubylo718@gmail.com" title="E-Mail → mailto:rubylo718@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/wan-tzu-lo" title="LinkedIn → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;wan-tzu-lo" rel="noopener" target="_blank"><i class="fa-brands fa-linkedin-in fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="Back to top">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://rubylo718.github.io/2023/03/16/React-intro-02/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ruby Lo">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ruby Lo">
+      <meta itemprop="description" content="努力學習程式開發，期望練成能在不同公司/產業/國家間移動的謀生技能，而且能透過技能與經驗的累積，提升自己在職場上的價值，幫助我進入更好更自由的工作環境。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="筆記 - React Intro (1) Conditional Rendering | Ruby Lo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          筆記 - React Intro (1) Conditional Rendering
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-03-16 13:11:04" itemprop="dateCreated datePublished" datetime="2023-03-16T13:11:04+08:00">2023-03-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>本篇從 React 官網 <a target="_blank" rel="noopener" href="https://beta.reactjs.org/">React Docs BETA</a>的 Conditional Rendering 部分開始。</p>
+<span id="more"></span>
+<h2 id="Conditional-Rendering"><a href="#Conditional-Rendering" class="headerlink" title="Conditional Rendering"></a>Conditional Rendering</h2><blockquote>
+<ul>
+<li>How to return different JSX depending on a condition</li>
+<li>How to conditionally include or exclude a piece of JSX</li>
+<li>Common conditional syntax shortcuts you’ll encounter in React codebases</li>
+</ul>
+</blockquote>
+<p>範例 code:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Item</span>(<span class="params">&#123; name, isPacked &#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">li</span> <span class="attr">className</span>=<span class="string">&quot;item&quot;</span>&gt;</span>&#123;name&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">PackingList</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">section</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Sally Ride&#x27;s Packing List<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Item</span> </span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">isPacked</span>=<span class="string">&#123;true&#125;</span> </span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">name</span>=<span class="string">&quot;Space suit&quot;</span> </span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        /&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Item</span> </span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">isPacked</span>=<span class="string">&#123;true&#125;</span> </span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">name</span>=<span class="string">&quot;Helmet with a golden leaf&quot;</span> </span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        /&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Item</span> </span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">isPacked</span>=<span class="string">&#123;false&#125;</span> </span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">name</span>=<span class="string">&quot;Photo of Tam&quot;</span> </span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">section</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Conditionally-returning-JSX"><a href="#Conditionally-returning-JSX" class="headerlink" title="Conditionally returning JSX"></a>Conditionally returning JSX</h3><p>可以在 component 使用 if&#x2F;else statement 來 return 不同內容。例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Item</span>(<span class="params">&#123; name, isPacked &#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (isPacked) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">li</span> <span class="attr">className</span>=<span class="string">&quot;item&quot;</span>&gt;</span>&#123;name&#125; ✔<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">li</span> <span class="attr">className</span>=<span class="string">&quot;item&quot;</span>&gt;</span>&#123;name&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Conditionally return nothing with <code>null</code></li>
+</ul>
+<p>假設 if true 就不渲染內容，但實務上不常如此使用。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Item</span>(<span class="params">&#123; name, isPacked &#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (isPacked) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">li</span> <span class="attr">className</span>=<span class="string">&quot;item&quot;</span>&gt;</span>&#123;name&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Conditionally-including-JSX"><a href="#Conditionally-including-JSX" class="headerlink" title="Conditionally including JSX"></a>Conditionally including JSX</h3><p>上方 if&#x2F;else statement 會造成語法重複，實務上常用以下方式來寫：</p>
+<h4 id="Conditional-ternary-operator"><a href="#Conditional-ternary-operator" class="headerlink" title="Conditional (ternary) operator (? :)"></a>Conditional (ternary) operator (<code>? :</code>)</h4><p>把 if&#x2F;else statement 改用 三元運算子 來寫，較為簡潔（如果條件單純的話）：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Item</span>(<span class="params">&#123; name, isPacked &#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">li</span> <span class="attr">className</span>=<span class="string">&quot;item&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      &#123;isPacked ? name + &#x27; ✔&#x27; : name&#125;</span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><em>唸作: “if <code>isPacked</code> is true, then (<code>?</code>) render <code>name + &#39; ✔&#39;</code>, otherwise (<code>:</code>) render <code>name</code>”</em></p>
+<p>可以用小括號包多行 JSX，但太複雜的條件或太多 nested 還是不要這樣寫，易讀性差。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Item</span>(<span class="params">&#123; name, isPacked &#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">li</span> <span class="attr">className</span>=<span class="string">&quot;item&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      &#123;isPacked ? (</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">del</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          &#123;name&#125;</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">del</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      ) : (</span></span><br><span class="line"><span class="language-xml">        name</span></span><br><span class="line"><span class="language-xml">      )&#125;</span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Logical-AND-operator-amp-amp"><a href="#Logical-AND-operator-amp-amp" class="headerlink" title="Logical AND operator (&amp;&amp;)"></a>Logical AND operator (<code>&amp;&amp;</code>)</h4><p>若是需要 if true, render some JSX, or nothing otherwise 的時候使用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Item</span>(<span class="params">&#123; name, isPacked &#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">li</span> <span class="attr">className</span>=<span class="string">&quot;item&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      &#123;name&#125; &#123;isPacked &amp;&amp; &#x27;✔&#x27;&#125;</span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><em>唸作: if <code>isPacked</code>, then (<code>&amp;&amp;</code>) render the checkmark, otherwise, render nothing”</em></p>
+<p>如果 <code>&amp;&amp;</code> 左側為 true，會 return 右邊的值(‘✔’)。如果左側為 false，則整個 <code>&#123;isPacked &amp;&amp; &#39;✔&#39;&#125;</code> 為 false。 React 會將 false 是為 JSX tree 中的一個洞 (hole)，與 <code>null</code> 或 <code>undefined</code> 一樣，不會在其位置 render 任何內容。</p>
+<p><strong>注意：不要在 <code>&amp;&amp;</code> 左邊放數字</strong><br>如果左邊是 0，整個運算式會得到 value 0，React 就會渲染 0 出來。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> v = <span class="number">0</span> &amp;&amp; <span class="literal">true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(v) <span class="comment">// 0</span></span><br></pre></td></tr></table></figure>
+
+<p>若要呈現 0 的話不渲染，則左邊要寫成判斷式，例如 <code>count &gt; 0 &amp;&amp; &lt;p&gt;New Messages&lt;/p&gt;</code> 。</p>
+<h4 id="Conditionally-assigning-JSX-to-a-variable"><a href="#Conditionally-assigning-JSX-to-a-variable" class="headerlink" title="Conditionally assigning JSX to a variable"></a>Conditionally assigning JSX to a variable</h4><p>如果不想用上面那些 operator，就直接用 if statement。</p>
+<p>下面例子使用 <code>let</code> 宣告 <code>itemContent</code> 變數，值為 default 顯示的內容。若 if true ，則 reassign JSX expression to <code>itemContent</code>。</p>
+<p>條件式結果存放到變數中，再放進回傳的 JSX 中，雖然 code 變得比較長，但提高可維護性。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Item</span>(<span class="params">&#123; name, isPacked &#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> itemContent = name;</span><br><span class="line">  <span class="keyword">if</span> (isPacked) &#123;</span><br><span class="line">    itemContent = name + <span class="string">&quot; ✔&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">li</span> <span class="attr">className</span>=<span class="string">&quot;item&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      &#123;itemContent&#125;</span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>透過 object 資料結構來讓 drinks 變得容易維護。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> drinks = &#123;</span><br><span class="line">  <span class="attr">tea</span>: &#123;</span><br><span class="line">    <span class="attr">part</span>: <span class="string">&#x27;leaf&#x27;</span>,</span><br><span class="line">    <span class="attr">caffeine</span>: <span class="string">&#x27;15–70 mg/cup&#x27;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="string">&#x27;4,000+ years&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">coffee</span>: &#123;</span><br><span class="line">    <span class="attr">part</span>: <span class="string">&#x27;bean&#x27;</span>,</span><br><span class="line">    <span class="attr">caffeine</span>: <span class="string">&#x27;80–185 mg/cup&#x27;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="string">&#x27;1,000+ years&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Drink</span>(<span class="params">&#123; name &#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> info = drinks[name];</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">section</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;name&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">dl</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">dt</span>&gt;</span>Part of plant<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">dd</span>&gt;</span>&#123;info.part&#125;<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">dt</span>&gt;</span>Caffeine content<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">dd</span>&gt;</span>&#123;info.caffeine&#125;<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">dt</span>&gt;</span>Age<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">dd</span>&gt;</span>&#123;info.age&#125;<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">dl</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">section</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">DrinkList</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Drink</span> <span class="attr">name</span>=<span class="string">&quot;tea&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Drink</span> <span class="attr">name</span>=<span class="string">&quot;coffee&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="Recap-of-Conditional-Rendering"><a href="#Recap-of-Conditional-Rendering" class="headerlink" title="Recap of Conditional Rendering"></a>Recap of Conditional Rendering</h3><ul>
+<li>In React, you control branching logic with JavaScript.</li>
+<li>You can return a JSX expression conditionally with an <code>if</code> statement.</li>
+<li>You can conditionally save some JSX to a variable and then include it inside other JSX by using the curly braces.</li>
+<li>In JSX, <code>&#123;cond ? &lt;A /&gt; : &lt;B /&gt;&#125;</code> means “if <code>cond</code>, render <code>&lt;A /&gt;</code>, otherwise <code>&lt;B /&gt;</code>”.</li>
+<li>In JSX, <code>&#123;cond &amp;&amp; &lt;A /&gt;&#125;</code> means “if <code>cond</code>, render <code>&lt;A /&gt;</code>, otherwise nothing”.</li>
+<li>The shortcuts are common, but you don’t have to use them if you prefer plain <code>if</code>.</li>
+</ul>
+<hr>
+<h2 id="Rendering-Lists"><a href="#Rendering-Lists" class="headerlink" title="Rendering Lists"></a>Rendering Lists</h2><blockquote>
+<ul>
+<li>How to render components from an array using JavaScript’s <code>map()</code></li>
+<li>How to render only specific components using JavaScript’s <code>filter()</code></li>
+<li>When and why to use React keys</li>
+</ul>
+</blockquote>
+<h3 id="Rendering-data-from-arrays"><a href="#Rendering-data-from-arrays" class="headerlink" title="Rendering data from arrays"></a>Rendering data from arrays</h3><p>資料以 JavaScript object 與 array 的方式儲存，使用 <code>map()</code> 與 <code>filter()</code> 來取的所需的資料</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> people = [ <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">List</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> listItems = people.<span class="title function_">map</span>(<span class="function"><span class="params">person</span> =&gt;</span> </span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;people&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">ul</span>&gt;</span>&#123;listItems&#125;<span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Filtering-arrays-of-items"><a href="#Filtering-arrays-of-items" class="headerlink" title="Filtering arrays of items"></a>Filtering arrays of items</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> people = [&#123;</span><br><span class="line">  <span class="attr">id</span>: <span class="number">0</span>,</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;a&#x27;</span>,</span><br><span class="line">  <span class="attr">gender</span>: <span class="string">&#x27;male&#x27;</span>,</span><br><span class="line">&#125;, &#123;</span><br><span class="line">  <span class="attr">id</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;b&#x27;</span>,</span><br><span class="line">  <span class="attr">gender</span>: <span class="string">&#x27;female&#x27;</span>,</span><br><span class="line">&#125;, &#123;</span><br><span class="line">  <span class="attr">id</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;c&#x27;</span>,</span><br><span class="line">  <span class="attr">gender</span>: <span class="string">&#x27;male&#x27;</span></span><br><span class="line">&#125;]</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">List</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> male = people.<span class="title function_">filter</span>(<span class="function"><span class="params">person</span> =&gt;</span> </span><br><span class="line">    person.<span class="property">gender</span> === <span class="string">&#x27;male&#x27;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> listItems = male.<span class="title function_">map</span>(<span class="function"><span class="params">person</span> =&gt;</span> </span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;name&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">ul</span>&gt;</span>listItems<span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span>/;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注意此處寫法</strong><br>arrow function 隱含了 return <code>=&gt;</code> 後面的東西</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> listItems = male.<span class="title function_">map</span>(<span class="function"><span class="params">person</span> =&gt;</span> </span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;name&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span>); <span class="comment">// Implicit return</span></span><br></pre></td></tr></table></figure>
+
+<p>如果 arrow function 後面有用 <code>&#123;&#125;</code> 則要寫出 return</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> listItems = male.<span class="title function_">map</span>(<span class="function"><span class="params">person</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;name&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Keeping-list-items-in-order-with-key"><a href="#Keeping-list-items-in-order-with-key" class="headerlink" title="Keeping list items in order with key"></a>Keeping list items in order with <code>key</code></h3><p>因為 array 中的元素可能在操作過程中有排序、插入、刪除等等的位置改變（index 改變），所以 React 需要 key 來知道每個 item 對應哪個 component，對 DOM tree 正確更新，key 作為 list item 整個生命週期的唯一辨識。</p>
+<ol>
+<li><code>key</code> 不可在渲染的時候同時生成，需要傳進去 component 裡</li>
+<li>如果一個 array item 對應多個 DOM 節點的話，使用完整的 Fragment syntax 來將 key 傳進去（<code>&lt;Fragment&gt;&lt;/Fragment&gt;</code>），DOM tree 不會渲染 fragment</li>
+<li>如果 component 也需要傳入 id 值，需要用另一個 prop 傳遞 (ex.<code>&lt;Profile key=&#123;id&#125; userId=&#123;id&#125; /&gt;</code>)</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> listItems = male.<span class="title function_">map</span>(<span class="function"><span class="params">person</span> =&gt;</span> </span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">Fragment</span> <span class="attr">key</span>=<span class="string">&#123;person.id&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;person.name&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;person.gender&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">Fragment</span>&gt;</span></span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p><strong>Where to get your <code>key</code></strong><br><code>key</code> 來源：</p>
+<ol>
+<li>資料庫的 id</li>
+<li>本地生成：在產生資料的時候使用 incrementing counter, <code>crypto.randomUUID()</code>, 或是套件例如 <code>uuid</code></li>
+</ol>
+<p><strong>Rules of keys</strong></p>
+<ol>
+<li>同一層的 siblings items 的 key 不可重複。但不同 array 中的 JSX 節點可以使用相同的 key。</li>
+<li>不要在渲染的時候同時產生 key (ex. <code>key=&#123;Math.random()&#125;</code>)</li>
+</ol>
+<h3 id="Recap-of-Rendering-Lists"><a href="#Recap-of-Rendering-Lists" class="headerlink" title="Recap of Rendering Lists"></a>Recap of Rendering Lists</h3><ul>
+<li>How to move data out of components and into data structures like arrays and objects.</li>
+<li>How to generate sets of similar components with JavaScript’s <code>map()</code>.</li>
+<li>How to create arrays of filtered items with JavaScript’s <code>filter()</code>.</li>
+<li>Why and how to set key on each component in a collection so React can keep track of each of them even if their position or data changes.</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/React/" rel="tag"># React</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/02/24/React-intro-01/" rel="prev" title="筆記 - React Intro (1) Components">
+                  <i class="fa fa-chevron-left"></i> 筆記 - React Intro (1) Components
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-pen"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ruby Lo</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
