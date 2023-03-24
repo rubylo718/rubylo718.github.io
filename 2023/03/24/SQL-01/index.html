@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"rubylo718.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="本篇紀錄在 SQL ZOO 練習 SQL 指令。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="筆記 - SQL 指令練習">
+<meta property="og:url" content="https://rubylo718.github.io/2023/03/24/SQL-01/index.html">
+<meta property="og:site_name" content="Ruby Lo">
+<meta property="og:description" content="本篇紀錄在 SQL ZOO 練習 SQL 指令。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-03-24T08:42:12.000Z">
+<meta property="article:modified_time" content="2023-03-24T08:42:12.000Z">
+<meta property="article:author" content="Ruby Lo">
+<meta property="article:tag" content="SQL">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://rubylo718.github.io/2023/03/24/SQL-01/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://rubylo718.github.io/2023/03/24/SQL-01/","path":"2023/03/24/SQL-01/","title":"筆記 - SQL 指令練習"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>筆記 - SQL 指令練習 | Ruby Lo</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Ruby Lo</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">吃飯運動睡覺打扣</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SELECT-basics"><span class="nav-number">1.</span> <span class="nav-text">SELECT basics</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IN"><span class="nav-number">1.1.</span> <span class="nav-text">IN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BETWEEN"><span class="nav-number">1.2.</span> <span class="nav-text">BETWEEN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LIKE"><span class="nav-number">1.3.</span> <span class="nav-text">LIKE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XOR-Exclusive-OR"><span class="nav-number">1.4.</span> <span class="nav-text">XOR (Exclusive OR)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ROUND-Rounding"><span class="nav-number">1.5.</span> <span class="nav-text">ROUND (Rounding)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LENGTH"><span class="nav-number">1.6.</span> <span class="nav-text">LENGTH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LEFT"><span class="nav-number">1.7.</span> <span class="nav-text">LEFT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Non-ASCII-and-Escaping"><span class="nav-number">1.8.</span> <span class="nav-text">Non-ASCII and Escaping</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ORDER-BY"><span class="nav-number">1.9.</span> <span class="nav-text">ORDER BY</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%80%E5%B7%A7%EF%BC%9A%E8%AE%93%E6%9F%90%E4%BA%9B%E6%AC%84%E4%BD%8D%E6%8E%92%E5%9C%A8%E6%9C%80%E5%89%8D%E6%88%96%E6%9C%80%E5%BE%8C"><span class="nav-number">1.10.</span> <span class="nav-text">技巧：讓某些欄位排在最前或最後</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SELECT-DISTINCT"><span class="nav-number">1.11.</span> <span class="nav-text">SELECT DISTINCT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%80%E5%B7%A7%EF%BC%9A%E5%A6%82%E6%9E%9C%E6%9C%89%E6%AC%84%E4%BD%8D%E6%9C%89%E7%A9%BA%E5%80%BC"><span class="nav-number">1.12.</span> <span class="nav-text">技巧：如果有欄位有空值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%80%E5%B7%A7%EF%BC%9ANested-SELECT"><span class="nav-number">1.13.</span> <span class="nav-text">技巧：Nested SELECT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ANY-and-ALL"><span class="nav-number">1.14.</span> <span class="nav-text">ANY and ALL</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ANY"><span class="nav-number">1.14.1.</span> <span class="nav-text">ANY</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ALL"><span class="nav-number">1.14.2.</span> <span class="nav-text">ALL</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Aggregate-functions"><span class="nav-number">2.</span> <span class="nav-text">Aggregate functions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GROUP-BY"><span class="nav-number">2.1.</span> <span class="nav-text">GROUP BY</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HAVING"><span class="nav-number">2.2.</span> <span class="nav-text">HAVING</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Ruby Lo</p>
+  <div class="site-description" itemprop="description">努力學習程式開發，期望練成能在不同公司/產業/國家間移動的謀生技能，而且能透過技能與經驗的累積，提升自己在職場上的價值，幫助我進入更好更自由的工作環境。</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/rubylo718" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;rubylo718" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:rubylo718@gmail.com" title="E-Mail → mailto:rubylo718@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/wan-tzu-lo" title="LinkedIn → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;wan-tzu-lo" rel="noopener" target="_blank"><i class="fa-brands fa-linkedin-in fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="Back to top">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://rubylo718.github.io/2023/03/24/SQL-01/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ruby Lo">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ruby Lo">
+      <meta itemprop="description" content="努力學習程式開發，期望練成能在不同公司/產業/國家間移動的謀生技能，而且能透過技能與經驗的累積，提升自己在職場上的價值，幫助我進入更好更自由的工作環境。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="筆記 - SQL 指令練習 | Ruby Lo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          筆記 - SQL 指令練習
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-03-24 16:42:12" itemprop="dateCreated datePublished" datetime="2023-03-24T16:42:12+08:00">2023-03-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>本篇紀錄在 SQL ZOO 練習 SQL 指令。</p>
+<span id="more"></span>
+<h2 id="SELECT-basics"><a href="#SELECT-basics" class="headerlink" title="SELECT basics"></a>SELECT basics</h2><h3 id="IN"><a href="#IN" class="headerlink" title="IN"></a>IN</h3><ul>
+<li><p>The <code>IN</code> operator allows you to specify multiple values in a <code>WHERE</code> clause.</p>
+</li>
+<li><p>The <code>IN</code> operator is a shorthand for multiple <code>OR</code> conditions.</p>
+</li>
+<li><p>Use <code>NOT IN</code> to exclude.</p>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> `name`, `population` <span class="keyword">FROM</span> `world`</span><br><span class="line"><span class="keyword">WHERE</span> `name` <span class="keyword">IN</span> (<span class="string">&#x27;Sweden&#x27;</span>, <span class="string">&#x27;Norway&#x27;</span>, <span class="string">&#x27;Denmark&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="BETWEEN"><a href="#BETWEEN" class="headerlink" title="BETWEEN"></a>BETWEEN</h3><ul>
+<li><p>The <code>BETWEEN</code> operator selects values within a given range. The values can be numbers, text, or dates.</p>
+</li>
+<li><p>The <code>BETWEEN</code> operator is inclusive: begin and end values are included.</p>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> `name`, `area` <span class="keyword">FROM</span> `world`</span><br><span class="line"><span class="keyword">WHERE</span> `area` <span class="keyword">BETWEEN</span> <span class="number">200000</span> <span class="keyword">AND</span> <span class="number">250000</span>;</span><br></pre></td></tr></table></figure>
+
+<p>如果不包含的話，就用運算子寫吧</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> `name`, `area` <span class="keyword">FROM</span> `world`</span><br><span class="line"><span class="keyword">WHERE</span> `area` <span class="operator">&gt;</span> <span class="number">200000</span> <span class="keyword">AND</span> `area` <span class="operator">&lt;</span> <span class="number">250000</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="LIKE"><a href="#LIKE" class="headerlink" title="LIKE"></a>LIKE</h3><ul>
+<li><p>The <code>LIKE</code> operator is used in a <code>WHERE</code> clause to search for a specified pattern in a column.</p>
+</li>
+<li><p>There are two wildcards often used in conjunction with the <code>LIKE</code> operator:</p>
+<ul>
+<li>The percent sign (%) represents zero, one, or multiple characters</li>
+<li>The underscore sign (_) represents one, single character</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> `name` <span class="keyword">FROM</span> `world`</span><br><span class="line"><span class="keyword">WHERE</span> `name` <span class="keyword">LIKE</span> <span class="string">&#x27;%a&#x27;</span> <span class="keyword">OR</span> `name` <span class="keyword">LIKE</span> <span class="string">&#x27;%l&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="XOR-Exclusive-OR"><a href="#XOR-Exclusive-OR" class="headerlink" title="XOR (Exclusive OR)"></a>XOR (Exclusive OR)</h3><ul>
+<li>One or the other (but not both)</li>
+</ul>
+<p>Show the countries that are big by area or big by population but not both.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> `name`, `population`, `area` <span class="keyword">FROM</span> `world`</span><br><span class="line"><span class="keyword">WHERE</span> `area` <span class="operator">&gt;</span> <span class="number">3000000</span> XOR `population` <span class="operator">&gt;</span> <span class="number">250000000</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="ROUND-Rounding"><a href="#ROUND-Rounding" class="headerlink" title="ROUND (Rounding)"></a>ROUND (Rounding)</h3><ul>
+<li><code>ROUND(f,p)</code> returns f rounded to p decimal places<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ROUND(7253.86, 0)    -&gt;  7254</span><br><span class="line">ROUND(7253.86, 1)    -&gt;  7253.9</span><br><span class="line">ROUND(7253.86,-3)    -&gt;  7000</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="LENGTH"><a href="#LENGTH" class="headerlink" title="LENGTH"></a>LENGTH</h3><ul>
+<li><code>LENGTH(s)</code> returns the number of characters in string s.<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LENGTH(&#x27;Hello&#x27;) -&gt; 5 </span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="LEFT"><a href="#LEFT" class="headerlink" title="LEFT"></a>LEFT</h3><ul>
+<li><code>LEFT(s,n)</code> allows you to extract n characters from the start of the string s.<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LENGTH(&#x27;Hello&#x27;) -&gt; 5 </span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="Non-ASCII-and-Escaping"><a href="#Non-ASCII-and-Escaping" class="headerlink" title="Non-ASCII and Escaping"></a>Non-ASCII and Escaping</h3><p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/%C3%9C#Keyboarding">Non-ASCII characters Keyboarding</a></p>
+<p>Escaping single quotes: You can’t put a single quote in a quote string directly. You can use two single quotes within a quoted string.</p>
+<h3 id="ORDER-BY"><a href="#ORDER-BY" class="headerlink" title="ORDER BY"></a>ORDER BY</h3><ul>
+<li><p>The <code>ORDER BY</code> keyword is used to sort the result-set in ascending or descending order.</p>
+</li>
+<li><p>The <code>ORDER BY</code> keyword sorts the records in ascending order by default. To sort the records in descending order, use the <code>DESC</code> keyword.</p>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> Customers</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> Country <span class="keyword">ASC</span>, CustomerName <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="技巧：讓某些欄位排在最前或最後"><a href="#技巧：讓某些欄位排在最前或最後" class="headerlink" title="技巧：讓某些欄位排在最前或最後"></a>技巧：讓某些欄位排在最前或最後</h3><p>Show the 1984 winners and subject ordered by subject and winner name; but list chemistry and physics last.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> `winner`, `subject` <span class="keyword">FROM</span> `nobel`</span><br><span class="line"><span class="keyword">WHERE</span> `yr` <span class="operator">=</span> <span class="number">1984</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> (`subject` <span class="keyword">IN</span> (<span class="string">&#x27;chemistry&#x27;</span>, <span class="string">&#x27;physics&#x27;</span>)),  `subject`, `winner`;</span><br></pre></td></tr></table></figure>
+<p>KEY: The expression subject IN (‘chemistry’,’physics’) can be used as a value - it will be 0 or 1. 不包含的為 0 會排在前面 (ASC)<br><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=9pfL0Hj1Axk">SQL ZOO 影片</a></p>
+<h3 id="SELECT-DISTINCT"><a href="#SELECT-DISTINCT" class="headerlink" title="SELECT DISTINCT"></a>SELECT DISTINCT</h3><ul>
+<li><p>The SELECT DISTINCT statement is used to return only distinct (different) values.</p>
+</li>
+<li><p>Inside a table, a column often contains many duplicate values; and sometimes you only want to list the different (distinct) values.</p>
+</li>
+</ul>
+<p>Shows the amount of years where no Medicine awards were given.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(<span class="keyword">DISTINCT</span> `yr`) <span class="keyword">FROM</span> `nobel`</span><br><span class="line"><span class="keyword">WHERE</span> `yr` <span class="keyword">NOT</span> <span class="keyword">IN</span> (<span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> `yr` <span class="keyword">FROM</span> `nobel` <span class="keyword">WHERE</span> `subject` <span class="operator">=</span> <span class="string">&#x27;Medicine&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="技巧：如果有欄位有空值"><a href="#技巧：如果有欄位有空值" class="headerlink" title="技巧：如果有欄位有空值"></a>技巧：如果有欄位有空值</h3><p>記得在條件中再 AND <code>population</code> &gt; 0 </p>
+<h3 id="技巧：Nested-SELECT"><a href="#技巧：Nested-SELECT" class="headerlink" title="技巧：Nested SELECT"></a>技巧：Nested SELECT</h3><ul>
+<li>We can refer to values in the outer SELECT within the inner SELECT. We can name the tables so that we can tell the difference between the inner and outer versions.</li>
+</ul>
+<p>Find the largest country (by area) in each continent, show the continent, the name and the area:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> `continent`, `name`, `area` <span class="keyword">FROM</span> `world` x</span><br><span class="line"><span class="keyword">WHERE</span> `area` <span class="operator">&gt;=</span> <span class="keyword">ALL</span></span><br><span class="line">    (<span class="keyword">SELECT</span> `area` <span class="keyword">FROM</span> `world` y</span><br><span class="line">        <span class="keyword">WHERE</span> y.`continent` <span class="operator">=</span> x.`continent`</span><br><span class="line">          <span class="keyword">AND</span> `area` <span class="operator">&gt;</span> <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="ANY-and-ALL"><a href="#ANY-and-ALL" class="headerlink" title="ANY and ALL"></a>ANY and ALL</h3><h4 id="ANY"><a href="#ANY" class="headerlink" title="ANY"></a>ANY</h4><ul>
+<li>The <code>ANY</code> operator:<ul>
+<li>returns a boolean value as a result</li>
+<li>returns TRUE if ANY of the sub-query values meet the condition</li>
+</ul>
+</li>
+<li><code>ANY</code> means that the condition will be true if the operation is true for any of the values in the range.</li>
+</ul>
+<p>只要一個符合就回傳 true</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column_name(s) <span class="keyword">FROM</span> table_name</span><br><span class="line"><span class="keyword">WHERE</span> column_name operator <span class="keyword">ANY</span></span><br><span class="line">  (<span class="keyword">SELECT</span> column_name</span><br><span class="line">  <span class="keyword">FROM</span> table_name</span><br><span class="line">  <span class="keyword">WHERE</span> <span class="keyword">condition</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="ALL"><a href="#ALL" class="headerlink" title="ALL"></a>ALL</h4><ul>
+<li>The <code>ALL</code> operator:<ul>
+<li>returns a boolean value as a result</li>
+<li>returns TRUE if ALL of the sub-query values meet the condition</li>
+<li>is used with <code>SELECT</code>, <code>WHERE</code> and <code>HAVING</code> statements</li>
+</ul>
+</li>
+<li><code>ALL</code> means that the condition will be true only if the operation is true for all values in the range.</li>
+</ul>
+<p>全部符合才會回傳 true</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column_name(s) <span class="keyword">FROM</span> table_name</span><br><span class="line"><span class="keyword">WHERE</span> column_name operator <span class="keyword">ALL</span></span><br><span class="line">  (<span class="keyword">SELECT</span> column_name</span><br><span class="line">  <span class="keyword">FROM</span> table_name</span><br><span class="line">  <span class="keyword">WHERE</span> <span class="keyword">condition</span>);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="Aggregate-functions"><a href="#Aggregate-functions" class="headerlink" title="Aggregate functions"></a>Aggregate functions</h2><p>An aggregate function takes many values and delivers just one value. For example the function SUM would aggregate the values 2, 4 and 5 to deliver the single value 11.</p>
+<ul>
+<li>SUM, COUNT, AVG,</li>
+<li>MAX, DISTINCT, ORDER BY</li>
+</ul>
+<h3 id="GROUP-BY"><a href="#GROUP-BY" class="headerlink" title="GROUP BY"></a>GROUP BY</h3><ul>
+<li><p>The <code>GROUP BY</code> statement groups rows that have the same values into summary rows, like “find the number of customers in each country”.</p>
+</li>
+<li><p>The <code>GROUP BY</code> statement is often used with aggregate functions (<code>COUNT()</code>, <code>MAX()</code>, <code>MIN()</code>, <code>SUM()</code>, <code>AVG()</code>) to group the result-set by one or more columns.</p>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column_name(s) <span class="keyword">FROM</span> table_name</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">condition</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> column_name(s)</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> column_name(s);</span><br></pre></td></tr></table></figure>
+
+<h3 id="HAVING"><a href="#HAVING" class="headerlink" title="HAVING"></a>HAVING</h3><ul>
+<li>The <code>HAVING</code> clause was added to SQL because the <code>WHERE</code> keyword cannot be used with aggregate functions</li>
+</ul>
+<p>WHERE 只看得懂資料表原本的欄位。所以經過 <code>AS</code> 重新命名的欄位、或是經過函式計算出來的欄位，要使用 <code>HAVING</code> 來放條件。（例如接在 <code>GROUP BY</code> 後面）</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column_name(s) <span class="keyword">FROM</span> table_name</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">condition</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> column_name(s)</span><br><span class="line"><span class="keyword">HAVING</span> <span class="keyword">condition</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> column_name(s);</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/SQL/" rel="tag"># SQL</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/03/16/React-intro-02/" rel="prev" title="筆記 - React Intro (2) Conditional Rendering">
+                  <i class="fa fa-chevron-left"></i> 筆記 - React Intro (2) Conditional Rendering
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-pen"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ruby Lo</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
