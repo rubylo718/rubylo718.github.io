@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"rubylo718.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="本篇為 資料結構與演算法 學習筆記，主題為 Tree 的兩種應用。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="筆記 - Huffman Encoding &amp; Minimal Spanning Tree">
+<meta property="og:url" content="https://rubylo718.github.io/2022/10/08/DS-Tree-Huffman/index.html">
+<meta property="og:site_name" content="Ruby Lo">
+<meta property="og:description" content="本篇為 資料結構與演算法 學習筆記，主題為 Tree 的兩種應用。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-10-07T16:00:01.000Z">
+<meta property="article:modified_time" content="2022-10-07T16:00:01.000Z">
+<meta property="article:author" content="Ruby Lo">
+<meta property="article:tag" content="Tree">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://rubylo718.github.io/2022/10/08/DS-Tree-Huffman/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://rubylo718.github.io/2022/10/08/DS-Tree-Huffman/","path":"2022/10/08/DS-Tree-Huffman/","title":"筆記 - Huffman Encoding & Minimal Spanning Tree"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>筆記 - Huffman Encoding & Minimal Spanning Tree | Ruby Lo</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Ruby Lo</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">吃飯運動睡覺打扣</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Huffman-Encoding"><span class="nav-number">1.</span> <span class="nav-text">Huffman Encoding</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Concepts"><span class="nav-number">1.1.</span> <span class="nav-text">Concepts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Huffman-Tree"><span class="nav-number">1.2.</span> <span class="nav-text">Huffman Tree</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Compression"><span class="nav-number">1.3.</span> <span class="nav-text">Compression</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Decompression"><span class="nav-number">1.4.</span> <span class="nav-text">Decompression</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Minimal-Spanning-Tree"><span class="nav-number">2.</span> <span class="nav-text">Minimal Spanning Tree</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Concepts-1"><span class="nav-number">2.1.</span> <span class="nav-text">Concepts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Prim%E2%80%99s-Algorithm"><span class="nav-number">2.2.</span> <span class="nav-text">Prim’s Algorithm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kruskal%E2%80%99s-Algorithm"><span class="nav-number">2.3.</span> <span class="nav-text">Kruskal’s Algorithm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Application-of-MST"><span class="nav-number">2.4.</span> <span class="nav-text">Application of MST</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Ruby Lo</p>
+  <div class="site-description" itemprop="description">努力學習程式開發，期望練成能在不同公司/產業/國家間移動的謀生技能，而且能透過技能與經驗的累積，提升自己在職場上的價值，幫助我進入更好更自由的工作環境。</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">42</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/rubylo718" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;rubylo718" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:rubylo718@gmail.com" title="E-Mail → mailto:rubylo718@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/wan-tzu-lo" title="LinkedIn → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;wan-tzu-lo" rel="noopener" target="_blank"><i class="fa-brands fa-linkedin-in fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="Back to top">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://rubylo718.github.io/2022/10/08/DS-Tree-Huffman/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ruby Lo">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ruby Lo">
+      <meta itemprop="description" content="努力學習程式開發，期望練成能在不同公司/產業/國家間移動的謀生技能，而且能透過技能與經驗的累積，提升自己在職場上的價值，幫助我進入更好更自由的工作環境。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="筆記 - Huffman Encoding & Minimal Spanning Tree | Ruby Lo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          筆記 - Huffman Encoding & Minimal Spanning Tree
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-10-08 00:00:01" itemprop="dateCreated datePublished" datetime="2022-10-08T00:00:01+08:00">2022-10-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Data-Structure-Algorithm/" itemprop="url" rel="index"><span itemprop="name">Data Structure & Algorithm</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>本篇為 資料結構與演算法 學習筆記，主題為 Tree 的兩種應用。</p>
+<span id="more"></span>
+<h2 id="Huffman-Encoding"><a href="#Huffman-Encoding" class="headerlink" title="Huffman Encoding"></a>Huffman Encoding</h2><h3 id="Concepts"><a href="#Concepts" class="headerlink" title="Concepts"></a>Concepts</h3><ol>
+<li>常用在資料壓縮的演算法(Lossless compression)</li>
+<li>出現次數多的字母 &#x3D;&gt; 用較少的bits儲存他；<br>出現次數較少的字母 &#x3D;&gt; 用較多的bits儲存他</li>
+</ol>
+<h3 id="Huffman-Tree"><a href="#Huffman-Tree" class="headerlink" title="Huffman Tree"></a>Huffman Tree</h3><p>從次數較少開始，相加變成parent node</p>
+<p>插入並維持sorted狀態</p>
+<p>Ref: <a target="_blank" rel="noopener" href="https://huffman.ooz.ie/">Huffman Tree Generator</a></p>
+<h3 id="Compression"><a href="#Compression" class="headerlink" title="Compression"></a>Compression</h3><ol>
+<li>讀取檔案，計算字母出現的頻率</li>
+<li>頻率數字排序</li>
+<li>將頻率數字做成Huffman Tree (可使用PQ)</li>
+<li>左邊edge放0, 右邊edge放1，得到節點的encode</li>
+<li>再次讀取檔案，將字母換成Huffman encodes</li>
+</ol>
+<h3 id="Decompression"><a href="#Decompression" class="headerlink" title="Decompression"></a>Decompression</h3><ol>
+<li>Huffman code與其對照的字母，對應關係儲存在hash table中</li>
+<li>讀取壓縮的檔案內容，將每個byte轉成8 bits儲存在bitArray中</li>
+<li>讀取bitArray，使用left and right algorism將encode轉換回字母</li>
+</ol>
+<hr>
+<h2 id="Minimal-Spanning-Tree"><a href="#Minimal-Spanning-Tree" class="headerlink" title="Minimal Spanning Tree"></a>Minimal Spanning Tree</h2><h3 id="Concepts-1"><a href="#Concepts-1" class="headerlink" title="Concepts"></a>Concepts</h3><ol>
+<li>Spanning tree: 將一個graph移除某些edges，保持原來的nodes，使其形成一個tree，此時tree稱之為spanning tree </li>
+<li>Spanning tree是原本的graph的子集合（subset），包含原本的所有nodes都有連結在一起。一個graph可能會有好幾種可能的spanning tree。</li>
+<li>Minimal spanning tree（MST, 最小生成樹）：指將所有edge的weight加起來最小的spanning tree。</li>
+</ol>
+<h3 id="Prim’s-Algorithm"><a href="#Prim’s-Algorithm" class="headerlink" title="Prim’s Algorithm"></a>Prim’s Algorithm</h3><p>找出MST的演算法</p>
+<ol>
+<li>可以從任意node開始，最後都會找到一樣的MST</li>
+<li>紀錄已經拜訪過的nodes &#x3D;&gt; 紀錄此node是否被拜訪過</li>
+<li>紀錄要放進MST的edges（做成MST edge list - array）</li>
+<li>找出：weight最小，且不會形成loop的edge（當edge兩端nodes都是拜訪過的，就會形成loop）</li>
+<li>當所有smallest edges都會形成loop時結束</li>
+</ol>
+<p>Code前要先做出graph，再寫出Prim’s AL找出MST</p>
+<p><a target="_blank" rel="noopener" href="https://replit.com/@rubylo718/AL-10-127-PrimsAL#index.js">Repl</a></p>
+<h3 id="Kruskal’s-Algorithm"><a href="#Kruskal’s-Algorithm" class="headerlink" title="Kruskal’s Algorithm"></a>Kruskal’s Algorithm</h3><p>也是找出MST的演算法，與Prim’s algorithm同樣被歸類為”Greedy Algorithm”</p>
+<ol>
+<li>列出所有edges</li>
+<li>從weight最小的開始，排除會形成loop的edge，放入MST edge list中</li>
+</ol>
+<p>會得到相同的MST。時間複雜度O(n logn)</p>
+<h3 id="Application-of-MST"><a href="#Application-of-MST" class="headerlink" title="Application of MST"></a>Application of MST</h3><ol>
+<li>線路路網設計，街道為edges，十字路口為nodes。MST找出最小佈線成本。</li>
+<li>IC板設計</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Tree/" rel="tag"># Tree</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/10/07/DS-Tree-PQ/" rel="prev" title="筆記 - Priority Queue (PQ)">
+                  <i class="fa fa-chevron-left"></i> 筆記 - Priority Queue (PQ)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/10/20/hexoMemo/" rel="next" title="Hexo memo">
+                  Hexo memo <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-pen"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ruby Lo</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
