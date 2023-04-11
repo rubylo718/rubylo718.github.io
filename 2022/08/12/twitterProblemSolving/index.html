@@ -255,8 +255,11 @@
 <li>規格說明：使用者能編輯自己的名稱、自我介紹、個人頭像與封面</li>
 <li>我在實作中的角色：開發後端API、路由建立</li>
 </ul>
-<p><a target="_blank" rel="noopener" href="https://github.com/ritachien/twitter-api-2022/pull/37">PR 網址</a> | <a target="_blank" rel="noopener" href="https://ziwenying.github.io/simple-twitter-frontend/#/login">頁面連結*</a></p>
-<p>*由於 heroku 免費方案即將於 2022&#x2F;11 月底終止服務，屆時連結將會失效，請見諒</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ritachien/twitter-api-2022/pull/37">PR 網址</a> </p>
+<!--| [頁面連結*](https://ziwenying.github.io/simple-twitter-frontend/#/login)
+
+*由於 heroku 免費方案即將於 2022/11 月底終止服務，屆時連結將會失效，請見諒
+-->
 <hr>
 <h3 id="情境"><a href="#情境" class="headerlink" title="情境"></a>情境</h3><p>這個需求是整個專案的指定功能中，唯一需要與「上傳檔案」有關的功能。根據之前全端開發並部署 heroku 的經驗以及 model 的設計，著手前就與後端隊友有共識：使用者的個人頭像與封面圖片的上傳，是要先上傳至第三方圖片空間imgur，拿到 imgur 回傳的網址後，以 string 的型態存入資料庫。<br>由於使用者編輯表單內容完成按下儲存後，前端需要即時顯示更新後的資料，故後端除了更新資料之外，也需要回傳一包新的資料給前端。</p>
 <h3 id="溝通"><a href="#溝通" class="headerlink" title="溝通"></a>溝通</h3><p>前端隊友表示會將夾帶檔案的表單資料以 FormData 的格式傳入後端，剛開始我們對 FormData 格式沒什麼頭緒，所以先請前端隊友提供相關教案與資料參考，初步了解「FormData就是把整個 &lt;form&gt; 的內容轉換成一個物件，把整個物件傳送給後端」，這樣聽起來是沒什麼問題的。</p>
